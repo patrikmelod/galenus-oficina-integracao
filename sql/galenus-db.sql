@@ -81,3 +81,12 @@ CREATE TABLE galenus.consulta(
 	CONSTRAINT FK_Med_Doc_Cons FOREIGN KEY(medico_crm)
 		REFERENCES galenus.medico(crm)
 );
+
+CREATE TABLE galenus.log_data(
+	id					int auto_increment,
+    data_hora			timestamp,
+    ip_maquina			varchar(20),
+    func_doc			varchar(14),
+    CONSTRAINT FK_Func_Doc_Log FOREIGN KEY(func_doc)
+		REFERENCES galenus.funcionario(documento)
+);
