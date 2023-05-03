@@ -1,7 +1,7 @@
 package com.galenus.repository;
 
 import com.galenus.model.Funcionario;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FuncionarioRepository extends Repository<Funcionario, String> {
+public interface FuncionarioRepository extends JpaRepository<Funcionario, String> {
 }
