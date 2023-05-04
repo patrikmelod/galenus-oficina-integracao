@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 @Setter
 public class Agenda {
 
+    
     private Integer id;
     private String docPaciente;
     private String telefone;
