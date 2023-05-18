@@ -1,4 +1,4 @@
-package com.mycompany.galenus;
+package com.galenus.telas;
 
 
 public class Rh_Main extends javax.swing.JFrame {

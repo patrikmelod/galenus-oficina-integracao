@@ -1,4 +1,4 @@
-package com.mycompany.galenus;
+package com.galenus.telas;
 
 import java.awt.Color;
 
@@ -304,6 +304,10 @@ public class Rh_Medico_Cad extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Rh_Medico_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

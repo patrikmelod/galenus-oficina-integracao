@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.mycompany.galenus;
+
+
+package com.galenus.telas;
 
 import java.awt.Color;
 
@@ -184,8 +182,6 @@ public class Rh_Visualizar_Cad extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TextField_CPF_Busca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 460, 50));
-
-        Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visualizar Cadastro.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -342,6 +338,8 @@ public class Rh_Visualizar_Cad extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Rh_Visualizar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
