@@ -1,7 +1,8 @@
 # Galenus
+> Projeto desenvolvido durante a disciplina de Oficina de Integração 1
 
 ## Sobre o projeto
-* Projeto desenvolvido durante a disciplina de Oficina de Integração 1
+* Sistema de gerenciamento de consultas destina à clínica Galenus
 
 ## IDE e Tecnologias utilizadas
 * Netbeans
