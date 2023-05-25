@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author arthu
  */
-public class RCP_Cad_Paciente extends javax.swing.JFrame {
+public class CadastraPaciente extends javax.swing.JFrame {
 
     /**
      * Creates new form RCP_Cad_Paciente
      */
-    public RCP_Cad_Paciente() {
+    public CadastraPaciente() {
         initComponents();
     }
 
@@ -248,21 +248,23 @@ public class RCP_Cad_Paciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RCP_Cad_Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RCP_Cad_Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RCP_Cad_Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RCP_Cad_Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RCP_Cad_Paciente().setVisible(true);
+                new CadastraPaciente().setVisible(true);
             }
         });
     }
@@ -280,11 +282,11 @@ public class RCP_Cad_Paciente extends javax.swing.JFrame {
     private javax.swing.JTextField TextField_Telefone;
     // End of variables declaration//GEN-END:variables
 
-    private static RCP_Cad_Paciente telaUnica;
+    private static CadastraPaciente telaUnica;
     
-    public static RCP_Cad_Paciente getRcpCadPaciente(){
+    public static CadastraPaciente getRcpCadPaciente(){
         if(telaUnica == null){
-            telaUnica = new RCP_Cad_Paciente();
+            telaUnica = new CadastraPaciente();
         }
         return telaUnica;
     }

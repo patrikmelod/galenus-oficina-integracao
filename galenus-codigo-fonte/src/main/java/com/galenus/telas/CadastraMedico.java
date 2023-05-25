@@ -3,10 +3,10 @@ package com.galenus.telas;
 import java.awt.Color;
 
 
-public class Rh_Medico_Cad extends javax.swing.JFrame {
+public class CadastraMedico extends javax.swing.JFrame {
 
     
-    public Rh_Medico_Cad() {
+    public CadastraMedico() {
         initComponents();
     }
 
@@ -296,14 +296,22 @@ public class Rh_Medico_Cad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rh_Medico_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rh_Medico_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rh_Medico_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rh_Medico_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -316,7 +324,7 @@ public class Rh_Medico_Cad extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rh_Medico_Cad().setVisible(true);
+                new CadastraMedico().setVisible(true);
             }
         });
     }
@@ -336,11 +344,11 @@ public class Rh_Medico_Cad extends javax.swing.JFrame {
     private javax.swing.JTextField TextField_Telefone;
     // End of variables declaration//GEN-END:variables
 
-    private Rh_Medico_Cad telaUnica;
+    private CadastraMedico telaUnica;
     
-    public Rh_Medico_Cad getRhMedicoCad(){
+    public CadastraMedico getRhMedicoCad(){
         if(telaUnica == null){
-            telaUnica = new Rh_Medico_Cad();
+            telaUnica = new CadastraMedico();
         }
         return telaUnica;
     }

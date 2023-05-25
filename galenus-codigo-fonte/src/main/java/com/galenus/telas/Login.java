@@ -1,17 +1,32 @@
 package com.galenus.telas;
 
+import com.galenus.model.Log;
+import com.galenus.repository.LogRepository;
 import java.awt.Color;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author arthu
  */
-public class Main extends javax.swing.JFrame {
+@Component
+@Slf4j
+public class Login extends javax.swing.JFrame {
 
+    @Autowired
+    private LogRepository loginRep;
     /**
      * Creates new form Main
      */
-    public Main() {
+    public Login() {
         initComponents();
     }
 
@@ -130,44 +145,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_TextField_SenhaFocusLost
 
     private void Button_Des_AcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Des_AcessoActionPerformed
-        // TODO add your handling code here:
+        Log login = new Log();
+        login.setDataAcesso(new Timestamp(System.currentTimeMillis()));
+        try {
+            login.setIpMaquina(InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        loginRep.save(login);
+        log.info("log salvo");
     }//GEN-LAST:event_Button_Des_AcessoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Des_Acesso;

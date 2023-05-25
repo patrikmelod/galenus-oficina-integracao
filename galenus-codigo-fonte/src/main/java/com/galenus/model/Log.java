@@ -20,15 +20,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "paciente", schema = "galenus")
-public class Paciente {
+@Table(name = "log_data", schema = "galenus")
+public class Log implements Serializable {
 
     @Id
-    private String documento;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     
-    private String nome;
-    private Integer idade;
-    private char sexo;
-    private String telefone;
-    private String endereco;
+    @Column(name = "ip_maquina")
+    private String ipMaquina;
+    
+    @Column(name = "data_hora")
+    private Timestamp dataAcesso;
+    
+    @Column(name = "func_doc")
+    private String funcDoc;
 }

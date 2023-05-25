@@ -1,10 +1,10 @@
 package com.galenus.telas;
 
 
-public class Rh_Main extends javax.swing.JFrame {
+public class AreaRh extends javax.swing.JFrame {
 
     
-    public Rh_Main() {
+    public AreaRh() {
         initComponents();
     }
 
@@ -75,20 +75,20 @@ public class Rh_Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_Cad_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Cad_FunActionPerformed
-        Rh_Funcionario_Cad.getRhFuncionarioCad().setVisible(true);
+        CadastraFuncionario.getRhFuncionarioCad().setVisible(true);
     }//GEN-LAST:event_Button_Cad_FunActionPerformed
 
     private void Button_Cad_MedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Cad_MedActionPerformed
-        Rh_Medico_Cad telaMed = new Rh_Medico_Cad();
+        CadastraMedico telaMed = new CadastraMedico();
         telaMed.getRhMedicoCad().setVisible(true);
     }//GEN-LAST:event_Button_Cad_MedActionPerformed
 
     private void Button_Alterar_DadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Alterar_DadosActionPerformed
-        Rh_Alterar_Cad.getRhAlterarCad().setVisible(true);
+        AlterarCadastro.getRhAlterarCad().setVisible(true);
     }//GEN-LAST:event_Button_Alterar_DadosActionPerformed
 
     private void Button_Visualizar_CadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Visualizar_CadActionPerformed
-        Rh_Visualizar_Cad.getRhVisualizarCad().setVisible(true);
+        VisualizarCadastro.getRhVisualizarCad().setVisible(true);
     }//GEN-LAST:event_Button_Visualizar_CadActionPerformed
 
     /**
@@ -104,18 +104,18 @@ public class Rh_Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rh_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rh_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rh_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rh_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rh_Main().setVisible(true);
+                new AreaRh().setVisible(true);
             }
         });
     }
@@ -130,11 +130,11 @@ public class Rh_Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
-    private static Rh_Main telaUnica;
+    private static AreaRh telaUnica;
     
-    public static Rh_Main getRhMain(){
+    public static AreaRh getRhMain(){
         if(telaUnica == null){
-            telaUnica = new Rh_Main();
+            telaUnica = new AreaRh();
         }              
         return telaUnica;        
     }

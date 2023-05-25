@@ -15,12 +15,12 @@ import javax.imageio.ImageIO;
  *
  * @author arthu
  */
-public class Rh_Alterar_Cad extends javax.swing.JFrame {
+public class AlterarCadastro extends javax.swing.JFrame {
 
     /**
      * Creates new form Rh
      */
-    public Rh_Alterar_Cad() {
+    public AlterarCadastro() {
         initComponents();
     }
 
@@ -46,7 +46,6 @@ public class Rh_Alterar_Cad extends javax.swing.JFrame {
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1240, 720));
         setMinimumSize(new java.awt.Dimension(1240, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -153,7 +152,6 @@ public class Rh_Alterar_Cad extends javax.swing.JFrame {
         });
         getContentPane().add(TextField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
 
-        Label_fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\arthu\\Desktop\\Galenus Projeto\\RH 2\\Alterar2 Cadastro.png")); // NOI18N
         Label_fundo.setAlignmentY(0.0F);
         Label_fundo.setDoubleBuffered(true);
         Label_fundo.setFocusable(false);
@@ -256,14 +254,18 @@ public class Rh_Alterar_Cad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rh_Alterar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rh_Alterar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rh_Alterar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rh_Alterar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -272,7 +274,7 @@ public class Rh_Alterar_Cad extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rh_Alterar_Cad().setVisible(true);
+                new AlterarCadastro().setVisible(true);
             }
         });
     }
@@ -291,11 +293,11 @@ public class Rh_Alterar_Cad extends javax.swing.JFrame {
     private javax.swing.JTextField TextField_Telefone;
     // End of variables declaration//GEN-END:variables
     
-    private static Rh_Alterar_Cad telaUnica;
+    private static AlterarCadastro telaUnica;
     
-    public static Rh_Alterar_Cad getRhAlterarCad(){
+    public static AlterarCadastro getRhAlterarCad(){
         if(telaUnica == null){
-            telaUnica = new Rh_Alterar_Cad();
+            telaUnica = new AlterarCadastro();
         }
         return telaUnica;
     }

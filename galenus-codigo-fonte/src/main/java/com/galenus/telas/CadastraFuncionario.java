@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author arthu
  */
-public class Rh_Funcionario_Cad extends javax.swing.JFrame {
+public class CadastraFuncionario extends javax.swing.JFrame {
 
     /**
      * Creates new form Rh_Funcionario_Cad
      */
-    public Rh_Funcionario_Cad() {
+    public CadastraFuncionario() {
         initComponents();
     }
 
@@ -249,21 +249,23 @@ public class Rh_Funcionario_Cad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rh_Funcionario_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rh_Funcionario_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rh_Funcionario_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rh_Funcionario_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rh_Funcionario_Cad().setVisible(true);
+                new CadastraFuncionario().setVisible(true);
             }
         });
     }
@@ -281,11 +283,11 @@ public class Rh_Funcionario_Cad extends javax.swing.JFrame {
     private javax.swing.JTextField TextField_Telefone;
     // End of variables declaration//GEN-END:variables
 
-    private static Rh_Funcionario_Cad telaUnica;
+    private static CadastraFuncionario telaUnica;
     
-    public static Rh_Funcionario_Cad getRhFuncionarioCad(){
+    public static CadastraFuncionario getRhFuncionarioCad(){
         if(telaUnica == null){
-            telaUnica = new Rh_Funcionario_Cad();
+            telaUnica = new CadastraFuncionario();
         }
         return telaUnica;
     }

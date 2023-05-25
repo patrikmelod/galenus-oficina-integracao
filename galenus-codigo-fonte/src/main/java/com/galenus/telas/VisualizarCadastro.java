@@ -5,9 +5,9 @@ package com.galenus.telas;
 import java.awt.Color;
 
 
-public class Rh_Visualizar_Cad extends javax.swing.JFrame {
+public class VisualizarCadastro extends javax.swing.JFrame {
 
-    public Rh_Visualizar_Cad() {
+    public VisualizarCadastro() {
         initComponents();
     }
 
@@ -330,14 +330,18 @@ public class Rh_Visualizar_Cad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rh_Visualizar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rh_Visualizar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rh_Visualizar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rh_Visualizar_Cad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizarCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -346,7 +350,7 @@ public class Rh_Visualizar_Cad extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rh_Visualizar_Cad().setVisible(true);
+                new VisualizarCadastro().setVisible(true);
             }
         });
     }
@@ -367,11 +371,11 @@ public class Rh_Visualizar_Cad extends javax.swing.JFrame {
     private javax.swing.JTextField TextField_Telefone;
     // End of variables declaration//GEN-END:variables
 
-    private static Rh_Visualizar_Cad telaUnica;
+    private static VisualizarCadastro telaUnica;
     
-    public static Rh_Visualizar_Cad getRhVisualizarCad(){
+    public static VisualizarCadastro getRhVisualizarCad(){
         if(telaUnica == null){
-            telaUnica = new Rh_Visualizar_Cad();
+            telaUnica = new VisualizarCadastro();
         }
         return telaUnica;
     }

@@ -8,12 +8,12 @@ package com.galenus.telas;
  *
  * @author arthu
  */
-public class RCP_Main extends javax.swing.JFrame {
+public class AreaRecepcao extends javax.swing.JFrame {
 
     /**
      * Creates new form RCP_Main
      */
-    public RCP_Main() {
+    public AreaRecepcao() {
         initComponents();
     }
 
@@ -94,11 +94,11 @@ public class RCP_Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_Cad_PacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Cad_PacienteActionPerformed
-        RCP_Cad_Paciente.getRcpCadPaciente().setVisible(true);
+        CadastraPaciente.getRcpCadPaciente().setVisible(true);
     }//GEN-LAST:event_Button_Cad_PacienteActionPerformed
 
     private void Button_Confirmar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Confirmar_ConActionPerformed
-        RCP_Confirmar_Con.getRcpConfirmarCon().setVisible(true);
+        ConfirmaConsulta.getRcpConfirmarCon().setVisible(true);
     }//GEN-LAST:event_Button_Confirmar_ConActionPerformed
 
     private void Button_Visualizar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Visualizar_ConActionPerformed
@@ -106,7 +106,7 @@ public class RCP_Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_Visualizar_ConActionPerformed
 
     private void Button_Agendar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Agendar_ConActionPerformed
-        RCP_Agendar_Con.getRcpAgendarCon().setVisible(true);
+        AgendaConsulta.getRcpAgendarCon().setVisible(true);
     }//GEN-LAST:event_Button_Agendar_ConActionPerformed
 
     /**
@@ -126,21 +126,23 @@ public class RCP_Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RCP_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RCP_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RCP_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RCP_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RCP_Main().setVisible(true);
+                new AreaRecepcao().setVisible(true);
             }
         });
     }
@@ -155,11 +157,11 @@ public class RCP_Main extends javax.swing.JFrame {
     private javax.swing.JLabel Label_fundo;
     // End of variables declaration//GEN-END:variables
 
-    private static RCP_Main telaUnica;
+    private static AreaRecepcao telaUnica;
     
-    public static RCP_Main getRCPMain(){
+    public static AreaRecepcao getRCPMain(){
         if(telaUnica == null){
-            telaUnica = new RCP_Main();
+            telaUnica = new AreaRecepcao();
         }
         return telaUnica;
     }

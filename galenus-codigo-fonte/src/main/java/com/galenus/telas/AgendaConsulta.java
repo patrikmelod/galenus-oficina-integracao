@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author arthu
  */
-public class RCP_Agendar_Con extends javax.swing.JFrame {
+public class AgendaConsulta extends javax.swing.JFrame {
 
     /**
      * Creates new form RCP_Cad_Agendar_Con
      */
-    public RCP_Agendar_Con() {
+    public AgendaConsulta() {
         initComponents();
     }
 
@@ -336,14 +336,18 @@ public class RCP_Agendar_Con extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RCP_Agendar_Con.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RCP_Agendar_Con.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RCP_Agendar_Con.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RCP_Agendar_Con.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -352,7 +356,7 @@ public class RCP_Agendar_Con extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RCP_Agendar_Con().setVisible(true);
+                new AgendaConsulta().setVisible(true);
             }
         });
     }
@@ -377,11 +381,11 @@ public class RCP_Agendar_Con extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 
-    private static RCP_Agendar_Con telaUnica;
+    private static AgendaConsulta telaUnica;
     
-    public static RCP_Agendar_Con getRcpAgendarCon(){
+    public static AgendaConsulta getRcpAgendarCon(){
         if(telaUnica == null){
-            telaUnica = new RCP_Agendar_Con();
+            telaUnica = new AgendaConsulta();
         }
         return telaUnica;
     }
