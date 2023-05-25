@@ -4,7 +4,7 @@
 <img src="https://github.com/patrikmelod/galenus-oficina-integracao/assets/72254418/22513e28-7f3b-4077-9f40-9d3df7f9fe86">
 
 ## Sobre o projeto
-* Sistema de gerenciamento de consultas destinado à clínica Galenus
+* Sistema de gerenciamento de consultas
 
 ## IDE e Tecnologias utilizadas
 * Netbeans
