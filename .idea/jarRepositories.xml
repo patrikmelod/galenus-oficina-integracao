@@ -7,6 +7,11 @@
       <option name="url" value="file:C:\Desenvolvimento\galenus-oficina-integracao\galenus-codigo-fonte/lib" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="unknown-jars-temp-repo" />
+      <option name="name" value="A temporary repository created by NetBeans for libraries and jars it could not identify. Please&#10;                replace the dependencies in this repository with correct ones and delete this repository." />
+      <option name="url" value="file:C:\Desenvolvimento\galenus-oficina-integracao\galenus-codigo-fonte/lib" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />

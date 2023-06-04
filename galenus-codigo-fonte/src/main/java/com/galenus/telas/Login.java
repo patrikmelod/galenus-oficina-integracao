@@ -1,28 +1,35 @@
 package com.galenus.telas;
 
-import com.galenus.model.Log;
-import com.galenus.repository.LogRepository;
-import java.awt.Color;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.sql.Timestamp;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.galenus.GalenusApplication;
+import com.galenus.process.CadastraFuncionarioProcess;
+import com.galenus.service.FuncionarioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import com.galenus.process.LoginProcess;
 
-/**
- *
- * @author arthu
- */
-@Component
+import javax.swing.*;
+import javax.swing.plaf.PanelUI;
+import java.awt.*;
+
+@SpringBootApplication
+@EnableJpaRepositories("com.galenus")
+@ComponentScan(basePackages = { "com.galenus" })
+@EntityScan("com.galenus")
 @Slf4j
 public class Login extends javax.swing.JFrame {
 
     @Autowired
-    private LogRepository loginRep;
+    public LoginProcess loginProcess;
+
+    @Autowired
+    public FuncionarioService cadastraFuncionario;
+
     /**
      * Creates new form Main
      */
@@ -39,67 +46,67 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextField_Email = new javax.swing.JTextField();
-        TextField_Senha = new javax.swing.JTextField();
-        Button_Des_Acesso = new javax.swing.JButton();
+        txtFieldEmail = new javax.swing.JTextField();
+        txtFieldSenha = new javax.swing.JTextField();
+        btEntrar = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1240, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TextField_Email.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Email.setForeground(new java.awt.Color(31, 79, 231));
-        TextField_Email.setText("Email:");
-        TextField_Email.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Email.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldEmail.setForeground(new java.awt.Color(31, 79, 231));
+        txtFieldEmail.setText("Email:");
+        txtFieldEmail.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_EmailFocusGained(evt);
+                txtFieldEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_EmailFocusLost(evt);
+                txtFieldEmailFocusLost(evt);
             }
         });
-        TextField_Email.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_EmailActionPerformed(evt);
+                txtFieldEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 390, 50));
+        getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 390, 50));
 
-        TextField_Senha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Senha.setForeground(new java.awt.Color(31, 79, 231));
-        TextField_Senha.setText("Senha:");
-        TextField_Senha.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Senha.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldSenha.setForeground(new java.awt.Color(31, 79, 231));
+        txtFieldSenha.setText("Senha:");
+        txtFieldSenha.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_SenhaFocusGained(evt);
+                txtFieldSenhaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_SenhaFocusLost(evt);
+                txtFieldSenhaFocusLost(evt);
             }
         });
-        TextField_Senha.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_SenhaActionPerformed(evt);
+                txtFieldSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 390, 50));
-        TextField_Senha.getAccessibleContext().setAccessibleDescription("");
+        getContentPane().add(txtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 390, 50));
+        txtFieldSenha.getAccessibleContext().setAccessibleDescription("");
 
-        Button_Des_Acesso.setFont(new java.awt.Font("Constantia", 1, 33)); // NOI18N
-        Button_Des_Acesso.setForeground(new java.awt.Color(31, 79, 231));
-        Button_Des_Acesso.setText("Entrar");
-        Button_Des_Acesso.setBorderPainted(false);
-        Button_Des_Acesso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Button_Des_Acesso.setFocusable(false);
-        Button_Des_Acesso.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        Button_Des_Acesso.addActionListener(new java.awt.event.ActionListener() {
+        btEntrar.setFont(new java.awt.Font("Constantia", 1, 33)); // NOI18N
+        btEntrar.setForeground(new java.awt.Color(31, 79, 231));
+        btEntrar.setText("Entrar");
+        btEntrar.setBorderPainted(false);
+        btEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btEntrar.setFocusable(false);
+        btEntrar.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Des_AcessoActionPerformed(evt);
+                btEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Des_Acesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 160, 50));
+        getContentPane().add(btEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 160, 50));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Inicio.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
@@ -108,59 +115,84 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextField_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_SenhaActionPerformed
+    private void txtFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_SenhaActionPerformed
+    }//GEN-LAST:event_txtFieldSenhaActionPerformed
 
-    private void TextField_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_EmailActionPerformed
+    private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_EmailActionPerformed
+    }//GEN-LAST:event_txtFieldEmailActionPerformed
 
-    private void TextField_EmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_EmailFocusGained
-       	if(TextField_Email.getText().equals("Email:")){
-            TextField_Email.setForeground(new Color(0, 0, 0));
-            TextField_Email.setText("");
+    private void txtFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusGained
+        if (txtFieldEmail.getText().equals("Email:")) {
+            txtFieldEmail.setForeground(new Color(0, 0, 0));
+            txtFieldEmail.setText("");
         }
-    }//GEN-LAST:event_TextField_EmailFocusGained
+    }//GEN-LAST:event_txtFieldEmailFocusGained
 
-    private void TextField_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_EmailFocusLost
-        if(TextField_Email.getText().equals("")){
-            TextField_Email.setText("Email:");
-            TextField_Email.setForeground(new Color(31, 79, 231));
+    private void txtFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusLost
+        if (txtFieldEmail.getText().equals("")) {
+            txtFieldEmail.setText("Email:");
+            txtFieldEmail.setForeground(new Color(31, 79, 231));
         }
-    }//GEN-LAST:event_TextField_EmailFocusLost
+    }//GEN-LAST:event_txtFieldEmailFocusLost
 
-    private void TextField_SenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_SenhaFocusGained
-        if(TextField_Senha.getText().equals("Senha:")){
-            TextField_Senha.setForeground(new Color(0, 0, 0));
-            TextField_Senha.setText("");
+    private void txtFieldSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusGained
+        if (txtFieldSenha.getText().equals("Senha:")) {
+            txtFieldSenha.setForeground(new Color(0, 0, 0));
+            txtFieldSenha.setText("");
         }
-    }//GEN-LAST:event_TextField_SenhaFocusGained
+    }//GEN-LAST:event_txtFieldSenhaFocusGained
 
-    private void TextField_SenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_SenhaFocusLost
-        if(TextField_Senha.getText().equals("")){
-            TextField_Senha.setText("Senha:");
-            TextField_Senha.setForeground(new Color(31, 79, 231));
+    private void txtFieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusLost
+        if (txtFieldSenha.getText().equals("")) {
+            txtFieldSenha.setText("Senha:");
+            txtFieldSenha.setForeground(new Color(31, 79, 231));
         }
-    }//GEN-LAST:event_TextField_SenhaFocusLost
+    }//GEN-LAST:event_txtFieldSenhaFocusLost
 
-    private void Button_Des_AcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Des_AcessoActionPerformed
-        Log login = new Log();
-        login.setDataAcesso(new Timestamp(System.currentTimeMillis()));
-        try {
-            login.setIpMaquina(InetAddress.getLocalHost().getHostAddress());
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+    private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
+        String email = txtFieldEmail.getText();
+        String senha = txtFieldSenha.getText();
+
+        AreaMedico areaMedico = new AreaMedico();
+        AreaRecepcao areaRecepcao = new AreaRecepcao();
+        AreaRh areaRh = new AreaRh();
+
+        CadastraFuncionario cadastraFuncionario = new CadastraFuncionario();
+        cadastraFuncionario.setVisible(true);
+
+        if (loginProcess.validaLogin(email, senha)) {
+            if (email.contains("@medico")) {
+                areaMedico.setVisible(true);
+                loginProcess.salvaLog();
+            } else if (email.contains("@recepcao")) {
+                areaRecepcao.setVisible(true);
+                loginProcess.salvaLog();
+            } else if (email.contains("@rh")) {
+                areaRh.setVisible(true);
+                loginProcess.salvaLog();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
-        loginRep.save(login);
-        log.info("log salvo");
-    }//GEN-LAST:event_Button_Des_AcessoActionPerformed
+
+    }//GEN-LAST:event_btEntrarActionPerformed
+
+    public static void main(String[] args) {
+        var ctx = new SpringApplicationBuilder(Login.class)
+                .headless(false).run(args);
+        EventQueue.invokeLater(() -> {
+            var ex = ctx.getBean(Login.class);
+            ex.setVisible(true);
+        });
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Des_Acesso;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTextField TextField_Email;
-    private javax.swing.JTextField TextField_Senha;
+    private javax.swing.JButton btEntrar;
+    private javax.swing.JTextField txtFieldEmail;
+    private javax.swing.JTextField txtFieldSenha;
     // End of variables declaration//GEN-END:variables
 }

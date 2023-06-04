@@ -26,11 +26,22 @@ public class Funcionario {
 
     @Id
     private String documento;
-    
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "nascimento")
     private Date nascimento;
+
+    @Column(name = "telefone")
     private String telefone;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "senha")
     private String senha;
+
+    @Column(name = "endereco")
     private String endereco;
 }

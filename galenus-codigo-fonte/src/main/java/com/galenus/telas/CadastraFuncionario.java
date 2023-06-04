@@ -1,25 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.galenus.telas;
 
 import com.galenus.model.Funcionario;
-import com.galenus.model.Medico;
-import com.galenus.repository.FuncionarioRepository;
-import java.awt.Color;
-import javax.swing.JOptionPane;
+import com.galenus.process.CadastraFuncionarioProcess;
+import com.galenus.service.FuncionarioService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-/**
- *
- * @author arthu
- */
+import javax.swing.*;
+import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+@Slf4j
 public class CadastraFuncionario extends javax.swing.JFrame {
 
     @Autowired
-    private FuncionarioRepository funBd;
-    
+    private FuncionarioService cadastraFuncionarioProcess;
+
     public CadastraFuncionario() {
         initComponents();
     }
@@ -33,366 +31,207 @@ public class CadastraFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Button_Cad = new javax.swing.JButton();
-        Button_Limpar = new javax.swing.JButton();
-        Button_Voltar = new javax.swing.JButton();
-        textFieldNome = new javax.swing.JTextField();
-        textFieldCpf = new javax.swing.JTextField();
-        textFieldEndereco = new javax.swing.JTextField();
-        textFieldTelefone = new javax.swing.JTextField();
-        textFieldEmail = new javax.swing.JTextField();
-        textFieldSenha = new javax.swing.JTextField();
-        textFieldSexo = new javax.swing.JTextField();
-        textFieldNascimento = new javax.swing.JTextField();
+        btCadastrar = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
+        txtFieldNome = new javax.swing.JTextField();
+        txtFieldCpf = new javax.swing.JTextField();
+        txtFieldEndereco = new javax.swing.JTextField();
+        txtFieldTelefone = new javax.swing.JTextField();
+        txtFieldNascimento = new javax.swing.JTextField();
         Label_fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1240, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Button_Cad.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Cad.setText("Cadastrar");
-        Button_Cad.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        getContentPane().add(Button_Cad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 260, 50));
-
-        Button_Limpar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Limpar.setText("Limpar");
-        Button_Limpar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
-
-        Button_Voltar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Voltar.setText("Voltar");
-        Button_Voltar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
-
-        textFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldNome.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldNome.setText("Nome:");
-        textFieldNome.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldNomeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldNomeFocusLost(evt);
+        btCadastrar.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(textFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 235, 360, 50));
+        getContentPane().add(btCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 260, 50));
 
-        textFieldCpf.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldCpf.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldCpf.setText("CPF:");
-        textFieldCpf.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldCpf.addFocusListener(new java.awt.event.FocusAdapter() {
+        btVoltar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btVoltar.setText("Voltar");
+        btVoltar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
+
+        txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldNome.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldNome.setText("Nome:");
+        txtFieldNome.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldCpfFocusGained(evt);
+                txtFieldNomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldCpfFocusLost(evt);
+                txtFieldNomeFocusLost(evt);
             }
         });
-        getContentPane().add(textFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 335, 360, 50));
+        getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 235, 360, 50));
 
-        textFieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldEndereco.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldEndereco.setText("Endereço:");
-        textFieldEndereco.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldCpf.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldCpf.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldCpf.setText("CPF:");
+        txtFieldCpf.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldEnderecoFocusGained(evt);
+                txtFieldCpfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldEnderecoFocusLost(evt);
+                txtFieldCpfFocusLost(evt);
             }
         });
-        getContentPane().add(textFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 235, 360, 50));
+        getContentPane().add(txtFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 335, 360, 50));
 
-        textFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldTelefone.setText("Telefone:");
-        textFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldEndereco.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldEndereco.setText("Endereço:");
+        txtFieldEndereco.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldTelefoneFocusGained(evt);
+                txtFieldEnderecoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldTelefoneFocusLost(evt);
+                txtFieldEnderecoFocusLost(evt);
             }
         });
-        getContentPane().add(textFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 335, 360, 50));
+        getContentPane().add(txtFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 235, 360, 50));
 
-        textFieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldEmail.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldEmail.setText("Sexo:");
-        textFieldEmail.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldTelefone.setText("Telefone:");
+        txtFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldEmailFocusGained(evt);
+                txtFieldTelefoneFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldEmailFocusLost(evt);
+                txtFieldTelefoneFocusLost(evt);
             }
         });
-        getContentPane().add(textFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 360, 50));
+        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 335, 360, 50));
 
-        textFieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldSenha.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldSenha.setText("Senha:");
-        textFieldSenha.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldNascimento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldNascimento.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldNascimento.setText("Data de Nascimento:");
+        txtFieldNascimento.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldSenhaFocusGained(evt);
+                txtFieldNascimentoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldSenhaFocusLost(evt);
+                txtFieldNascimentoFocusLost(evt);
             }
         });
-        getContentPane().add(textFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 360, 50));
-
-        textFieldSexo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldSexo.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldSexo.setText("Sexo:");
-        textFieldSexo.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldSexo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldSexoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldSexoFocusLost(evt);
-            }
-        });
-        getContentPane().add(textFieldSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 435, 360, 50));
-
-        textFieldNascimento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        textFieldNascimento.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldNascimento.setText("Data de Nascimento:");
-        textFieldNascimento.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        textFieldNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldNascimentoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldNascimentoFocusLost(evt);
-            }
-        });
-        getContentPane().add(textFieldNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 435, 360, 50));
+        getContentPane().add(txtFieldNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 435, 360, 50));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cadastrar Funcionário.png"))); // NOI18N
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Label_fundo.setToolTipText("");
+        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textFieldNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNascimentoFocusLost
-        if(textFieldNascimento.getText().equals("")){
-            textFieldNascimento.setText("Data de Nascimento:");
-            textFieldNascimento.setForeground(new Color(153, 153, 153));
+    private void txtFieldNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNascimentoFocusLost
+        if (txtFieldNascimento.getText().equals("")) {
+            txtFieldNascimento.setText("Data de Nascimento:");
+            txtFieldNascimento.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_textFieldNascimentoFocusLost
+    }//GEN-LAST:event_txtFieldNascimentoFocusLost
 
-    private void textFieldNascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNascimentoFocusGained
-        if(textFieldNascimento.getText().equals("Data de Nascimento:")){
-            textFieldNascimento.setForeground(new Color(0, 0, 0));
-            textFieldNascimento.setText("");
+    private void txtFieldNascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNascimentoFocusGained
+        if (txtFieldNascimento.getText().equals("Data de Nascimento:")) {
+            txtFieldNascimento.setForeground(new Color(0, 0, 0));
+            txtFieldNascimento.setText("");
         }
-    }//GEN-LAST:event_textFieldNascimentoFocusGained
+    }//GEN-LAST:event_txtFieldNascimentoFocusGained
 
-    private void textFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldTelefoneFocusLost
-        if(textFieldTelefone.getText().equals("")){
-            textFieldTelefone.setText("Telefone:");
-            textFieldTelefone.setForeground(new Color(153, 153, 153));
+    private void txtFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusLost
+        if (txtFieldTelefone.getText().equals("")) {
+            txtFieldTelefone.setText("Telefone:");
+            txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_textFieldTelefoneFocusLost
+    }//GEN-LAST:event_txtFieldTelefoneFocusLost
 
-    private void textFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldTelefoneFocusGained
-        if(textFieldTelefone.getText().equals("Telefone:")){
-            textFieldTelefone.setForeground(new Color(0, 0, 0));
-            textFieldTelefone.setText("");
+    private void txtFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusGained
+        if (txtFieldTelefone.getText().equals("Telefone:")) {
+            txtFieldTelefone.setForeground(new Color(0, 0, 0));
+            txtFieldTelefone.setText("");
         }
-    }//GEN-LAST:event_textFieldTelefoneFocusGained
+    }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
-    private void textFieldSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldSexoFocusLost
-        if(textFieldSexo.getText().equals("")){
-            textFieldSexo.setText("Sexo:");
-            textFieldSexo.setForeground(new Color(153, 153, 153));
+//GEN-FIRST:event_txtFieldCpfFocusLost
+    private void txtFieldCpfFocusLost(java.awt.event.FocusEvent evt) {
+        if (txtFieldCpf.getText().equals("")) {
+            txtFieldCpf.setText("CPF:");
+            txtFieldCpf.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_textFieldSexoFocusLost
+    }//GEN-LAST:event_txtFieldCpfFocusLost
 
-    private void textFieldSexoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldSexoFocusGained
-        if(textFieldSexo.getText().equals("Sexo:")){
-            textFieldSexo.setForeground(new Color(0, 0, 0));
-            textFieldSexo.setText("");
+    private void txtFieldCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusGained
+        if (txtFieldCpf.getText().equals("CPF:")) {
+            txtFieldCpf.setForeground(new Color(0, 0, 0));
+            txtFieldCpf.setText("");
         }
-    }//GEN-LAST:event_textFieldSexoFocusGained
+    }//GEN-LAST:event_txtFieldCpfFocusGained
 
-    private void textFieldCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldCpfFocusLost
-        if(textFieldCpf.getText().equals("")){
-            textFieldCpf.setText("CPF:");
-            textFieldCpf.setForeground(new Color(153, 153, 153));
+    private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
+        if (txtFieldNome.getText().equals("")) {
+            txtFieldNome.setText("Nome:");
+            txtFieldNome.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_textFieldCpfFocusLost
+    }//GEN-LAST:event_txtFieldNomeFocusLost
 
-    private void textFieldCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldCpfFocusGained
-        if(textFieldCpf.getText().equals("CPF:")){
-            textFieldCpf.setForeground(new Color(0, 0, 0));
-            textFieldCpf.setText("");
+    private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
+        if (txtFieldNome.getText().equals("Nome:")) {
+            txtFieldNome.setForeground(new Color(0, 0, 0));
+            txtFieldNome.setText("");
         }
-    }//GEN-LAST:event_textFieldCpfFocusGained
+    }//GEN-LAST:event_txtFieldNomeFocusGained
 
-    private void textFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNomeFocusLost
-        if(textFieldNome.getText().equals("")){
-            textFieldNome.setText("Nome:");
-            textFieldNome.setForeground(new Color(153, 153, 153));
+    private void txtFieldEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusLost
+        if (txtFieldEndereco.getText().equals("")) {
+            txtFieldEndereco.setText("Endereço:");
+            txtFieldEndereco.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_textFieldNomeFocusLost
+    }//GEN-LAST:event_txtFieldEnderecoFocusLost
 
-    private void textFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNomeFocusGained
-        if(textFieldNome.getText().equals("Nome:")){
-            textFieldNome.setForeground(new Color(0, 0, 0));
-            textFieldNome.setText("");
+    private void txtFieldEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
+        if (txtFieldEndereco.getText().equals("Endereço:")) {
+            txtFieldEndereco.setForeground(new Color(0, 0, 0));
+            txtFieldEndereco.setText("");
         }
-    }//GEN-LAST:event_textFieldNomeFocusGained
+    }//GEN-LAST:event_txtFieldEnderecoFocusGained
 
-    private void textFieldEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldEnderecoFocusLost
-        if(textFieldEndereco.getText().equals("")){
-            textFieldEndereco.setText("Endereço:");
-            textFieldEndereco.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_textFieldEnderecoFocusLost
-
-    private void textFieldEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldEnderecoFocusGained
-        if(textFieldEndereco.getText().equals("Endereço:")){
-            textFieldEndereco.setForeground(new Color(0, 0, 0));
-            textFieldEndereco.setText("");
-        }
-    }//GEN-LAST:event_textFieldEnderecoFocusGained
-
-    private void textFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldEmailFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldEmailFocusGained
-
-    private void textFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldEmailFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldEmailFocusLost
-
-    private void textFieldSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldSenhaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldSenhaFocusGained
-
-    private void textFieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldSenhaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldSenhaFocusLost
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        Funcionario fun = new Funcionario();
+        fun.setNome(txtFieldNome.getText());
+        fun.setDocumento(txtFieldCpf.getText());
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastraFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            fun.setNascimento(new SimpleDateFormat("dd/MM/yyyy").parse(txtFieldNascimento.getText()));
+        } catch (ParseException pe) {
+            JOptionPane.showMessageDialog(null, "Data inválida.", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastraFuncionario().setVisible(true);
-            }
-        });
-    }
+        fun.setEndereco(txtFieldEndereco.getText());
+        fun.setTelefone(txtFieldTelefone.getText());
+        fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@recepcao.com");
+        fun.setSenha("1234");
+        cadastraFuncionarioProcess.save(fun);
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Cad;
-    private javax.swing.JButton Button_Limpar;
-    private javax.swing.JButton Button_Voltar;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTextField textFieldCpf;
-    private javax.swing.JTextField textFieldEmail;
-    private javax.swing.JTextField textFieldEndereco;
-    private javax.swing.JTextField textFieldNascimento;
-    private javax.swing.JTextField textFieldNome;
-    private javax.swing.JTextField textFieldSenha;
-    private javax.swing.JTextField textFieldSexo;
-    private javax.swing.JTextField textFieldTelefone;
+    private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btVoltar;
+    private javax.swing.JTextField txtFieldCpf;
+    private javax.swing.JTextField txtFieldEndereco;
+    private javax.swing.JTextField txtFieldNascimento;
+    private javax.swing.JTextField txtFieldNome;
+    private javax.swing.JTextField txtFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
-    private static CadastraFuncionario telaUnica;
-    
-    public static CadastraFuncionario getRhFuncionarioCad(){
-        if(telaUnica == null){
-            telaUnica = new CadastraFuncionario();
-        }
-        return telaUnica;
-    }
-
-    private void getNome(){
-        Funcionario fun = new Funcionario();
-        fun.setNome(textFieldNome.getText());
-        //fun.setNascimento(textFieldNascimento.getText());
-        fun.setEndereco(textFieldEndereco.getText());
-        fun.setTelefone(textFieldTelefone.getText());
-        //fun.setSexo(textFieldSexo.getText());
-        cadEmail(fun);
-        cadSenha(fun);
-        cadCpf(fun);
-        //funBd.save(fun);
-    }
-    
-    private void cadEmail(Funcionario fun){
-        try{
-            fun.setEmail(textFieldEmail.getText());
-        }
-        catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(null, "Esse Email já está sendo utilizado", "ERRO de Cadastro", 0);
-            textFieldEmail.setText("");
-            textFieldEmail.requestFocus();
-        }
-    }
-    
-    private void cadSenha(Funcionario fun){
-        int aleatorio = (int) (0 + Math.random() * 999999);
-        try{
-            fun.setSenha(Integer.toString(aleatorio));
-        }
-        catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(null, "Não foi possível cadastras a Senha", "ERRO de Cadastro", 0);
-            textFieldSenha.setText("");
-            textFieldSenha.requestFocus();
-        }
-    }
-      
-    private void cadCpf(Funcionario fun){
-        try{
-            fun.setDocumento(textFieldCpf.getText());
-        }
-        catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(null, "Esse Cpf já está sendo utilizado", "ERRO de Cadastro", 0);
-            textFieldCpf.setText("");
-            textFieldCpf.requestFocus();
-        }
-    }
-       
-    
-    
-    
 }

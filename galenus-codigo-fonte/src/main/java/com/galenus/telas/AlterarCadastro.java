@@ -4,6 +4,9 @@
  */
 package com.galenus.telas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -15,6 +18,8 @@ import javax.imageio.ImageIO;
  *
  * @author arthu
  */
+@Component
+@Slf4j
 public class AlterarCadastro extends javax.swing.JFrame {
 
     /**
@@ -33,209 +38,174 @@ public class AlterarCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Button_Buscar = new javax.swing.JButton();
-        Button_Des_Acesso = new javax.swing.JButton();
-        Button_Salvar = new javax.swing.JButton();
-        Button_Limpar = new javax.swing.JButton();
-        Button_Sair = new javax.swing.JButton();
-        TextField_CPF_Busca = new javax.swing.JTextField();
-        TextField_Endereco = new javax.swing.JTextField();
-        TextField_Telefone = new javax.swing.JTextField();
-        TextField_CPF = new javax.swing.JTextField();
-        TextField_Nome = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
+        btDesativar = new javax.swing.JButton();
+        btSalvar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
+        txtFieldCpfBusca = new javax.swing.JTextField();
+        txtFieldEndereco = new javax.swing.JTextField();
+        txtFieldTelefone = new javax.swing.JTextField();
+        txtFieldNome = new javax.swing.JTextField();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1240, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Button_Buscar.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Buscar.setText("Buscar");
-        Button_Buscar.setFocusPainted(false);
-        Button_Buscar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 200, 50));
+        btBuscar.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btBuscar.setText("Buscar");
+        btBuscar.setFocusPainted(false);
+        btBuscar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 200, 50));
 
-        Button_Des_Acesso.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Des_Acesso.setText("Desativar Acesso");
-        Button_Des_Acesso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Button_Des_Acesso.setFocusable(false);
-        Button_Des_Acesso.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        Button_Des_Acesso.addActionListener(new java.awt.event.ActionListener() {
+        btDesativar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btDesativar.setText("Desativar Acesso");
+        btDesativar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btDesativar.setFocusable(false);
+        btDesativar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btDesativar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Des_AcessoActionPerformed(evt);
+                btDesativarActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Des_Acesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 640, 220, 40));
+        getContentPane().add(btDesativar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 640, 220, 40));
 
-        Button_Salvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Salvar.setText("Salvar");
-        Button_Salvar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, 160, 40));
+        btSalvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSalvar.setText("Salvar");
+        btSalvar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, 160, 40));
 
-        Button_Limpar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Limpar.setText("Limpar");
-        Button_Limpar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
+        btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
-        Button_Sair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
-
-        TextField_CPF_Busca.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_CPF_Busca.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_CPF_Busca.setText("CPF:");
-        TextField_CPF_Busca.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_CPF_Busca.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldCpfBusca.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldCpfBusca.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldCpfBusca.setText("CPF:");
+        txtFieldCpfBusca.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldCpfBusca.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_CPF_BuscaFocusGained(evt);
+                txtFieldCpfBuscaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_CPF_BuscaFocusLost(evt);
+                txtFieldCpfBuscaFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_CPF_Busca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 460, 50));
+        getContentPane().add(txtFieldCpfBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 460, 50));
 
-        TextField_Endereco.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Endereco.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Endereco.setText("Endereço:");
-        TextField_Endereco.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Endereco.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldEndereco.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldEndereco.setText("Endereço:");
+        txtFieldEndereco.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_EnderecoFocusGained(evt);
+                txtFieldEnderecoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_EnderecoFocusLost(evt);
+                txtFieldEnderecoFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
+        getContentPane().add(txtFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
 
-        TextField_Telefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Telefone.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Telefone.setText("Telefone:");
-        TextField_Telefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Telefone.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldTelefone.setText("Telefone:");
+        txtFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_TelefoneFocusGained(evt);
+                txtFieldTelefoneFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_TelefoneFocusLost(evt);
+                txtFieldTelefoneFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 360, 50));
+        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 360, 50));
 
-        TextField_CPF.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_CPF.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_CPF.setText("CPF:");
-        TextField_CPF.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_CPF.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldNome.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldNome.setText("Nome:");
+        txtFieldNome.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_CPFFocusGained(evt);
+                txtFieldNomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_CPFFocusLost(evt);
+                txtFieldNomeFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 360, 50));
-
-        TextField_Nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Nome.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Nome.setText("Nome:");
-        TextField_Nome.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Nome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusLost(evt);
-            }
-        });
-        getContentPane().add(TextField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
+        getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
 
         Label_fundo.setAlignmentY(0.0F);
         Label_fundo.setDoubleBuffered(true);
         Label_fundo.setFocusable(false);
         Label_fundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Label_fundo.setRequestFocusEnabled(false);
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
+        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1240, 720));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Button_Des_AcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Des_AcessoActionPerformed
+    private void btDesativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesativarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Button_Des_AcessoActionPerformed
+    }//GEN-LAST:event_btDesativarActionPerformed
 
-    private void TextField_NomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusGained
-        if(TextField_Nome.getText().equals("Nome:")){
-            TextField_Nome.setForeground(new Color(0, 0, 0));
-            TextField_Nome.setText("");
+    private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
+        if(txtFieldNome.getText().equals("Nome:")){
+            txtFieldNome.setForeground(new Color(0, 0, 0));
+            txtFieldNome.setText("");
         }
-    }//GEN-LAST:event_TextField_NomeFocusGained
+    }//GEN-LAST:event_txtFieldNomeFocusGained
 
-    private void TextField_NomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusLost
-        if(TextField_Nome.getText().equals("")){
-            TextField_Nome.setText("Nome:");
-            TextField_Nome.setForeground(new Color(153, 153, 153));
+    private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
+        if(txtFieldNome.getText().equals("")){
+            txtFieldNome.setText("Nome:");
+            txtFieldNome.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_NomeFocusLost
+    }//GEN-LAST:event_txtFieldNomeFocusLost
 
-    private void TextField_EnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_EnderecoFocusGained
-        if(TextField_Endereco.getText().equals("Endereço:")){
-            TextField_Endereco.setForeground(new Color(0, 0, 0));
-            TextField_Endereco.setText("");
+    private void txtFieldEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
+        if(txtFieldEndereco.getText().equals("Endereço:")){
+            txtFieldEndereco.setForeground(new Color(0, 0, 0));
+            txtFieldEndereco.setText("");
         }
-    }//GEN-LAST:event_TextField_EnderecoFocusGained
+    }//GEN-LAST:event_txtFieldEnderecoFocusGained
 
-    private void TextField_CPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPFFocusGained
-        if(TextField_CPF.getText().equals("CPF:")){
-            TextField_CPF.setForeground(new Color(0, 0, 0));
-            TextField_CPF.setText("");
+    private void txtFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusGained
+        if(txtFieldTelefone.getText().equals("Telefone:")){
+            txtFieldTelefone.setForeground(new Color(0, 0, 0));
+            txtFieldTelefone.setText("");
         }
-    }//GEN-LAST:event_TextField_CPFFocusGained
+    }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
-    private void TextField_TelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_TelefoneFocusGained
-        if(TextField_Telefone.getText().equals("Telefone:")){
-            TextField_Telefone.setForeground(new Color(0, 0, 0));
-            TextField_Telefone.setText("");
+    private void txtFieldCpfBuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfBuscaFocusGained
+        if(txtFieldCpfBusca.getText().equals("CPF:")){
+            txtFieldCpfBusca.setForeground(new Color(0, 0, 0));
+            txtFieldCpfBusca.setText("");
         }
-    }//GEN-LAST:event_TextField_TelefoneFocusGained
+    }//GEN-LAST:event_txtFieldCpfBuscaFocusGained
 
-    private void TextField_CPF_BuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPF_BuscaFocusGained
-        if(TextField_CPF_Busca.getText().equals("CPF:")){
-            TextField_CPF_Busca.setForeground(new Color(0, 0, 0));
-            TextField_CPF_Busca.setText("");
+    private void txtFieldCpfBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfBuscaFocusLost
+        if(txtFieldCpfBusca.getText().equals("")){
+            txtFieldCpfBusca.setText("CPF:");
+            txtFieldCpfBusca.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_CPF_BuscaFocusGained
+    }//GEN-LAST:event_txtFieldCpfBuscaFocusLost
 
-    private void TextField_CPF_BuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPF_BuscaFocusLost
-        if(TextField_CPF_Busca.getText().equals("")){
-            TextField_CPF_Busca.setText("CPF:");
-            TextField_CPF_Busca.setForeground(new Color(153, 153, 153));
+    private void txtFieldEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusLost
+        if(txtFieldEndereco.getText().equals("")){
+            txtFieldEndereco.setText("Endereço:");
+            txtFieldEndereco.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_CPF_BuscaFocusLost
+    }//GEN-LAST:event_txtFieldEnderecoFocusLost
 
-    private void TextField_EnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_EnderecoFocusLost
-        if(TextField_Endereco.getText().equals("")){
-            TextField_Endereco.setText("Endereço:");
-            TextField_Endereco.setForeground(new Color(153, 153, 153));
+    private void txtFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusLost
+        if(txtFieldTelefone.getText().equals("")){
+            txtFieldTelefone.setText("Telefone:");
+            txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_EnderecoFocusLost
-
-    private void TextField_CPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPFFocusLost
-        if(TextField_CPF.getText().equals("")){
-            TextField_CPF.setText("CPF:");
-            TextField_CPF.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_TextField_CPFFocusLost
-
-    private void TextField_TelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_TelefoneFocusLost
-        if(TextField_Telefone.getText().equals("")){
-            TextField_Telefone.setText("Telefone:");
-            TextField_Telefone.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_TextField_TelefoneFocusLost
+    }//GEN-LAST:event_txtFieldTelefoneFocusLost
 
     /**
      * @param args the command line arguments
@@ -280,26 +250,16 @@ public class AlterarCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Buscar;
-    private javax.swing.JButton Button_Des_Acesso;
-    private javax.swing.JButton Button_Limpar;
-    private javax.swing.JButton Button_Sair;
-    private javax.swing.JButton Button_Salvar;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTextField TextField_CPF;
-    private javax.swing.JTextField TextField_CPF_Busca;
-    private javax.swing.JTextField TextField_Endereco;
-    private javax.swing.JTextField TextField_Nome;
-    private javax.swing.JTextField TextField_Telefone;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btDesativar;
+    private javax.swing.JButton btSair;
+    private javax.swing.JButton btSalvar;
+    private javax.swing.JTextField txtFieldCpfBusca;
+    private javax.swing.JTextField txtFieldEndereco;
+    private javax.swing.JTextField txtFieldNome;
+    private javax.swing.JTextField txtFieldTelefone;
     // End of variables declaration//GEN-END:variables
     
-    private static AlterarCadastro telaUnica;
-    
-    public static AlterarCadastro getRhAlterarCad(){
-        if(telaUnica == null){
-            telaUnica = new AlterarCadastro();
-        }
-        return telaUnica;
-    }
 
 }

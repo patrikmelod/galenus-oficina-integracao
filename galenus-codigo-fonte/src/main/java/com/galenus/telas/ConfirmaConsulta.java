@@ -4,12 +4,17 @@
  */
 package com.galenus.telas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.awt.Color;
 
 /**
  *
  * @author arthu
  */
+@Component
+@Slf4j
 public class ConfirmaConsulta extends javax.swing.JFrame {
 
     /**
@@ -28,287 +33,287 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextField_Nome = new javax.swing.JTextField();
-        TextField_Telefone = new javax.swing.JTextField();
-        TextField_CPF = new javax.swing.JTextField();
-        ComboBox_Pagamento = new javax.swing.JComboBox<>();
-        ComboBox_Medico = new javax.swing.JComboBox<>();
-        ComboBox_Especialidade = new javax.swing.JComboBox<>();
-        ComboBox_Data_dia = new javax.swing.JComboBox<>();
-        ComboBox_Data_mes = new javax.swing.JComboBox<>();
-        ComboBox_Data_ano = new javax.swing.JComboBox<>();
-        ComboBox_Horario = new javax.swing.JComboBox<>();
-        TextField_Pagamento = new javax.swing.JTextField();
-        TextField_Medico = new javax.swing.JTextField();
-        TextField_Especialidade = new javax.swing.JTextField();
-        TextField_Data = new javax.swing.JTextField();
-        TextField_Horario = new javax.swing.JTextField();
-        Button_Confirmar = new javax.swing.JButton();
-        Button_Sair = new javax.swing.JButton();
+        txtField_Nome = new javax.swing.JTextField();
+        txtFieldTelefone = new javax.swing.JTextField();
+        txtField_CPF = new javax.swing.JTextField();
+        cBoxPagamento = new javax.swing.JComboBox<>();
+        cBoxMedico = new javax.swing.JComboBox<>();
+        cBoxEspecialidade = new javax.swing.JComboBox<>();
+        cBoxDia = new javax.swing.JComboBox<>();
+        cBoxMes = new javax.swing.JComboBox<>();
+        cBoxAno = new javax.swing.JComboBox<>();
+        cBoxHorario = new javax.swing.JComboBox<>();
+        txtFieldPagamento = new javax.swing.JTextField();
+        txtField_Medico = new javax.swing.JTextField();
+        txFieldEspecialidade = new javax.swing.JTextField();
+        txtField_Data = new javax.swing.JTextField();
+        txtFieldHorario = new javax.swing.JTextField();
+        btConfirmar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TextField_Nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Nome.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Nome.setText("Nome:");
-        TextField_Nome.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Nome.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtField_Nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtField_Nome.setForeground(new java.awt.Color(153, 153, 153));
+        txtField_Nome.setText("Nome:");
+        txtField_Nome.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtField_Nome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusGained(evt);
+                txtField_NomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusLost(evt);
+                txtField_NomeFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 360, 50));
+        getContentPane().add(txtField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 360, 50));
 
-        TextField_Telefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Telefone.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Telefone.setText("Telefone:");
-        TextField_Telefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Telefone.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldTelefone.setText("Telefone:");
+        txtFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_TelefoneFocusGained(evt);
+                txtFieldTelefoneFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_TelefoneFocusLost(evt);
+                txtFieldTelefoneFocusLost(evt);
             }
         });
-        TextField_Telefone.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_TelefoneActionPerformed(evt);
+                txtFieldTelefoneActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 360, 50));
+        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 360, 50));
 
-        TextField_CPF.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_CPF.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_CPF.setText("CPF:");
-        TextField_CPF.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_CPF.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtField_CPF.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtField_CPF.setForeground(new java.awt.Color(153, 153, 153));
+        txtField_CPF.setText("CPF:");
+        txtField_CPF.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtField_CPF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_CPFFocusGained(evt);
+                txtField_CPFFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_CPFFocusLost(evt);
+                txtField_CPFFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 360, 50));
+        getContentPane().add(txtField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 360, 50));
 
-        ComboBox_Pagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Pagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão", "Plano de Saúde", "Retorno", " " }));
-        ComboBox_Pagamento.addActionListener(new java.awt.event.ActionListener() {
+        cBoxPagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão", "Plano de Saúde", "Retorno", " " }));
+        cBoxPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_PagamentoActionPerformed(evt);
+                cBoxPagamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Pagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 220, 50));
+        getContentPane().add(cBoxPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 220, 50));
 
-        ComboBox_Medico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Medico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBox_Medico.addActionListener(new java.awt.event.ActionListener() {
+        cBoxMedico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBoxMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_MedicoActionPerformed(evt);
+                cBoxMedicoActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 220, 50));
+        getContentPane().add(cBoxMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 220, 50));
 
-        ComboBox_Especialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBox_Especialidade.addActionListener(new java.awt.event.ActionListener() {
+        cBoxEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBoxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_EspecialidadeActionPerformed(evt);
+                cBoxEspecialidadeActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Especialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 220, 50));
+        getContentPane().add(cBoxEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 220, 50));
 
-        ComboBox_Data_dia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Data_dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        ComboBox_Data_dia.setBorder(null);
-        ComboBox_Data_dia.addActionListener(new java.awt.event.ActionListener() {
+        cBoxDia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cBoxDia.setBorder(null);
+        cBoxDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_Data_diaActionPerformed(evt);
+                cBoxDiaActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Data_dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 70, 50));
+        getContentPane().add(cBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 70, 50));
 
-        ComboBox_Data_mes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Data_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro ", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
-        ComboBox_Data_mes.setBorder(null);
-        ComboBox_Data_mes.addActionListener(new java.awt.event.ActionListener() {
+        cBoxMes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro ", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cBoxMes.setBorder(null);
+        cBoxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_Data_mesActionPerformed(evt);
+                cBoxMesActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Data_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 510, 130, 50));
+        getContentPane().add(cBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 510, 130, 50));
 
-        ComboBox_Data_ano.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Data_ano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
-        ComboBox_Data_ano.setBorder(null);
-        ComboBox_Data_ano.addActionListener(new java.awt.event.ActionListener() {
+        cBoxAno.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        cBoxAno.setBorder(null);
+        cBoxAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_Data_anoActionPerformed(evt);
+                cBoxAnoActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Data_ano, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 90, 50));
+        getContentPane().add(cBoxAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 90, 50));
 
-        ComboBox_Horario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Horario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              08 : 00", "              08 : 30", "              09 : 00", "              09 : 30", "              10 : 00", "              10 : 30", "              11 : 00", "              11 : 30", "              13 : 00", "              13 : 30", "              14 : 00", "              14 : 30", "              15 : 00", "              15 : 30", "              16 : 00", "              16 : 30", "              17 : 00" }));
-        ComboBox_Horario.addActionListener(new java.awt.event.ActionListener() {
+        cBoxHorario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              08 : 00", "              08 : 30", "              09 : 00", "              09 : 30", "              10 : 00", "              10 : 30", "              11 : 00", "              11 : 30", "              13 : 00", "              13 : 30", "              14 : 00", "              14 : 30", "              15 : 00", "              15 : 30", "              16 : 00", "              16 : 30", "              17 : 00" }));
+        cBoxHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_HorarioActionPerformed(evt);
+                cBoxHorarioActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Horario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 220, 50));
+        getContentPane().add(cBoxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 220, 50));
 
-        TextField_Pagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Pagamento.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Pagamento.setText("Pagamento:");
-        TextField_Pagamento.setFocusable(false);
-        TextField_Pagamento.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Pagamento.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldPagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldPagamento.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldPagamento.setText("Pagamento:");
+        txtFieldPagamento.setFocusable(false);
+        txtFieldPagamento.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_PagamentoActionPerformed(evt);
+                txtFieldPagamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Pagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 360, 50));
+        getContentPane().add(txtFieldPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 360, 50));
 
-        TextField_Medico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Medico.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Medico.setText("Médico:");
-        TextField_Medico.setFocusable(false);
-        TextField_Medico.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Medico.setRequestFocusEnabled(false);
-        TextField_Medico.addActionListener(new java.awt.event.ActionListener() {
+        txtField_Medico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtField_Medico.setForeground(new java.awt.Color(153, 153, 153));
+        txtField_Medico.setText("Médico:");
+        txtField_Medico.setFocusable(false);
+        txtField_Medico.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtField_Medico.setRequestFocusEnabled(false);
+        txtField_Medico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_MedicoActionPerformed(evt);
+                txtField_MedicoActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 360, 50));
+        getContentPane().add(txtField_Medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 360, 50));
 
-        TextField_Especialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Especialidade.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Especialidade.setText("Especialidade:");
-        TextField_Especialidade.setFocusable(false);
-        TextField_Especialidade.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Especialidade.setRequestFocusEnabled(false);
-        getContentPane().add(TextField_Especialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 360, 50));
+        txFieldEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txFieldEspecialidade.setForeground(new java.awt.Color(153, 153, 153));
+        txFieldEspecialidade.setText("Especialidade:");
+        txFieldEspecialidade.setFocusable(false);
+        txFieldEspecialidade.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txFieldEspecialidade.setRequestFocusEnabled(false);
+        getContentPane().add(txFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 360, 50));
 
-        TextField_Data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Data.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Data.setText("Data:");
-        TextField_Data.setFocusable(false);
-        TextField_Data.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Data.setRequestFocusEnabled(false);
-        getContentPane().add(TextField_Data, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 360, 50));
+        txtField_Data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtField_Data.setForeground(new java.awt.Color(153, 153, 153));
+        txtField_Data.setText("Data:");
+        txtField_Data.setFocusable(false);
+        txtField_Data.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtField_Data.setRequestFocusEnabled(false);
+        getContentPane().add(txtField_Data, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 360, 50));
 
-        TextField_Horario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Horario.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Horario.setText("Hora:");
-        TextField_Horario.setFocusable(false);
-        TextField_Horario.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Horario.setRequestFocusEnabled(false);
-        getContentPane().add(TextField_Horario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 360, 50));
+        txtFieldHorario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldHorario.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldHorario.setText("Hora:");
+        txtFieldHorario.setFocusable(false);
+        txtFieldHorario.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldHorario.setRequestFocusEnabled(false);
+        getContentPane().add(txtFieldHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 360, 50));
 
-        Button_Confirmar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Confirmar.setText("Confirmar");
-        Button_Confirmar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
+        btConfirmar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btConfirmar.setText("Confirmar");
+        btConfirmar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
 
-        Button_Sair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
+        btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Confirmar Consulta.png"))); // NOI18N
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextField_TelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_TelefoneFocusGained
-        if(TextField_Telefone.getText().equals("Telefone:")){
-            TextField_Telefone.setForeground(new Color(0, 0, 0));
-            TextField_Telefone.setText("");
+    private void txtFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusGained
+        if(txtFieldTelefone.getText().equals("Telefone:")){
+            txtFieldTelefone.setForeground(new Color(0, 0, 0));
+            txtFieldTelefone.setText("");
         }
-    }//GEN-LAST:event_TextField_TelefoneFocusGained
+    }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
-    private void TextField_TelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_TelefoneFocusLost
-        if(TextField_Telefone.getText().equals("")){
-            TextField_Telefone.setText("Telefone:");
-            TextField_Telefone.setForeground(new Color(153, 153, 153));
+    private void txtFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusLost
+        if(txtFieldTelefone.getText().equals("")){
+            txtFieldTelefone.setText("Telefone:");
+            txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_TelefoneFocusLost
+    }//GEN-LAST:event_txtFieldTelefoneFocusLost
 
-    private void TextField_TelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_TelefoneActionPerformed
+    private void txtFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_TelefoneActionPerformed
+    }//GEN-LAST:event_txtFieldTelefoneActionPerformed
 
-    private void ComboBox_Data_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_Data_mesActionPerformed
+    private void cBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxMesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_Data_mesActionPerformed
+    }//GEN-LAST:event_cBoxMesActionPerformed
 
-    private void ComboBox_EspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_EspecialidadeActionPerformed
+    private void cBoxEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxEspecialidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_EspecialidadeActionPerformed
+    }//GEN-LAST:event_cBoxEspecialidadeActionPerformed
 
-    private void ComboBox_Data_diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_Data_diaActionPerformed
+    private void cBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_Data_diaActionPerformed
+    }//GEN-LAST:event_cBoxDiaActionPerformed
 
-    private void ComboBox_MedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_MedicoActionPerformed
+    private void cBoxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_MedicoActionPerformed
+    }//GEN-LAST:event_cBoxMedicoActionPerformed
 
-    private void TextField_NomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusGained
-        if(TextField_Nome.getText().equals("Nome:")){
-            TextField_Nome.setForeground(new Color(0, 0, 0));
-            TextField_Nome.setText("");
+    private void txtField_NomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_NomeFocusGained
+        if(txtField_Nome.getText().equals("Nome:")){
+            txtField_Nome.setForeground(new Color(0, 0, 0));
+            txtField_Nome.setText("");
         }
-    }//GEN-LAST:event_TextField_NomeFocusGained
+    }//GEN-LAST:event_txtField_NomeFocusGained
 
-    private void TextField_NomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusLost
-        if(TextField_Nome.getText().equals("")){
-            TextField_Nome.setText("Nome:");
-            TextField_Nome.setForeground(new Color(153, 153, 153));
+    private void txtField_NomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_NomeFocusLost
+        if(txtField_Nome.getText().equals("")){
+            txtField_Nome.setText("Nome:");
+            txtField_Nome.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_NomeFocusLost
+    }//GEN-LAST:event_txtField_NomeFocusLost
 
-    private void TextField_MedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_MedicoActionPerformed
+    private void txtField_MedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtField_MedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_MedicoActionPerformed
+    }//GEN-LAST:event_txtField_MedicoActionPerformed
 
-    private void ComboBox_HorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_HorarioActionPerformed
+    private void cBoxHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxHorarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_HorarioActionPerformed
+    }//GEN-LAST:event_cBoxHorarioActionPerformed
 
-    private void ComboBox_Data_anoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_Data_anoActionPerformed
+    private void cBoxAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxAnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_Data_anoActionPerformed
+    }//GEN-LAST:event_cBoxAnoActionPerformed
 
-    private void TextField_CPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPFFocusGained
-        if(TextField_CPF.getText().equals("CPF:")){
-            TextField_CPF.setForeground(new Color(0, 0, 0));
-            TextField_CPF.setText("");
+    private void txtField_CPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_CPFFocusGained
+        if(txtField_CPF.getText().equals("CPF:")){
+            txtField_CPF.setForeground(new Color(0, 0, 0));
+            txtField_CPF.setText("");
         }
-    }//GEN-LAST:event_TextField_CPFFocusGained
+    }//GEN-LAST:event_txtField_CPFFocusGained
 
-    private void TextField_CPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPFFocusLost
-        if(TextField_CPF.getText().equals("")){
-            TextField_CPF.setText("CPF:");
-            TextField_CPF.setForeground(new Color(153, 153, 153));
+    private void txtField_CPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_CPFFocusLost
+        if(txtField_CPF.getText().equals("")){
+            txtField_CPF.setText("CPF:");
+            txtField_CPF.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_CPFFocusLost
+    }//GEN-LAST:event_txtField_CPFFocusLost
 
-    private void TextField_PagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_PagamentoActionPerformed
+    private void txtFieldPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldPagamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_PagamentoActionPerformed
+    }//GEN-LAST:event_txtFieldPagamentoActionPerformed
 
-    private void ComboBox_PagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_PagamentoActionPerformed
+    private void cBoxPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxPagamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_PagamentoActionPerformed
+    }//GEN-LAST:event_cBoxPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,33 +354,26 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Confirmar;
-    private javax.swing.JButton Button_Sair;
-    private javax.swing.JComboBox<String> ComboBox_Data_ano;
-    private javax.swing.JComboBox<String> ComboBox_Data_dia;
-    private javax.swing.JComboBox<String> ComboBox_Data_mes;
-    private javax.swing.JComboBox<String> ComboBox_Especialidade;
-    private javax.swing.JComboBox<String> ComboBox_Horario;
-    private javax.swing.JComboBox<String> ComboBox_Medico;
-    private javax.swing.JComboBox<String> ComboBox_Pagamento;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTextField TextField_CPF;
-    private javax.swing.JTextField TextField_Data;
-    private javax.swing.JTextField TextField_Especialidade;
-    private javax.swing.JTextField TextField_Horario;
-    private javax.swing.JTextField TextField_Medico;
-    private javax.swing.JTextField TextField_Nome;
-    private javax.swing.JTextField TextField_Pagamento;
-    private javax.swing.JTextField TextField_Telefone;
+    private javax.swing.JButton btConfirmar;
+    private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cBoxAno;
+    private javax.swing.JComboBox<String> cBoxDia;
+    private javax.swing.JComboBox<String> cBoxEspecialidade;
+    private javax.swing.JComboBox<String> cBoxHorario;
+    private javax.swing.JComboBox<String> cBoxMedico;
+    private javax.swing.JComboBox<String> cBoxMes;
+    private javax.swing.JComboBox<String> cBoxPagamento;
+    private javax.swing.JTextField txFieldEspecialidade;
+    private javax.swing.JTextField txtFieldHorario;
+    private javax.swing.JTextField txtFieldPagamento;
+    private javax.swing.JTextField txtFieldTelefone;
+    private javax.swing.JTextField txtField_CPF;
+    private javax.swing.JTextField txtField_Data;
+    private javax.swing.JTextField txtField_Medico;
+    private javax.swing.JTextField txtField_Nome;
     // End of variables declaration//GEN-END:variables
 
-    private static ConfirmaConsulta telaUnica;
-    
-    public static ConfirmaConsulta getRcpConfirmarCon(){
-        if(telaUnica == null){
-            telaUnica = new ConfirmaConsulta();
-        }
-        return telaUnica;
-    }
+
 
 }

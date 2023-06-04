@@ -4,10 +4,15 @@
  */
 package com.galenus.telas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author arthu
  */
+@Component
+@Slf4j
 public class AreaRecepcao extends javax.swing.JFrame {
 
     /**
@@ -26,66 +31,66 @@ public class AreaRecepcao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Button_Agendar_Con = new javax.swing.JButton();
-        Button_Visualizar_Con = new javax.swing.JButton();
-        Button_Confirmar_Con = new javax.swing.JButton();
-        Button_Cancelar_Con = new javax.swing.JButton();
-        Button_Cad_Paciente = new javax.swing.JButton();
-        Button_Sair = new javax.swing.JButton();
+        btAgendarConsulta = new javax.swing.JButton();
+        btVisualizarConsulta = new javax.swing.JButton();
+        btConfirmarConsulta = new javax.swing.JButton();
+        btCancelarConsulta = new javax.swing.JButton();
+        btCadastrarPaciente = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Button_Agendar_Con.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Agendar_Con.setText("Agendar Consulta");
-        Button_Agendar_Con.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        Button_Agendar_Con.addActionListener(new java.awt.event.ActionListener() {
+        btAgendarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btAgendarConsulta.setText("Agendar Consulta");
+        btAgendarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btAgendarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Agendar_ConActionPerformed(evt);
+                btAgendarConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Agendar_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 360, 50));
+        getContentPane().add(btAgendarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 360, 50));
 
-        Button_Visualizar_Con.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Visualizar_Con.setText("Visualizar Consulta");
-        Button_Visualizar_Con.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        Button_Visualizar_Con.addActionListener(new java.awt.event.ActionListener() {
+        btVisualizarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btVisualizarConsulta.setText("Visualizar Consulta");
+        btVisualizarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btVisualizarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Visualizar_ConActionPerformed(evt);
+                btVisualizarConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Visualizar_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 360, 50));
+        getContentPane().add(btVisualizarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 360, 50));
 
-        Button_Confirmar_Con.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Confirmar_Con.setText("Confirmar Consulta");
-        Button_Confirmar_Con.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        Button_Confirmar_Con.addActionListener(new java.awt.event.ActionListener() {
+        btConfirmarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btConfirmarConsulta.setText("Confirmar Consulta");
+        btConfirmarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btConfirmarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Confirmar_ConActionPerformed(evt);
+                btConfirmarConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Confirmar_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
+        getContentPane().add(btConfirmarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
 
-        Button_Cancelar_Con.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Cancelar_Con.setText("Cancelar Consulta");
-        Button_Cancelar_Con.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        getContentPane().add(Button_Cancelar_Con, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
+        btCancelarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btCancelarConsulta.setText("Cancelar Consulta");
+        btCancelarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        getContentPane().add(btCancelarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
 
-        Button_Cad_Paciente.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        Button_Cad_Paciente.setText("Cadastrar Paciente");
-        Button_Cad_Paciente.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        Button_Cad_Paciente.addActionListener(new java.awt.event.ActionListener() {
+        btCadastrarPaciente.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
+        btCadastrarPaciente.setText("Cadastrar Paciente");
+        btCadastrarPaciente.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btCadastrarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Cad_PacienteActionPerformed(evt);
+                btCadastrarPacienteActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Cad_Paciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 360, 50));
+        getContentPane().add(btCadastrarPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 360, 50));
 
-        Button_Sair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
+        btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Recepção.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -93,21 +98,21 @@ public class AreaRecepcao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Button_Cad_PacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Cad_PacienteActionPerformed
-        CadastraPaciente.getRcpCadPaciente().setVisible(true);
-    }//GEN-LAST:event_Button_Cad_PacienteActionPerformed
+    private void btCadastrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarPacienteActionPerformed
 
-    private void Button_Confirmar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Confirmar_ConActionPerformed
-        ConfirmaConsulta.getRcpConfirmarCon().setVisible(true);
-    }//GEN-LAST:event_Button_Confirmar_ConActionPerformed
+    }//GEN-LAST:event_btCadastrarPacienteActionPerformed
 
-    private void Button_Visualizar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Visualizar_ConActionPerformed
+    private void btConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarConsultaActionPerformed
+
+    }//GEN-LAST:event_btConfirmarConsultaActionPerformed
+
+    private void btVisualizarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Button_Visualizar_ConActionPerformed
+    }//GEN-LAST:event_btVisualizarConsultaActionPerformed
 
-    private void Button_Agendar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Agendar_ConActionPerformed
-        AgendaConsulta.getRcpAgendarCon().setVisible(true);
-    }//GEN-LAST:event_Button_Agendar_ConActionPerformed
+    private void btAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgendarConsultaActionPerformed
+    
+    }//GEN-LAST:event_btAgendarConsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,23 +153,15 @@ public class AreaRecepcao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Agendar_Con;
-    private javax.swing.JButton Button_Cad_Paciente;
-    private javax.swing.JButton Button_Cancelar_Con;
-    private javax.swing.JButton Button_Confirmar_Con;
-    private javax.swing.JButton Button_Sair;
-    private javax.swing.JButton Button_Visualizar_Con;
     private javax.swing.JLabel Label_fundo;
+    private javax.swing.JButton btAgendarConsulta;
+    private javax.swing.JButton btCadastrarPaciente;
+    private javax.swing.JButton btCancelarConsulta;
+    private javax.swing.JButton btConfirmarConsulta;
+    private javax.swing.JButton btSair;
+    private javax.swing.JButton btVisualizarConsulta;
     // End of variables declaration//GEN-END:variables
 
-    private static AreaRecepcao telaUnica;
-    
-    public static AreaRecepcao getRCPMain(){
-        if(telaUnica == null){
-            telaUnica = new AreaRecepcao();
-        }
-        return telaUnica;
-    }
 
 
 }

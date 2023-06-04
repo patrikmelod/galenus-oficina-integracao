@@ -4,12 +4,17 @@
  */
 package com.galenus.telas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.awt.Color;
 
 /**
  *
  * @author arthu
  */
+@Component
+@Slf4j
 public class AgendaConsulta extends javax.swing.JFrame {
 
     /**
@@ -29,21 +34,20 @@ public class AgendaConsulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox<>();
-        TextField_Nome = new javax.swing.JTextField();
-        TextField_Telefone = new javax.swing.JTextField();
-        ComboBox_Data_mes = new javax.swing.JComboBox<>();
-        ComboBox_Data_dia = new javax.swing.JComboBox<>();
-        ComboBox_Data_ano = new javax.swing.JComboBox<>();
-        ComboBox_Horario = new javax.swing.JComboBox<>();
-        ComboBox_Medico = new javax.swing.JComboBox<>();
-        ComboBox_Especialidade = new javax.swing.JComboBox<>();
-        TextField_Horario = new javax.swing.JTextField();
-        TextField_Med = new javax.swing.JTextField();
-        TextField_Data = new javax.swing.JTextField();
-        TextField_Especialidade = new javax.swing.JTextField();
-        Button_Agendar = new javax.swing.JButton();
-        Button_Limpar = new javax.swing.JButton();
-        Button_Sair = new javax.swing.JButton();
+        txtFieldNome = new javax.swing.JTextField();
+        txtFieldTelefone = new javax.swing.JTextField();
+        cBoxMes = new javax.swing.JComboBox<>();
+        cBoxDia = new javax.swing.JComboBox<>();
+        cBoxAno = new javax.swing.JComboBox<>();
+        cBoxHora = new javax.swing.JComboBox<>();
+        cBoxMedico = new javax.swing.JComboBox<>();
+        cBoxEspecialidade = new javax.swing.JComboBox<>();
+        txtFieldHora = new javax.swing.JTextField();
+        txtFieldMedico = new javax.swing.JTextField();
+        txtFieldData = new javax.swing.JTextField();
+        txtFieldEspecialidade = new javax.swing.JTextField();
+        btAgendar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -51,175 +55,170 @@ public class AgendaConsulta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TextField_Nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Nome.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Nome.setText("Nome:");
-        TextField_Nome.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Nome.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldNome.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldNome.setText("Nome:");
+        txtFieldNome.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusGained(evt);
+                txtFieldNomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusLost(evt);
+                txtFieldNomeFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 360, 50));
+        getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 360, 50));
 
-        TextField_Telefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Telefone.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Telefone.setText("Telefone:");
-        TextField_Telefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Telefone.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldTelefone.setText("Telefone:");
+        txtFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_TelefoneFocusGained(evt);
+                txtFieldTelefoneFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_TelefoneFocusLost(evt);
+                txtFieldTelefoneFocusLost(evt);
             }
         });
-        TextField_Telefone.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_TelefoneActionPerformed(evt);
+                txtFieldTelefoneActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 360, 50));
+        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 360, 50));
 
-        ComboBox_Data_mes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Data_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro ", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
-        ComboBox_Data_mes.setBorder(null);
-        ComboBox_Data_mes.addActionListener(new java.awt.event.ActionListener() {
+        cBoxMes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro ", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cBoxMes.setBorder(null);
+        cBoxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_Data_mesActionPerformed(evt);
+                cBoxMesActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Data_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 480, 130, 50));
+        getContentPane().add(cBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 480, 130, 50));
 
-        ComboBox_Data_dia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Data_dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        ComboBox_Data_dia.setBorder(null);
-        ComboBox_Data_dia.addActionListener(new java.awt.event.ActionListener() {
+        cBoxDia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cBoxDia.setBorder(null);
+        cBoxDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_Data_diaActionPerformed(evt);
+                cBoxDiaActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Data_dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 70, 50));
+        getContentPane().add(cBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 70, 50));
 
-        ComboBox_Data_ano.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Data_ano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
-        ComboBox_Data_ano.setBorder(null);
-        ComboBox_Data_ano.addActionListener(new java.awt.event.ActionListener() {
+        cBoxAno.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        cBoxAno.setBorder(null);
+        cBoxAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_Data_anoActionPerformed(evt);
+                cBoxAnoActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Data_ano, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 90, 50));
+        getContentPane().add(cBoxAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 90, 50));
 
-        ComboBox_Horario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Horario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              08 : 00", "              08 : 30", "              09 : 00", "              09 : 30", "              10 : 00", "              10 : 30", "              11 : 00", "              11 : 30", "              13 : 00", "              13 : 30", "              14 : 00", "              14 : 30", "              15 : 00", "              15 : 30", "              16 : 00", "              16 : 30", "              17 : 00" }));
-        ComboBox_Horario.addActionListener(new java.awt.event.ActionListener() {
+        cBoxHora.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              08 : 00", "              08 : 30", "              09 : 00", "              09 : 30", "              10 : 00", "              10 : 30", "              11 : 00", "              11 : 30", "              13 : 00", "              13 : 30", "              14 : 00", "              14 : 30", "              15 : 00", "              15 : 30", "              16 : 00", "              16 : 30", "              17 : 00" }));
+        cBoxHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_HorarioActionPerformed(evt);
+                cBoxHoraActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Horario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, 220, 50));
+        getContentPane().add(cBoxHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, 220, 50));
 
-        ComboBox_Medico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Medico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBox_Medico.addActionListener(new java.awt.event.ActionListener() {
+        cBoxMedico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBoxMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_MedicoActionPerformed(evt);
+                cBoxMedicoActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 220, 50));
+        getContentPane().add(cBoxMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 220, 50));
 
-        ComboBox_Especialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ComboBox_Especialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBox_Especialidade.addActionListener(new java.awt.event.ActionListener() {
+        cBoxEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBoxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_EspecialidadeActionPerformed(evt);
+                cBoxEspecialidadeActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBox_Especialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 380, 220, 50));
+        getContentPane().add(cBoxEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 380, 220, 50));
 
-        TextField_Horario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Horario.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Horario.setText("Hora:");
-        TextField_Horario.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Horario.setRequestFocusEnabled(false);
-        TextField_Horario.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldHora.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldHora.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldHora.setText("Hora:");
+        txtFieldHora.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldHora.setRequestFocusEnabled(false);
+        txtFieldHora.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_HorarioFocusGained(evt);
+                txtFieldHoraFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_HorarioFocusLost(evt);
+                txtFieldHoraFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Horario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 360, 50));
+        getContentPane().add(txtFieldHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 360, 50));
 
-        TextField_Med.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Med.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Med.setText("Médico:");
-        TextField_Med.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Med.setRequestFocusEnabled(false);
-        TextField_Med.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldMedico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldMedico.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldMedico.setText("Médico:");
+        txtFieldMedico.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldMedico.setRequestFocusEnabled(false);
+        txtFieldMedico.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_MedFocusGained(evt);
+                txtFieldMedicoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_MedFocusLost(evt);
+                txtFieldMedicoFocusLost(evt);
             }
         });
-        TextField_Med.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_MedActionPerformed(evt);
+                txtFieldMedicoActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_Med, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
+        getContentPane().add(txtFieldMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 360, 50));
 
-        TextField_Data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Data.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Data.setText("Data:");
-        TextField_Data.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Data.setRequestFocusEnabled(false);
-        TextField_Data.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldData.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldData.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldData.setText("Data:");
+        txtFieldData.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldData.setRequestFocusEnabled(false);
+        txtFieldData.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_DataFocusGained(evt);
+                txtFieldDataFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_DataFocusLost(evt);
+                txtFieldDataFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Data, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 360, 50));
+        getContentPane().add(txtFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 360, 50));
 
-        TextField_Especialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Especialidade.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Especialidade.setText("Especialidade:");
-        TextField_Especialidade.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Especialidade.setRequestFocusEnabled(false);
-        TextField_Especialidade.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldEspecialidade.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldEspecialidade.setText("Especialidade:");
+        txtFieldEspecialidade.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldEspecialidade.setRequestFocusEnabled(false);
+        txtFieldEspecialidade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_EspecialidadeFocusGained(evt);
+                txtFieldEspecialidadeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_EspecialidadeFocusLost(evt);
+                txtFieldEspecialidadeFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Especialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
+        getContentPane().add(txtFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
 
-        Button_Agendar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Agendar.setText("Agendar");
-        Button_Agendar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Agendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, 160, 40));
+        btAgendar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btAgendar.setText("Agendar");
+        btAgendar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, 160, 40));
 
-        Button_Limpar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Limpar.setText("Limpar");
-        Button_Limpar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
-
-        Button_Sair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
+        btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Agencia Consulta.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -227,131 +226,102 @@ public class AgendaConsulta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextField_NomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusGained
-        if(TextField_Nome.getText().equals("Nome:")){
-            TextField_Nome.setForeground(new Color(0, 0, 0));
-            TextField_Nome.setText("");
+    private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
+        if(txtFieldNome.getText().equals("Nome:")){
+            txtFieldNome.setForeground(new Color(0, 0, 0));
+            txtFieldNome.setText("");
         }
-    }//GEN-LAST:event_TextField_NomeFocusGained
+    }//GEN-LAST:event_txtFieldNomeFocusGained
 
-    private void TextField_NomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusLost
-        if(TextField_Nome.getText().equals("")){
-            TextField_Nome.setText("Nome:");
-            TextField_Nome.setForeground(new Color(153, 153, 153));
+    private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
+        if(txtFieldNome.getText().equals("")){
+            txtFieldNome.setText("Nome:");
+            txtFieldNome.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_NomeFocusLost
+    }//GEN-LAST:event_txtFieldNomeFocusLost
 
-    private void TextField_TelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_TelefoneFocusGained
-        if(TextField_Telefone.getText().equals("Telefone:")){
-            TextField_Telefone.setForeground(new Color(0, 0, 0));
-            TextField_Telefone.setText("");
+    private void txtFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusGained
+        if(txtFieldTelefone.getText().equals("Telefone:")){
+            txtFieldTelefone.setForeground(new Color(0, 0, 0));
+            txtFieldTelefone.setText("");
         }
-    }//GEN-LAST:event_TextField_TelefoneFocusGained
+    }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
-    private void TextField_TelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_TelefoneFocusLost
-        if(TextField_Telefone.getText().equals("")){
-            TextField_Telefone.setText("Telefone:");
-            TextField_Telefone.setForeground(new Color(153, 153, 153));
+    private void txtFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusLost
+        if(txtFieldTelefone.getText().equals("")){
+            txtFieldTelefone.setText("Telefone:");
+            txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_TelefoneFocusLost
+    }//GEN-LAST:event_txtFieldTelefoneFocusLost
 
-    private void TextField_TelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_TelefoneActionPerformed
+    private void txtFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_TelefoneActionPerformed
+    }//GEN-LAST:event_txtFieldTelefoneActionPerformed
 
-    private void TextField_EspecialidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_EspecialidadeFocusGained
+    private void txtFieldEspecialidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEspecialidadeFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_EspecialidadeFocusGained
+    }//GEN-LAST:event_txtFieldEspecialidadeFocusGained
 
-    private void TextField_EspecialidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_EspecialidadeFocusLost
+    private void txtFieldEspecialidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEspecialidadeFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_EspecialidadeFocusLost
+    }//GEN-LAST:event_txtFieldEspecialidadeFocusLost
 
-    private void ComboBox_EspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_EspecialidadeActionPerformed
+    private void cBoxEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxEspecialidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_EspecialidadeActionPerformed
+    }//GEN-LAST:event_cBoxEspecialidadeActionPerformed
 
-    private void TextField_DataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_DataFocusGained
+    private void txtFieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_DataFocusGained
+    }//GEN-LAST:event_txtFieldDataFocusGained
 
-    private void TextField_DataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_DataFocusLost
+    private void txtFieldDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_DataFocusLost
+    }//GEN-LAST:event_txtFieldDataFocusLost
 
-    private void TextField_MedFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_MedFocusGained
+    private void txtFieldMedicoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldMedicoFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_MedFocusGained
+    }//GEN-LAST:event_txtFieldMedicoFocusGained
 
-    private void TextField_MedFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_MedFocusLost
+    private void txtFieldMedicoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldMedicoFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_MedFocusLost
+    }//GEN-LAST:event_txtFieldMedicoFocusLost
 
-    private void TextField_MedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_MedActionPerformed
+    private void txtFieldMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_MedActionPerformed
+    }//GEN-LAST:event_txtFieldMedicoActionPerformed
 
-    private void ComboBox_Data_diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_Data_diaActionPerformed
+    private void cBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_Data_diaActionPerformed
+    }//GEN-LAST:event_cBoxDiaActionPerformed
 
-    private void ComboBox_MedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_MedicoActionPerformed
+    private void cBoxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_MedicoActionPerformed
+    }//GEN-LAST:event_cBoxMedicoActionPerformed
 
-    private void ComboBox_Data_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_Data_mesActionPerformed
+    private void cBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxMesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_Data_mesActionPerformed
+    }//GEN-LAST:event_cBoxMesActionPerformed
 
-    private void ComboBox_Data_anoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_Data_anoActionPerformed
+    private void cBoxAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxAnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_Data_anoActionPerformed
+    }//GEN-LAST:event_cBoxAnoActionPerformed
 
-    private void TextField_HorarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_HorarioFocusGained
+    private void txtFieldHoraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldHoraFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_HorarioFocusGained
+    }//GEN-LAST:event_txtFieldHoraFocusGained
 
-    private void TextField_HorarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_HorarioFocusLost
+    private void txtFieldHoraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldHoraFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_HorarioFocusLost
+    }//GEN-LAST:event_txtFieldHoraFocusLost
 
-    private void ComboBox_HorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_HorarioActionPerformed
+    private void cBoxHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxHoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBox_HorarioActionPerformed
+    }//GEN-LAST:event_cBoxHoraActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -362,31 +332,22 @@ public class AgendaConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Agendar;
-    private javax.swing.JButton Button_Limpar;
-    private javax.swing.JButton Button_Sair;
-    private javax.swing.JComboBox<String> ComboBox_Data_ano;
-    private javax.swing.JComboBox<String> ComboBox_Data_dia;
-    private javax.swing.JComboBox<String> ComboBox_Data_mes;
-    private javax.swing.JComboBox<String> ComboBox_Especialidade;
-    private javax.swing.JComboBox<String> ComboBox_Horario;
-    private javax.swing.JComboBox<String> ComboBox_Medico;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTextField TextField_Data;
-    private javax.swing.JTextField TextField_Especialidade;
-    private javax.swing.JTextField TextField_Horario;
-    private javax.swing.JTextField TextField_Med;
-    private javax.swing.JTextField TextField_Nome;
-    private javax.swing.JTextField TextField_Telefone;
+    private javax.swing.JButton btAgendar;
+    private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cBoxAno;
+    private javax.swing.JComboBox<String> cBoxDia;
+    private javax.swing.JComboBox<String> cBoxEspecialidade;
+    private javax.swing.JComboBox<String> cBoxHora;
+    private javax.swing.JComboBox<String> cBoxMedico;
+    private javax.swing.JComboBox<String> cBoxMes;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField txtFieldData;
+    private javax.swing.JTextField txtFieldEspecialidade;
+    private javax.swing.JTextField txtFieldHora;
+    private javax.swing.JTextField txtFieldMedico;
+    private javax.swing.JTextField txtFieldNome;
+    private javax.swing.JTextField txtFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
-    private static AgendaConsulta telaUnica;
-    
-    public static AgendaConsulta getRcpAgendarCon(){
-        if(telaUnica == null){
-            telaUnica = new AgendaConsulta();
-        }
-        return telaUnica;
-    }
 }

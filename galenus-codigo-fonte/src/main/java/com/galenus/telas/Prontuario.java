@@ -4,12 +4,17 @@
  */
 package com.galenus.telas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.awt.Color;
 
 /**
  *
  * @author arthu
  */
+@Component
+@Slf4j
 public class Prontuario extends javax.swing.JFrame {
 
     /**
@@ -28,103 +33,97 @@ public class Prontuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Button_Salvar = new javax.swing.JButton();
-        Button_Limpar = new javax.swing.JButton();
-        Button_Sair = new javax.swing.JButton();
-        TextField_Nome = new javax.swing.JTextField();
-        TextField_CPF = new javax.swing.JTextField();
-        TextField_Nascimento = new javax.swing.JTextField();
-        TextField_Sexo = new javax.swing.JTextField();
+        btSalvar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
+        txtFieldNome = new javax.swing.JTextField();
+        txtFieldCpf = new javax.swing.JTextField();
+        txtFieldData = new javax.swing.JTextField();
+        txtFieldSexo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TextField_Queicha = new javax.swing.JTextField();
-        TextField_Diagnostico = new javax.swing.JTextField();
+        txtFieldQueixa = new javax.swing.JTextField();
+        txtFieldDiagnostico = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        txtAreaTratamento = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
+        txtAreaHistClinica = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
+        txtAreaConduta = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea8 = new javax.swing.JTextArea();
+        txtAreaDoencas = new javax.swing.JTextArea();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Button_Salvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Salvar.setText("Salvar");
-        Button_Salvar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
+        btSalvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSalvar.setText("Salvar");
+        btSalvar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
 
-        Button_Limpar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Limpar.setText("Limpar");
-        Button_Limpar.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, 160, 40));
+        btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
-        Button_Sair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
-
-        TextField_Nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Nome.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Nome.setText("Nome:");
-        TextField_Nome.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Nome.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldNome.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldNome.setText("Nome:");
+        txtFieldNome.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusGained(evt);
+                txtFieldNomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_NomeFocusLost(evt);
+                txtFieldNomeFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 360, 50));
+        getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 360, 50));
 
-        TextField_CPF.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_CPF.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_CPF.setText("CPF:");
-        TextField_CPF.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_CPF.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldCpf.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldCpf.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldCpf.setText("CPF:");
+        txtFieldCpf.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_CPFFocusGained(evt);
+                txtFieldCpfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_CPFFocusLost(evt);
+                txtFieldCpfFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 360, 50));
+        getContentPane().add(txtFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 360, 50));
 
-        TextField_Nascimento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Nascimento.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Nascimento.setText("Data de Nascimento:");
-        TextField_Nascimento.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Nascimento.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldData.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldData.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldData.setText("Data de Nascimento:");
+        txtFieldData.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldData.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_NascimentoFocusGained(evt);
+                txtFieldDataFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_NascimentoFocusLost(evt);
+                txtFieldDataFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Nascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 360, 50));
+        getContentPane().add(txtFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 360, 50));
 
-        TextField_Sexo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Sexo.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Sexo.setText("Sexo:");
-        TextField_Sexo.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Sexo.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldSexo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldSexo.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldSexo.setText("Sexo:");
+        txtFieldSexo.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldSexo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_SexoFocusGained(evt);
+                txtFieldSexoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_SexoFocusLost(evt);
+                txtFieldSexoFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 360, 50));
+        getContentPane().add(txtFieldSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 360, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
@@ -133,12 +132,12 @@ public class Prontuario extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Doênças Pre-existente");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
+        jLabel3.setText("Doenças crônicas");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("História Clinica");
+        jLabel4.setText("História clinica");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
@@ -146,63 +145,63 @@ public class Prontuario extends javax.swing.JFrame {
         jLabel5.setText("Tratamento");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
 
-        TextField_Queicha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Queicha.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Queicha.setText("Queicha Principal:");
-        TextField_Queicha.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Queicha.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldQueixa.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldQueixa.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldQueixa.setText("Sintomas:");
+        txtFieldQueixa.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldQueixa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_QueichaFocusGained(evt);
+                txtFieldQueixaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_QueichaFocusLost(evt);
+                txtFieldQueixaFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Queicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 360, 50));
+        getContentPane().add(txtFieldQueixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 360, 50));
 
-        TextField_Diagnostico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_Diagnostico.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_Diagnostico.setText("Diagnóstico:");
-        TextField_Diagnostico.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_Diagnostico.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldDiagnostico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldDiagnostico.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldDiagnostico.setText("Diagnóstico:");
+        txtFieldDiagnostico.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldDiagnostico.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_DiagnosticoFocusGained(evt);
+                txtFieldDiagnosticoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_DiagnosticoFocusLost(evt);
+                txtFieldDiagnosticoFocusLost(evt);
             }
         });
-        getContentPane().add(TextField_Diagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 360, 50));
+        getContentPane().add(txtFieldDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 360, 50));
 
         jScrollPane1.setToolTipText("");
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jTextArea5.setToolTipText("");
-        jTextArea5.setWrapStyleWord(true);
-        jTextArea5.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane1.setViewportView(jTextArea5);
+        txtAreaTratamento.setColumns(20);
+        txtAreaTratamento.setRows(5);
+        txtAreaTratamento.setToolTipText("");
+        txtAreaTratamento.setWrapStyleWord(true);
+        txtAreaTratamento.setMargin(new java.awt.Insets(40, 6, 2, 6));
+        jScrollPane1.setViewportView(txtAreaTratamento);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, 190));
 
-        jTextArea6.setColumns(20);
-        jTextArea6.setRows(5);
-        jTextArea6.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane2.setViewportView(jTextArea6);
+        txtAreaHistClinica.setColumns(20);
+        txtAreaHistClinica.setRows(5);
+        txtAreaHistClinica.setMargin(new java.awt.Insets(40, 6, 2, 6));
+        jScrollPane2.setViewportView(txtAreaHistClinica);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, -1, 190));
 
-        jTextArea7.setColumns(20);
-        jTextArea7.setRows(5);
-        jTextArea7.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane3.setViewportView(jTextArea7);
+        txtAreaConduta.setColumns(20);
+        txtAreaConduta.setRows(5);
+        txtAreaConduta.setMargin(new java.awt.Insets(40, 6, 2, 6));
+        jScrollPane3.setViewportView(txtAreaConduta);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, -1, 190));
 
-        jTextArea8.setColumns(20);
-        jTextArea8.setRows(5);
-        jTextArea8.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane4.setViewportView(jTextArea8);
+        txtAreaDoencas.setColumns(20);
+        txtAreaDoencas.setRows(5);
+        txtAreaDoencas.setMargin(new java.awt.Insets(40, 6, 2, 6));
+        jScrollPane4.setViewportView(txtAreaDoencas);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, -1, 190));
 
@@ -217,89 +216,89 @@ public class Prontuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextField_NomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusGained
-        if(TextField_Nome.getText().equals("Nome:")){
-            TextField_Nome.setForeground(new Color(0, 0, 0));
-            TextField_Nome.setText("");
+    private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
+        if(txtFieldNome.getText().equals("Nome:")){
+            txtFieldNome.setForeground(new Color(0, 0, 0));
+            txtFieldNome.setText("");
         }
-    }//GEN-LAST:event_TextField_NomeFocusGained
+    }//GEN-LAST:event_txtFieldNomeFocusGained
 
-    private void TextField_NomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NomeFocusLost
-        if(TextField_Nome.getText().equals("")){
-            TextField_Nome.setText("Nome:");
-            TextField_Nome.setForeground(new Color(153, 153, 153));
+    private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
+        if(txtFieldNome.getText().equals("")){
+            txtFieldNome.setText("Nome:");
+            txtFieldNome.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_NomeFocusLost
+    }//GEN-LAST:event_txtFieldNomeFocusLost
 
-    private void TextField_CPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPFFocusGained
-        if(TextField_CPF.getText().equals("CPF:")){
-            TextField_CPF.setForeground(new Color(0, 0, 0));
-            TextField_CPF.setText("");
+    private void txtFieldCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusGained
+        if(txtFieldCpf.getText().equals("CPF:")){
+            txtFieldCpf.setForeground(new Color(0, 0, 0));
+            txtFieldCpf.setText("");
         }
-    }//GEN-LAST:event_TextField_CPFFocusGained
+    }//GEN-LAST:event_txtFieldCpfFocusGained
 
-    private void TextField_CPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPFFocusLost
-        if(TextField_CPF.getText().equals("")){
-            TextField_CPF.setText("CPF:");
-            TextField_CPF.setForeground(new Color(153, 153, 153));
+    private void txtFieldCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusLost
+        if(txtFieldCpf.getText().equals("")){
+            txtFieldCpf.setText("CPF:");
+            txtFieldCpf.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_CPFFocusLost
+    }//GEN-LAST:event_txtFieldCpfFocusLost
 
-    private void TextField_NascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NascimentoFocusGained
-        if(TextField_Nascimento.getText().equals("Data de Nascimento:")){
-            TextField_Nascimento.setForeground(new Color(0, 0, 0));
-            TextField_Nascimento.setText("");
+    private void txtFieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusGained
+        if(txtFieldData.getText().equals("Data de Nascimento:")){
+            txtFieldData.setForeground(new Color(0, 0, 0));
+            txtFieldData.setText("");
         }
-    }//GEN-LAST:event_TextField_NascimentoFocusGained
+    }//GEN-LAST:event_txtFieldDataFocusGained
 
-    private void TextField_NascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_NascimentoFocusLost
-        if(TextField_Nascimento.getText().equals("")){
-            TextField_Nascimento.setText("Data de Nascimento:");
-            TextField_Nascimento.setForeground(new Color(153, 153, 153));
+    private void txtFieldDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusLost
+        if(txtFieldData.getText().equals("")){
+            txtFieldData.setText("Data de Nascimento:");
+            txtFieldData.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_NascimentoFocusLost
+    }//GEN-LAST:event_txtFieldDataFocusLost
 
-    private void TextField_SexoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_SexoFocusGained
-        if(TextField_Sexo.getText().equals("Sexo:")){
-            TextField_Sexo.setForeground(new Color(0, 0, 0));
-            TextField_Sexo.setText("");
+    private void txtFieldSexoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusGained
+        if(txtFieldSexo.getText().equals("Sexo:")){
+            txtFieldSexo.setForeground(new Color(0, 0, 0));
+            txtFieldSexo.setText("");
         }
-    }//GEN-LAST:event_TextField_SexoFocusGained
+    }//GEN-LAST:event_txtFieldSexoFocusGained
 
-    private void TextField_SexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_SexoFocusLost
-        if(TextField_Sexo.getText().equals("")){
-            TextField_Sexo.setText("Sexo:");
-            TextField_Sexo.setForeground(new Color(153, 153, 153));
+    private void txtFieldSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusLost
+        if(txtFieldSexo.getText().equals("")){
+            txtFieldSexo.setText("Sexo:");
+            txtFieldSexo.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_SexoFocusLost
+    }//GEN-LAST:event_txtFieldSexoFocusLost
 
-    private void TextField_QueichaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_QueichaFocusGained
-        if(TextField_Queicha.getText().equals("Queicha Principal:")){
-            TextField_Queicha.setForeground(new Color(0, 0, 0));
-            TextField_Queicha.setText("");
+    private void txtFieldQueixaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldQueixaFocusGained
+        if(txtFieldQueixa.getText().equals("Queicha Principal:")){
+            txtFieldQueixa.setForeground(new Color(0, 0, 0));
+            txtFieldQueixa.setText("");
         }
-    }//GEN-LAST:event_TextField_QueichaFocusGained
+    }//GEN-LAST:event_txtFieldQueixaFocusGained
 
-    private void TextField_QueichaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_QueichaFocusLost
-        if(TextField_Queicha.getText().equals("")){
-            TextField_Queicha.setText("Queicha Principal:");
-            TextField_Queicha.setForeground(new Color(153, 153, 153));
+    private void txtFieldQueixaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldQueixaFocusLost
+        if(txtFieldQueixa.getText().equals("")){
+            txtFieldQueixa.setText("Queicha Principal:");
+            txtFieldQueixa.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_QueichaFocusLost
+    }//GEN-LAST:event_txtFieldQueixaFocusLost
 
-    private void TextField_DiagnosticoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_DiagnosticoFocusGained
-        if(TextField_Diagnostico.getText().equals("Diagnóstico:")){
-            TextField_Diagnostico.setForeground(new Color(0, 0, 0));
-            TextField_Diagnostico.setText("");
+    private void txtFieldDiagnosticoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDiagnosticoFocusGained
+        if(txtFieldDiagnostico.getText().equals("Diagnóstico:")){
+            txtFieldDiagnostico.setForeground(new Color(0, 0, 0));
+            txtFieldDiagnostico.setText("");
         }
-    }//GEN-LAST:event_TextField_DiagnosticoFocusGained
+    }//GEN-LAST:event_txtFieldDiagnosticoFocusGained
 
-    private void TextField_DiagnosticoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_DiagnosticoFocusLost
-        if(TextField_Diagnostico.getText().equals("")){
-            TextField_Diagnostico.setText("Diagnóstico:");
-            TextField_Diagnostico.setForeground(new Color(153, 153, 153));
+    private void txtFieldDiagnosticoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDiagnosticoFocusLost
+        if(txtFieldDiagnostico.getText().equals("")){
+            txtFieldDiagnostico.setText("Diagnóstico:");
+            txtFieldDiagnostico.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_DiagnosticoFocusLost
+    }//GEN-LAST:event_txtFieldDiagnosticoFocusLost
 
     /**
      * @param args the command line arguments
@@ -340,16 +339,9 @@ public class Prontuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Limpar;
-    private javax.swing.JButton Button_Sair;
-    private javax.swing.JButton Button_Salvar;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTextField TextField_CPF;
-    private javax.swing.JTextField TextField_Diagnostico;
-    private javax.swing.JTextField TextField_Nascimento;
-    private javax.swing.JTextField TextField_Nome;
-    private javax.swing.JTextField TextField_Queicha;
-    private javax.swing.JTextField TextField_Sexo;
+    private javax.swing.JButton btSair;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -358,9 +350,15 @@ public class Prontuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea6;
-    private javax.swing.JTextArea jTextArea7;
-    private javax.swing.JTextArea jTextArea8;
+    private javax.swing.JTextArea txtAreaConduta;
+    private javax.swing.JTextArea txtAreaDoencas;
+    private javax.swing.JTextArea txtAreaHistClinica;
+    private javax.swing.JTextArea txtAreaTratamento;
+    private javax.swing.JTextField txtFieldCpf;
+    private javax.swing.JTextField txtFieldData;
+    private javax.swing.JTextField txtFieldDiagnostico;
+    private javax.swing.JTextField txtFieldNome;
+    private javax.swing.JTextField txtFieldQueixa;
+    private javax.swing.JTextField txtFieldSexo;
     // End of variables declaration//GEN-END:variables
 }

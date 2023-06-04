@@ -1,11 +1,16 @@
 package com.galenus.telas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.awt.Color;
 
 /**
  *
  * @author arthu
  */
+@Component
+@Slf4j
 public class AreaMedico extends javax.swing.JFrame {
 
     /**
@@ -25,18 +30,18 @@ public class AreaMedico extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        Table_Horario = new javax.swing.JTable();
-        TextField_CPF_Busca = new javax.swing.JTextField();
-        Button_Consulta = new javax.swing.JButton();
-        Button_Cad_Consulta = new javax.swing.JButton();
-        Button_Sair = new javax.swing.JButton();
+        tbHorario = new javax.swing.JTable();
+        txtFieldCpfBusca = new javax.swing.JTextField();
+        btConsultar = new javax.swing.JButton();
+        btCadConsulta = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Table_Horario.setFont(new java.awt.Font("Constantia", 0, 20)); // NOI18N
-        Table_Horario.setModel(new javax.swing.table.DefaultTableModel(
+        tbHorario.setFont(new java.awt.Font("Constantia", 0, 20)); // NOI18N
+        tbHorario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -64,59 +69,59 @@ public class AreaMedico extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        Table_Horario.setColumnSelectionAllowed(true);
-        Table_Horario.setGridColor(new java.awt.Color(255, 255, 255));
-        Table_Horario.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(Table_Horario);
-        Table_Horario.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbHorario.setColumnSelectionAllowed(true);
+        tbHorario.setGridColor(new java.awt.Color(255, 255, 255));
+        tbHorario.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tbHorario);
+        tbHorario.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 500, 340));
 
-        TextField_CPF_Busca.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        TextField_CPF_Busca.setForeground(new java.awt.Color(153, 153, 153));
-        TextField_CPF_Busca.setText("CPF:");
-        TextField_CPF_Busca.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        TextField_CPF_Busca.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFieldCpfBusca.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldCpfBusca.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldCpfBusca.setText("CPF:");
+        txtFieldCpfBusca.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldCpfBusca.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TextField_CPF_BuscaFocusGained(evt);
+                txtFieldCpfBuscaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TextField_CPF_BuscaFocusLost(evt);
+                txtFieldCpfBuscaFocusLost(evt);
             }
         });
-        TextField_CPF_Busca.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldCpfBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_CPF_BuscaActionPerformed(evt);
+                txtFieldCpfBuscaActionPerformed(evt);
             }
         });
-        getContentPane().add(TextField_CPF_Busca, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 360, 50));
+        getContentPane().add(txtFieldCpfBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 360, 50));
 
-        Button_Consulta.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Consulta.setText("Acessar Consulta");
-        Button_Consulta.setFocusPainted(false);
-        Button_Consulta.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        Button_Consulta.addActionListener(new java.awt.event.ActionListener() {
+        btConsultar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btConsultar.setText("Acessar Consulta");
+        btConsultar.setFocusPainted(false);
+        btConsultar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_ConsultaActionPerformed(evt);
+                btConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Consulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 220, 50));
+        getContentPane().add(btConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 220, 50));
 
-        Button_Cad_Consulta.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Cad_Consulta.setText("Cadastrar Consulta");
-        Button_Cad_Consulta.setFocusPainted(false);
-        Button_Cad_Consulta.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        Button_Cad_Consulta.addActionListener(new java.awt.event.ActionListener() {
+        btCadConsulta.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btCadConsulta.setText("Cadastrar Consulta");
+        btCadConsulta.setFocusPainted(false);
+        btCadConsulta.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btCadConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Cad_ConsultaActionPerformed(evt);
+                btCadConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Cad_Consulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 220, 50));
+        getContentPane().add(btCadConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 220, 50));
 
-        Button_Sair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(Button_Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
+        btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Área do Médico.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -124,31 +129,31 @@ public class AreaMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextField_CPF_BuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPF_BuscaFocusGained
-        if(TextField_CPF_Busca.getText().equals("CPF:")){
-            TextField_CPF_Busca.setForeground(new Color(0, 0, 0));
-            TextField_CPF_Busca.setText("");
+    private void txtFieldCpfBuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfBuscaFocusGained
+        if(txtFieldCpfBusca.getText().equals("CPF:")){
+            txtFieldCpfBusca.setForeground(new Color(0, 0, 0));
+            txtFieldCpfBusca.setText("");
         }
-    }//GEN-LAST:event_TextField_CPF_BuscaFocusGained
+    }//GEN-LAST:event_txtFieldCpfBuscaFocusGained
 
-    private void TextField_CPF_BuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextField_CPF_BuscaFocusLost
-        if(TextField_CPF_Busca.getText().equals("")){
-            TextField_CPF_Busca.setText("CPF:");
-            TextField_CPF_Busca.setForeground(new Color(153, 153, 153));
+    private void txtFieldCpfBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfBuscaFocusLost
+        if(txtFieldCpfBusca.getText().equals("")){
+            txtFieldCpfBusca.setText("CPF:");
+            txtFieldCpfBusca.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_TextField_CPF_BuscaFocusLost
+    }//GEN-LAST:event_txtFieldCpfBuscaFocusLost
 
-    private void TextField_CPF_BuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_CPF_BuscaActionPerformed
+    private void txtFieldCpfBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldCpfBuscaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_CPF_BuscaActionPerformed
+    }//GEN-LAST:event_txtFieldCpfBuscaActionPerformed
 
-    private void Button_Cad_ConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Cad_ConsultaActionPerformed
+    private void btCadConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Button_Cad_ConsultaActionPerformed
+    }//GEN-LAST:event_btCadConsultaActionPerformed
 
-    private void Button_ConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ConsultaActionPerformed
+    private void btConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Button_ConsultaActionPerformed
+    }//GEN-LAST:event_btConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,12 +194,12 @@ public class AreaMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Cad_Consulta;
-    private javax.swing.JButton Button_Consulta;
-    private javax.swing.JButton Button_Sair;
     private javax.swing.JLabel Label_fundo;
-    private javax.swing.JTable Table_Horario;
-    private javax.swing.JTextField TextField_CPF_Busca;
+    private javax.swing.JButton btCadConsulta;
+    private javax.swing.JButton btConsultar;
+    private javax.swing.JButton btSair;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbHorario;
+    private javax.swing.JTextField txtFieldCpfBusca;
     // End of variables declaration//GEN-END:variables
 }
