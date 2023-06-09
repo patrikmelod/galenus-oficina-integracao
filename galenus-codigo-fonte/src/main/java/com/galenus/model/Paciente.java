@@ -5,6 +5,7 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -17,18 +18,14 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Setter
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "paciente", schema = "galenus")
 public class Paciente {
 
     @Id
     private String documento;
     
     private String nome;
-    private Integer idade;
-    private char sexo;
+    private Date nascimento;
+    private String sexo;
     private String telefone;
     private String endereco;
 }

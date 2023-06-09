@@ -17,10 +17,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Setter
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "agenda", schema = "galenus")
 public class Agenda implements Serializable {
     
     @Id

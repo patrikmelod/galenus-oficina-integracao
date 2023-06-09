@@ -5,26 +5,25 @@
 package com.galenus.telas;
 
 
+import com.galenus.dao.PacienteDAO;
 import com.galenus.model.Paciente;
-import com.galenus.repository.PacienteRepository;
-import java.awt.Color;
-import javax.swing.JOptionPane;
-
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
+import java.awt.*;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
- *
  * @author arthu
  */
 @Component
 @Slf4j
 public class CadastraPaciente extends javax.swing.JFrame {
 
-    @Autowired
-    private PacienteRepository pacBd;
-    
     public CadastraPaciente() {
         initComponents();
 
@@ -49,7 +48,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -60,6 +59,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -74,6 +74,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusLost(evt);
             }
@@ -88,6 +89,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNascimentoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNascimentoFocusLost(evt);
             }
@@ -102,6 +104,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusLost(evt);
             }
@@ -116,6 +119,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusLost(evt);
             }
@@ -130,6 +134,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusLost(evt);
             }
@@ -139,11 +144,21 @@ public class CadastraPaciente extends javax.swing.JFrame {
         btCadastrar.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
         btCadastrar.setText("Cadastrar");
         btCadastrar.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 260, 50));
 
         btVoltar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btVoltar.setText("Voltar");
         btVoltar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cadastrar Paciente.png"))); // NOI18N
@@ -153,126 +168,115 @@ public class CadastraPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
-        if(txtFieldNome.getText().equals("Nome:")){
+        if (txtFieldNome.getText().equals("Nome:")) {
             txtFieldNome.setForeground(new Color(0, 0, 0));
             txtFieldNome.setText("");
         }
     }//GEN-LAST:event_txtFieldNomeFocusGained
 
     private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
-        if(txtFieldNome.getText().equals("")){
+        if (txtFieldNome.getText().equals("")) {
             txtFieldNome.setText("Nome:");
             txtFieldNome.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldNomeFocusLost
 
     private void txtFieldCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusGained
-        if(txtFieldCpf.getText().equals("CPF:")){
+        if (txtFieldCpf.getText().equals("CPF:")) {
             txtFieldCpf.setForeground(new Color(0, 0, 0));
             txtFieldCpf.setText("");
         }
     }//GEN-LAST:event_txtFieldCpfFocusGained
 
     private void txtFieldCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusLost
-        if(txtFieldCpf.getText().equals("")){
+        if (txtFieldCpf.getText().equals("")) {
             txtFieldCpf.setText("CPF:");
             txtFieldCpf.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldCpfFocusLost
 
     private void txtFieldNascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNascimentoFocusGained
-        if(txtFieldNascimento.getText().equals("Data de Nascimento:")){
+        if (txtFieldNascimento.getText().equals("Data de Nascimento:")) {
             txtFieldNascimento.setForeground(new Color(0, 0, 0));
             txtFieldNascimento.setText("");
         }
     }//GEN-LAST:event_txtFieldNascimentoFocusGained
 
     private void txtFieldNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNascimentoFocusLost
-        if(txtFieldNascimento.getText().equals("")){
+        if (txtFieldNascimento.getText().equals("")) {
             txtFieldNascimento.setText("Data de Nascimento:");
             txtFieldNascimento.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldNascimentoFocusLost
 
     private void txtFieldSexoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusGained
-        if(txtFieldSexo.getText().equals("Sexo:")){
+        if (txtFieldSexo.getText().equals("Sexo:")) {
             txtFieldSexo.setForeground(new Color(0, 0, 0));
             txtFieldSexo.setText("");
         }
     }//GEN-LAST:event_txtFieldSexoFocusGained
 
     private void txtFieldSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusLost
-        if(txtFieldSexo.getText().equals("")){
+        if (txtFieldSexo.getText().equals("")) {
             txtFieldSexo.setText("Sexo:");
             txtFieldSexo.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldSexoFocusLost
 
     private void txtFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusGained
-        if(txtFieldTelefone.getText().equals("Telefone:")){
+        if (txtFieldTelefone.getText().equals("Telefone:")) {
             txtFieldTelefone.setForeground(new Color(0, 0, 0));
             txtFieldTelefone.setText("");
         }
     }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
     private void txtFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusLost
-        if(txtFieldTelefone.getText().equals("")){
+        if (txtFieldTelefone.getText().equals("")) {
             txtFieldTelefone.setText("Telefone:");
             txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldTelefoneFocusLost
 
     private void txtFieldEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
-        if(txtFieldEndereco.getText().equals("Endereço:")){
+        if (txtFieldEndereco.getText().equals("Endereço:")) {
             txtFieldEndereco.setForeground(new Color(0, 0, 0));
             txtFieldEndereco.setText("");
         }
     }//GEN-LAST:event_txtFieldEnderecoFocusGained
 
     private void txtFieldEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusLost
-        if(txtFieldEndereco.getText().equals("")){
+        if (txtFieldEndereco.getText().equals("")) {
             txtFieldEndereco.setText("Endereço:");
             txtFieldEndereco.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldEnderecoFocusLost
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastraPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastraPaciente().setVisible(true);
-            }
-        });
-    }
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        Paciente paciente = new Paciente();
+
+        paciente.setNome(txtFieldNome.getText());
+        paciente.setSexo(txtFieldSexo.getText());
+        paciente.setDocumento(txtFieldCpf.getText());
+        paciente.setTelefone(txtFieldTelefone.getText());
+        paciente.setEndereco(txtFieldEndereco.getText());
+
+        try {
+            DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+            paciente.setNascimento(new Date(fmt.parse(txtFieldNascimento.getText()).getTime()));
+        } catch (ParseException pe) {
+            JOptionPane.showMessageDialog(null, "Data inválida.", "Erro", JOptionPane.PLAIN_MESSAGE);
+        }
+
+        pacienteDAO.save(paciente);
+
+        JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso!", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+        dispose();
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
@@ -286,6 +290,5 @@ public class CadastraPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField txtFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
-   
-    
+
 }

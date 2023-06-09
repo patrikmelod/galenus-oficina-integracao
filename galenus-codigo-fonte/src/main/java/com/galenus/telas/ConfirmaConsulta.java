@@ -52,7 +52,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtField_Nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -122,6 +122,11 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
 
         cBoxEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         cBoxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBoxEspecialidade.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cBoxEspecialidadeItemStateChanged(evt);
+            }
+        });
         cBoxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBoxEspecialidadeActionPerformed(evt);
@@ -199,6 +204,11 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txFieldEspecialidade.setFocusable(false);
         txFieldEspecialidade.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txFieldEspecialidade.setRequestFocusEnabled(false);
+        txFieldEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txFieldEspecialidadeActionPerformed(evt);
+            }
+        });
         getContentPane().add(txFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 360, 50));
 
         txtField_Data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -314,6 +324,14 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     private void cBoxPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxPagamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cBoxPagamentoActionPerformed
+
+    private void txFieldEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txFieldEspecialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txFieldEspecialidadeActionPerformed
+
+    private void cBoxEspecialidadeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cBoxEspecialidadeItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cBoxEspecialidadeItemStateChanged
 
     /**
      * @param args the command line arguments

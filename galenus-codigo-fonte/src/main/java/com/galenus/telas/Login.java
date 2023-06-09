@@ -1,38 +1,14 @@
 package com.galenus.telas;
 
-import com.galenus.GalenusApplication;
-import com.galenus.process.CadastraFuncionarioProcess;
-import com.galenus.service.FuncionarioService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Component;
 import com.galenus.process.LoginProcess;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
-import javax.swing.plaf.PanelUI;
 import java.awt.*;
 
-@SpringBootApplication
-@EnableJpaRepositories("com.galenus")
-@ComponentScan(basePackages = { "com.galenus" })
-@EntityScan("com.galenus")
 @Slf4j
 public class Login extends javax.swing.JFrame {
 
-    @Autowired
-    public LoginProcess loginProcess;
-
-    @Autowired
-    public FuncionarioService cadastraFuncionario;
-
-    /**
-     * Creates new form Main
-     */
     public Login() {
         initComponents();
     }
@@ -63,6 +39,7 @@ public class Login extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEmailFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEmailFocusLost(evt);
             }
@@ -82,6 +59,7 @@ public class Login extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusLost(evt);
             }
@@ -152,6 +130,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldSenhaFocusLost
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
+        LoginProcess loginProcess = new LoginProcess();
+
         String email = txtFieldEmail.getText();
         String senha = txtFieldSenha.getText();
 
@@ -159,17 +139,17 @@ public class Login extends javax.swing.JFrame {
         AreaRecepcao areaRecepcao = new AreaRecepcao();
         AreaRh areaRh = new AreaRh();
 
-        CadastraFuncionario cadastraFuncionario = new CadastraFuncionario();
-        cadastraFuncionario.setVisible(true);
-
         if (loginProcess.validaLogin(email, senha)) {
             if (email.contains("@medico")) {
+                dispose();
                 areaMedico.setVisible(true);
                 loginProcess.salvaLog();
             } else if (email.contains("@recepcao")) {
+                dispose();
                 areaRecepcao.setVisible(true);
                 loginProcess.salvaLog();
             } else if (email.contains("@rh")) {
+                dispose();
                 areaRh.setVisible(true);
                 loginProcess.salvaLog();
             }
@@ -180,12 +160,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btEntrarActionPerformed
 
     public static void main(String[] args) {
-        var ctx = new SpringApplicationBuilder(Login.class)
-                .headless(false).run(args);
-        EventQueue.invokeLater(() -> {
-            var ex = ctx.getBean(Login.class);
-            ex.setVisible(true);
-        });
+        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     }
 
 

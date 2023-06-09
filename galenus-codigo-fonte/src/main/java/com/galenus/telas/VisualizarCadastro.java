@@ -33,7 +33,7 @@ public class VisualizarCadastro extends javax.swing.JFrame {
         txtFieldCpfBusca = new javax.swing.JTextField();
         Label_fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtFieldCpf.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N

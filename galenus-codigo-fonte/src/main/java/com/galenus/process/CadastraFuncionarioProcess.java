@@ -1,17 +1,18 @@
 package com.galenus.process;
 
+import com.galenus.dao.FuncionarioDAO;
 import com.galenus.model.Funcionario;
-import com.galenus.service.FuncionarioService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @Component
 public class CadastraFuncionarioProcess {
 
-    @Autowired
-    private FuncionarioService funcionarioService;
+    private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     public void saveFuncionario(Funcionario funcionario) {
-        funcionarioService.save(funcionario);
+        funcionarioDAO.save(funcionario);
     }
 }

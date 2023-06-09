@@ -17,14 +17,11 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Setter
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "medico", schema = "galenus")
 public class Medico {
 
     @Id
     private String crm;
     
     private String especialidade;
+    private String documento;
 }

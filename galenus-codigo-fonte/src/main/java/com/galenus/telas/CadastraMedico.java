@@ -40,7 +40,7 @@ public class CadastraMedico extends javax.swing.JFrame {
         textFieldSenha = new javax.swing.JTextField();
         Label_fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btCadastrar.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
