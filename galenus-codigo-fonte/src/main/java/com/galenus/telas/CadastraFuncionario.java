@@ -1,9 +1,9 @@
 package com.galenus.telas;
 
+import com.galenus.dao.FuncionarioDAO;
 import com.galenus.dao.MedicoDAO;
 import com.galenus.model.Funcionario;
 import com.galenus.model.Medico;
-import com.galenus.process.CadastraFuncionarioProcess;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
@@ -299,7 +299,7 @@ public class CadastraFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldEnderecoFocusGained
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        CadastraFuncionarioProcess cadastraFuncionarioProcess = new CadastraFuncionarioProcess();
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         MedicoDAO medicoDAO = new MedicoDAO();
 
         Funcionario fun = new Funcionario();
@@ -320,13 +320,13 @@ public class CadastraFuncionario extends javax.swing.JFrame {
         if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Recepção")) {
             fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@recepcao.com");
 
-            cadastraFuncionarioProcess.saveFuncionario(fun);
+            funcionarioDAO.save(fun);
             JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
             dispose();
         } else if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Recursos Humanos")) {
             fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@rh.com");
 
-            cadastraFuncionarioProcess.saveFuncionario(fun);
+            funcionarioDAO.save(fun);
             JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
             dispose();
         } else if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Médico")) {
@@ -336,7 +336,7 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             medico.setEspecialidade(txtFieldEspecialidade.getText());
             medico.setDocumento(txtFieldCpf.getText());
 
-            cadastraFuncionarioProcess.saveFuncionario(fun);
+            funcionarioDAO.save(fun);
             medicoDAO.save(medico);
             JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
             dispose();
