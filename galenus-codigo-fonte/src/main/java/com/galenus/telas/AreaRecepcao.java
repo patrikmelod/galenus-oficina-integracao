@@ -1,25 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.galenus.telas;
 
+import com.galenus.dao.AgendaDAO;
+import com.galenus.dao.FuncionarioDAO;
+import com.galenus.dao.MedicoDAO;
+import com.galenus.dao.PacienteDAO;
+import com.galenus.model.Agenda;
+import com.galenus.model.Funcionario;
+import com.galenus.model.Medico;
+import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
-/**
- *
- * @author arthu
- */
-@Component
+import javax.swing.*;
+import java.util.List;
+
 @Slf4j
 public class AreaRecepcao extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RCP_Main
-     */
-    public AreaRecepcao() {
+    private final AgendaDAO agendaDAO = new AgendaDAO();
+    private final PacienteDAO pacienteDAO = new PacienteDAO();
+    private final MedicoDAO medicoDAO = new MedicoDAO();
+    private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+    private static AreaRecepcao INSTANCE;
+
+    private AreaRecepcao() {
         initComponents();
+    }
+
+    public static AreaRecepcao getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AreaRecepcao();
+        }
+        return INSTANCE;
     }
 
     /**
@@ -32,7 +44,6 @@ public class AreaRecepcao extends javax.swing.JFrame {
     private void initComponents() {
 
         btAgendarConsulta = new javax.swing.JButton();
-        btVisualizarConsulta = new javax.swing.JButton();
         btConfirmarConsulta = new javax.swing.JButton();
         btCancelarConsulta = new javax.swing.JButton();
         btCadastrarPaciente = new javax.swing.JButton();
@@ -52,16 +63,6 @@ public class AreaRecepcao extends javax.swing.JFrame {
         });
         getContentPane().add(btAgendarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 360, 50));
 
-        btVisualizarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
-        btVisualizarConsulta.setText("Visualizar Consulta");
-        btVisualizarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
-        btVisualizarConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVisualizarConsultaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btVisualizarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 360, 50));
-
         btConfirmarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
         btConfirmarConsulta.setText("Confirmar Consulta");
         btConfirmarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
@@ -75,6 +76,11 @@ public class AreaRecepcao extends javax.swing.JFrame {
         btCancelarConsulta.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
         btCancelarConsulta.setText("Cancelar Consulta");
         btCancelarConsulta.setMargin(new java.awt.Insets(15, 14, 3, 14));
+        btCancelarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarConsultaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btCancelarConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 360, 50));
 
         btCadastrarPaciente.setFont(new java.awt.Font("Constantia", 1, 30)); // NOI18N
@@ -85,11 +91,16 @@ public class AreaRecepcao extends javax.swing.JFrame {
                 btCadastrarPacienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btCadastrarPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 360, 50));
+        getContentPane().add(btCadastrarPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 360, 50));
 
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSair.setText("Sair");
         btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Recepção.png"))); // NOI18N
@@ -99,58 +110,63 @@ public class AreaRecepcao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarPacienteActionPerformed
-
+        CadastraPaciente.getInstance().setVisible(true);
     }//GEN-LAST:event_btCadastrarPacienteActionPerformed
 
     private void btConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarConsultaActionPerformed
-
+        ConfirmaConsulta.getInstance().setVisible(true);
     }//GEN-LAST:event_btConfirmarConsultaActionPerformed
 
-    private void btVisualizarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarConsultaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btVisualizarConsultaActionPerformed
-
     private void btAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgendarConsultaActionPerformed
-    
+        AgendaConsulta ac = new AgendaConsulta();
+        ac.setVisible(true);
     }//GEN-LAST:event_btAgendarConsultaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AreaRecepcao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        dispose();
+        Login.getInstance().setVisible(true);
+    }//GEN-LAST:event_btSairActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AreaRecepcao().setVisible(true);
+    private void btCancelarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarConsultaActionPerformed
+        try {
+            String documento = JOptionPane.showInputDialog("Qual o documento do paciente que deseja cancelar a consulta?");
+
+            List<Agenda> agendas = agendaDAO.getByPacDoc(documento);
+
+            Medico medico;
+            Funcionario funcionario;
+            Paciente paciente;
+
+            if (agendas.size() == 1) {
+                medico = medicoDAO.getByCrm(agendas.get(0).getMedicoCrm());
+                funcionario = funcionarioDAO.getByDoc(medico.getDocumento());
+                paciente = pacienteDAO.getByDoc(agendas.get(0).getDocPaciente());
+
+                int opt = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja cancelar a consulta do(a) Sr(a) " + paciente.getNome() +
+                        "\nMédico: " + funcionario.getNome() + "\nConsulta: " + medico.getEspecialidade());
+
+                if (opt == 0) {
+                    agendaDAO.delete(documento);
+                    JOptionPane.showMessageDialog(null, "Consulta desmarcada.", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+                }
+            } else if (agendas.size() > 1) {
+                StringBuilder consultas = new StringBuilder();
+
+                for (Agenda agenda : agendas) {
+                    medico = medicoDAO.getByCrm(agenda.getMedicoCrm());
+                    funcionario = funcionarioDAO.getByDoc(medico.getDocumento());
+                    consultas.append(agenda.getId()).append(". Médico: ").append(funcionario.getNome()).append(" | Consulta: ").append(medico.getEspecialidade()).append("\n");
+                }
+                String opt = JOptionPane.showInputDialog("Paciente tem mais de uma consulta marcada. Qual delas deseja cancelar?\n" + consultas);
+                agendaDAO.deleteById(Integer.valueOf(opt));
+                JOptionPane.showMessageDialog(null, "Consulta desmarcada.", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Paciente não possui consulta marcada.", "Info", JOptionPane.PLAIN_MESSAGE);
             }
-        });
-    }
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado. Tente novamente.", "Erro", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_btCancelarConsultaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
@@ -159,9 +175,5 @@ public class AreaRecepcao extends javax.swing.JFrame {
     private javax.swing.JButton btCancelarConsulta;
     private javax.swing.JButton btConfirmarConsulta;
     private javax.swing.JButton btSair;
-    private javax.swing.JButton btVisualizarConsulta;
     // End of variables declaration//GEN-END:variables
-
-
-
 }

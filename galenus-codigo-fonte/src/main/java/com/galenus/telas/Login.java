@@ -1,40 +1,50 @@
 package com.galenus.telas;
 
-import com.galenus.GalenusApplication;
-import com.galenus.process.CadastraFuncionarioProcess;
-import com.galenus.service.FuncionarioService;
+import com.galenus.dao.FuncionarioDAO;
+import com.galenus.dao.LogDAO;
+import com.galenus.dao.MedicoDAO;
+import com.galenus.model.Funcionario;
+import com.galenus.model.Log;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Component;
-import com.galenus.process.LoginProcess;
 
 import javax.swing.*;
-import javax.swing.plaf.PanelUI;
 import java.awt.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@SpringBootApplication
-@EnableJpaRepositories("com.galenus")
-@ComponentScan(basePackages = { "com.galenus" })
-@EntityScan("com.galenus")
 @Slf4j
 public class Login extends javax.swing.JFrame {
 
-    @Autowired
-    public LoginProcess loginProcess;
+    private final LogDAO logDAO = new LogDAO();
+    private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-    @Autowired
-    public FuncionarioService cadastraFuncionario;
+    private static String email;
+    private static String senha;
 
-    /**
-     * Creates new form Main
-     */
-    public Login() {
+    private static Login INSTANCE;
+
+    private Login() {
         initComponents();
+    }
+
+    public static Login getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Login();
+        }
+        return INSTANCE;
+    }
+
+    public String getMedicoCrm() {
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        MedicoDAO medicoDAO = new MedicoDAO();
+
+        log.info(email);
+        Funcionario funcionario = funcionarioDAO.getByEmail(email);
+
+        return medicoDAO.getByDoc(funcionario.getDocumento()).getCrm();
     }
 
     /**
@@ -63,13 +73,9 @@ public class Login extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEmailFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEmailFocusLost(evt);
-            }
-        });
-        txtFieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldEmailActionPerformed(evt);
             }
         });
         getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 390, 50));
@@ -82,13 +88,9 @@ public class Login extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusLost(evt);
-            }
-        });
-        txtFieldSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldSenhaActionPerformed(evt);
             }
         });
         getContentPane().add(txtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 390, 50));
@@ -115,13 +117,24 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldSenhaActionPerformed
+    public void salvaLog() {
+        Log login = new Log();
+        login.setDataAcesso(new Timestamp(System.currentTimeMillis()));
+        try {
+            login.setIpMaquina(InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        logDAO.save(login);
+    }
 
-    private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldEmailActionPerformed
+    public boolean validaLogin(String email, String senha) {
+        Funcionario funcionario = funcionarioDAO.getByEmail(email);
+        if (funcionario != null) {
+            return funcionario.getSenha().equals(senha);
+        }
+        return false;
+    }
 
     private void txtFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusGained
         if (txtFieldEmail.getText().equals("Email:")) {
@@ -152,42 +165,30 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldSenhaFocusLost
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        String email = txtFieldEmail.getText();
-        String senha = txtFieldSenha.getText();
+        email = txtFieldEmail.getText();
+        senha = txtFieldSenha.getText();
 
-        AreaMedico areaMedico = new AreaMedico();
-        AreaRecepcao areaRecepcao = new AreaRecepcao();
-        AreaRh areaRh = new AreaRh();
-
-        CadastraFuncionario cadastraFuncionario = new CadastraFuncionario();
-        cadastraFuncionario.setVisible(true);
-
-        if (loginProcess.validaLogin(email, senha)) {
+        if (validaLogin(email, senha)) {
             if (email.contains("@medico")) {
-                areaMedico.setVisible(true);
-                loginProcess.salvaLog();
+                AreaMedico.getInstance().setVisible(true);
+                salvaLog();
             } else if (email.contains("@recepcao")) {
-                areaRecepcao.setVisible(true);
-                loginProcess.salvaLog();
+                dispose();
+                AreaRecepcao.getInstance().setVisible(true);
+                salvaLog();
             } else if (email.contains("@rh")) {
-                areaRh.setVisible(true);
-                loginProcess.salvaLog();
+                dispose();
+                AreaRh.getInstance().setVisible(true);
+                salvaLog();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
-
     }//GEN-LAST:event_btEntrarActionPerformed
 
     public static void main(String[] args) {
-        var ctx = new SpringApplicationBuilder(Login.class)
-                .headless(false).run(args);
-        EventQueue.invokeLater(() -> {
-            var ex = ctx.getBean(Login.class);
-            ex.setVisible(true);
-        });
+        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;

@@ -1,13 +1,10 @@
 package com.galenus.config;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.sql.DataSource;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 @Slf4j
 @Configuration
@@ -17,14 +14,16 @@ public class DatabaseConfig {
         // empty constructor
     }
 
-    @Bean
-    public DataSource dataSource() throws IOException {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        hikariConfig.setJdbcUrl("jdbc:mysql://db4free.net:3306/galenus");
-        hikariConfig.setUsername("galenus4");
-        hikariConfig.setPassword("g@lenus-4");
-        return new HikariDataSource(hikariConfig);
-    }
+    private static final String USERNAME = "root";
 
+    private static final String PASSWORD = "1234";
+
+
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/galenus";
+
+    public static Connection createConnectionToMySQL() throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+    }
 }
+
