@@ -4,25 +4,54 @@
  */
 package com.galenus.telas;
 
+import com.galenus.dao.*;
+import com.galenus.model.*;
+import com.galenus.util.NumUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.awt.Color;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
- *
  * @author arthu
  */
 @Component
 @Slf4j
 public class ConfirmaConsulta extends javax.swing.JFrame {
 
+    private final AgendaPrimeiraDAO agendaPrimeiraDAO = new AgendaPrimeiraDAO();
+    private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+    private final MedicoDAO medicoDAO = new MedicoDAO();
+    private final PacienteDAO pacienteDAO = new PacienteDAO();
+    private final AgendaDAO agendaDAO = new AgendaDAO();
+
+    private static Medico medico = new Medico();
+    private static Funcionario funcionario = new Funcionario();
+    private static AgendaPrimeira agendaPrimeira = new AgendaPrimeira();
+
     /**
      * Creates new form RCP_Confirmar_Con
      */
     public ConfirmaConsulta() {
         initComponents();
+        selectTbConta();
     }
+
+    public void selectTbConta() {
+        DefaultTableModel model = (DefaultTableModel) tbNomes.getModel();
+        int posLin = 0;
+        model.setRowCount(posLin);
+
+        for (AgendaPrimeira agenda : agendaPrimeiraDAO.getAll()) {
+            model.insertRow(posLin, new Object[]{agenda.getNomePaciente()});
+            posLin++;
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,8 +66,6 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txtFieldTelefone = new javax.swing.JTextField();
         txtField_CPF = new javax.swing.JTextField();
         cBoxPagamento = new javax.swing.JComboBox<>();
-        cBoxMedico = new javax.swing.JComboBox<>();
-        cBoxEspecialidade = new javax.swing.JComboBox<>();
         cBoxDia = new javax.swing.JComboBox<>();
         cBoxMes = new javax.swing.JComboBox<>();
         cBoxAno = new javax.swing.JComboBox<>();
@@ -50,6 +77,8 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txtFieldHorario = new javax.swing.JTextField();
         btConfirmar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbNomes = new javax.swing.JTable();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,7 +96,12 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
                 txtField_NomeFocusLost(evt);
             }
         });
-        getContentPane().add(txtField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 360, 50));
+        txtField_Nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtField_NomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 360, 50));
 
         txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
@@ -100,7 +134,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
                 txtField_CPFFocusLost(evt);
             }
         });
-        getContentPane().add(txtField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 360, 50));
+        getContentPane().add(txtField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
 
         cBoxPagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         cBoxPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão", "Plano de Saúde", "Retorno", " " }));
@@ -110,29 +144,6 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cBoxPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 220, 50));
-
-        cBoxMedico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cBoxMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBoxMedicoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cBoxMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 220, 50));
-
-        cBoxEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cBoxEspecialidade.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cBoxEspecialidadeItemStateChanged(evt);
-            }
-        });
-        cBoxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBoxEspecialidadeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cBoxEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 220, 50));
 
         cBoxDia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
@@ -145,7 +156,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(cBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 70, 50));
 
         cBoxMes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro ", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
         cBoxMes.setBorder(null);
         cBoxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +176,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(cBoxAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 90, 50));
 
         cBoxHorario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              08 : 00", "              08 : 30", "              09 : 00", "              09 : 30", "              10 : 00", "              10 : 30", "              11 : 00", "              11 : 30", "              13 : 00", "              13 : 30", "              14 : 00", "              14 : 30", "              15 : 00", "              15 : 30", "              16 : 00", "              16 : 30", "              17 : 00" }));
+        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00" }));
         cBoxHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBoxHorarioActionPerformed(evt);
@@ -230,12 +241,57 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         btConfirmar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btConfirmar.setText("Confirmar");
         btConfirmar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfirmarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
 
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSair.setText("Sair");
         btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 640, 160, 40));
+
+        tbNomes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Paciente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbNomes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNomesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbNomes);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 420));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Confirmar Consulta.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -244,14 +300,14 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFieldTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusGained
-        if(txtFieldTelefone.getText().equals("Telefone:")){
+        if (txtFieldTelefone.getText().equals("Telefone:")) {
             txtFieldTelefone.setForeground(new Color(0, 0, 0));
             txtFieldTelefone.setText("");
         }
     }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
     private void txtFieldTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldTelefoneFocusLost
-        if(txtFieldTelefone.getText().equals("")){
+        if (txtFieldTelefone.getText().equals("")) {
             txtFieldTelefone.setText("Telefone:");
             txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
@@ -265,27 +321,19 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cBoxMesActionPerformed
 
-    private void cBoxEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxEspecialidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cBoxEspecialidadeActionPerformed
-
     private void cBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cBoxDiaActionPerformed
 
-    private void cBoxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxMedicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cBoxMedicoActionPerformed
-
     private void txtField_NomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_NomeFocusGained
-        if(txtField_Nome.getText().equals("Nome:")){
+        if (txtField_Nome.getText().equals("Nome:")) {
             txtField_Nome.setForeground(new Color(0, 0, 0));
             txtField_Nome.setText("");
         }
     }//GEN-LAST:event_txtField_NomeFocusGained
 
     private void txtField_NomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_NomeFocusLost
-        if(txtField_Nome.getText().equals("")){
+        if (txtField_Nome.getText().equals("")) {
             txtField_Nome.setText("Nome:");
             txtField_Nome.setForeground(new Color(153, 153, 153));
         }
@@ -304,14 +352,14 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_cBoxAnoActionPerformed
 
     private void txtField_CPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_CPFFocusGained
-        if(txtField_CPF.getText().equals("CPF:")){
+        if (txtField_CPF.getText().equals("CPF:")) {
             txtField_CPF.setForeground(new Color(0, 0, 0));
             txtField_CPF.setText("");
         }
     }//GEN-LAST:event_txtField_CPFFocusGained
 
     private void txtField_CPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_CPFFocusLost
-        if(txtField_CPF.getText().equals("")){
+        if (txtField_CPF.getText().equals("")) {
             txtField_CPF.setText("CPF:");
             txtField_CPF.setForeground(new Color(153, 153, 153));
         }
@@ -329,47 +377,65 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txFieldEspecialidadeActionPerformed
 
-    private void cBoxEspecialidadeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cBoxEspecialidadeItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cBoxEspecialidadeItemStateChanged
+    private void txtField_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtField_NomeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    }//GEN-LAST:event_txtField_NomeActionPerformed
+
+    private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfirmaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfirmaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfirmaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfirmaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+            Paciente paciente = pacienteDAO.getByDoc(txtField_CPF.getText());
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConfirmaConsulta().setVisible(true);
+            if (paciente == null) {
+                int opt = JOptionPane.showConfirmDialog(null, "Paciente não cadastrado. Deseja cadastrar?");
+                if (opt == 0) {
+                    CadastraPaciente cadastraPaciente = new CadastraPaciente();
+                    cadastraPaciente.setVisible(true);
+                }
+            } else {
+                Agenda agenda = new Agenda();
+
+                agenda.setDocPaciente(txtField_CPF.getText());
+                agenda.setMedicoCrm(medico.getCrm());
+                agenda.setTelefone(txtFieldTelefone.getText());
+                agenda.setDataHora(Timestamp.valueOf(cBoxAno.getSelectedItem() + "-" + new NumUtil().parseMonth((String) cBoxMes.getSelectedItem()) + "-" + cBoxDia.getSelectedItem() + " " + cBoxHorario.getSelectedItem() + ":00.000000000"));
+
+                agendaDAO.save(agenda);
+                JOptionPane.showMessageDialog(null, "Consulta confirmada.", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+                agendaPrimeiraDAO.delete(agendaPrimeira.getId());
+                dispose();
             }
-        });
-    }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao confirmar consulta.", "Erro", JOptionPane.PLAIN_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btConfirmarActionPerformed
+
+    private void tbNomesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNomesMouseClicked
+        String valLin = tbNomes.getModel().getValueAt(tbNomes.getSelectedRow(), 0).toString();
+        log.info(valLin.trim());
+        agendaPrimeira = agendaPrimeiraDAO.getAllByName(valLin.trim());
+        medico = medicoDAO.getByCrm(agendaPrimeira.getMedicoCrm());
+        funcionario = funcionarioDAO.getByDoc(medico.getDocumento());
+
+        txtField_Nome.setText(agendaPrimeira.getNomePaciente());
+        txtField_Medico.setText(funcionario.getNome());
+        txFieldEspecialidade.setText(medico.getEspecialidade());
+        txtFieldTelefone.setText(agendaPrimeira.getTelefone());
+
+        SimpleDateFormat diaF = new SimpleDateFormat("dd");
+        SimpleDateFormat mesF = new SimpleDateFormat("MM");
+        SimpleDateFormat anoF = new SimpleDateFormat("yyyy");
+        SimpleDateFormat horaF = new SimpleDateFormat("HH:mm");
+
+        cBoxAno.setSelectedItem(anoF.format(agendaPrimeira.getDataHora()));
+        cBoxDia.setSelectedItem(diaF.format(agendaPrimeira.getDataHora()));
+        cBoxMes.setSelectedItem(mesF.format(agendaPrimeira.getDataHora()));
+        cBoxHorario.setSelectedItem(horaF.format(agendaPrimeira.getDataHora()));
+    }//GEN-LAST:event_tbNomesMouseClicked
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
@@ -377,11 +443,11 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cBoxAno;
     private javax.swing.JComboBox<String> cBoxDia;
-    private javax.swing.JComboBox<String> cBoxEspecialidade;
     private javax.swing.JComboBox<String> cBoxHorario;
-    private javax.swing.JComboBox<String> cBoxMedico;
     private javax.swing.JComboBox<String> cBoxMes;
     private javax.swing.JComboBox<String> cBoxPagamento;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tbNomes;
     private javax.swing.JTextField txFieldEspecialidade;
     private javax.swing.JTextField txtFieldHorario;
     private javax.swing.JTextField txtFieldPagamento;
@@ -391,7 +457,6 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     private javax.swing.JTextField txtField_Medico;
     private javax.swing.JTextField txtField_Nome;
     // End of variables declaration//GEN-END:variables
-
 
 
 }

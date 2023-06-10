@@ -4,24 +4,36 @@
  */
 package com.galenus.telas;
 
+import com.galenus.dao.ConsultaDAO;
+import com.galenus.model.Consulta;
+import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
+import java.text.SimpleDateFormat;
 
 /**
- *
  * @author arthu
  */
 @Component
 @Slf4j
 public class Prontuario extends javax.swing.JFrame {
 
+    private final ConsultaDAO consultaDAO = new ConsultaDAO();
+
     /**
      * Creates new form Med_Prontuario
      */
     public Prontuario() {
         initComponents();
+        Paciente paciente = AreaMedico.getInstance().clickTbConta();
+        txtFieldCpf.setText(paciente.getDocumento());
+        txtFieldNome.setText(paciente.getNome());
+        txtFieldSexo.setText(paciente.getSexo());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        txtFieldData.setText(dateFormat.format(paciente.getNascimento()));
     }
 
     /**
@@ -62,6 +74,11 @@ public class Prontuario extends javax.swing.JFrame {
         btSalvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 640, 160, 40));
 
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
@@ -77,6 +94,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -91,6 +109,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusLost(evt);
             }
@@ -105,6 +124,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusLost(evt);
             }
@@ -119,6 +139,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusLost(evt);
             }
@@ -153,6 +174,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusLost(evt);
             }
@@ -167,6 +189,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusLost(evt);
             }
@@ -217,126 +240,109 @@ public class Prontuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
-        if(txtFieldNome.getText().equals("Nome:")){
+        if (txtFieldNome.getText().equals("Nome:")) {
             txtFieldNome.setForeground(new Color(0, 0, 0));
             txtFieldNome.setText("");
         }
     }//GEN-LAST:event_txtFieldNomeFocusGained
 
     private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
-        if(txtFieldNome.getText().equals("")){
+        if (txtFieldNome.getText().equals("")) {
             txtFieldNome.setText("Nome:");
             txtFieldNome.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldNomeFocusLost
 
     private void txtFieldCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusGained
-        if(txtFieldCpf.getText().equals("CPF:")){
+        if (txtFieldCpf.getText().equals("CPF:")) {
             txtFieldCpf.setForeground(new Color(0, 0, 0));
             txtFieldCpf.setText("");
         }
     }//GEN-LAST:event_txtFieldCpfFocusGained
 
     private void txtFieldCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusLost
-        if(txtFieldCpf.getText().equals("")){
+        if (txtFieldCpf.getText().equals("")) {
             txtFieldCpf.setText("CPF:");
             txtFieldCpf.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldCpfFocusLost
 
     private void txtFieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusGained
-        if(txtFieldData.getText().equals("Data de Nascimento:")){
+        if (txtFieldData.getText().equals("Data de Nascimento:")) {
             txtFieldData.setForeground(new Color(0, 0, 0));
             txtFieldData.setText("");
         }
     }//GEN-LAST:event_txtFieldDataFocusGained
 
     private void txtFieldDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusLost
-        if(txtFieldData.getText().equals("")){
+        if (txtFieldData.getText().equals("")) {
             txtFieldData.setText("Data de Nascimento:");
             txtFieldData.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldDataFocusLost
 
     private void txtFieldSexoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusGained
-        if(txtFieldSexo.getText().equals("Sexo:")){
+        if (txtFieldSexo.getText().equals("Sexo:")) {
             txtFieldSexo.setForeground(new Color(0, 0, 0));
             txtFieldSexo.setText("");
         }
     }//GEN-LAST:event_txtFieldSexoFocusGained
 
     private void txtFieldSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusLost
-        if(txtFieldSexo.getText().equals("")){
+        if (txtFieldSexo.getText().equals("")) {
             txtFieldSexo.setText("Sexo:");
             txtFieldSexo.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldSexoFocusLost
 
     private void txtFieldQueixaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldQueixaFocusGained
-        if(txtFieldQueixa.getText().equals("Queicha Principal:")){
+        if (txtFieldQueixa.getText().equals("Queicha Principal:")) {
             txtFieldQueixa.setForeground(new Color(0, 0, 0));
             txtFieldQueixa.setText("");
         }
     }//GEN-LAST:event_txtFieldQueixaFocusGained
 
     private void txtFieldQueixaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldQueixaFocusLost
-        if(txtFieldQueixa.getText().equals("")){
+        if (txtFieldQueixa.getText().equals("")) {
             txtFieldQueixa.setText("Queicha Principal:");
             txtFieldQueixa.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldQueixaFocusLost
 
     private void txtFieldDiagnosticoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDiagnosticoFocusGained
-        if(txtFieldDiagnostico.getText().equals("Diagnóstico:")){
+        if (txtFieldDiagnostico.getText().equals("Diagnóstico:")) {
             txtFieldDiagnostico.setForeground(new Color(0, 0, 0));
             txtFieldDiagnostico.setText("");
         }
     }//GEN-LAST:event_txtFieldDiagnosticoFocusGained
 
     private void txtFieldDiagnosticoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDiagnosticoFocusLost
-        if(txtFieldDiagnostico.getText().equals("")){
+        if (txtFieldDiagnostico.getText().equals("")) {
             txtFieldDiagnostico.setText("Diagnóstico:");
             txtFieldDiagnostico.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldDiagnosticoFocusLost
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Prontuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Prontuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Prontuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Prontuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+            Consulta consulta = new Consulta();
+            consulta.setPacienteDoc(txtFieldCpf.getText());
+            consulta.setMedicoCrm(AreaMedico.getInstance().getAgenda().getMedicoCrm());
+            consulta.setDoencasCron(txtAreaDoencas.getText());
+            consulta.setHistClinica(txtAreaHistClinica.getText());
+            consulta.setTratamento(txtAreaTratamento.getText());
+            consulta.setDiagostico(txtFieldDiagnostico.getText());
+            consulta.setSintomas(txtFieldQueixa.getText());
+            consulta.setConduta(txtAreaConduta.getText());
+            consulta.setDataHora(AreaMedico.getInstance().getAgenda().getDataHora());
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Prontuario().setVisible(true);
-            }
-        });
-    }
+            consultaDAO.save(consulta);
+            JOptionPane.showMessageDialog(null, "Prontuário salvo com sucesso.", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar prontuário.", "Erro", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;

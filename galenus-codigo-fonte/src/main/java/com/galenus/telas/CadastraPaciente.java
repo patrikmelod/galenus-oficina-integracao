@@ -256,26 +256,27 @@ public class CadastraPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        PacienteDAO pacienteDAO = new PacienteDAO();
-        Paciente paciente = new Paciente();
-
-        paciente.setNome(txtFieldNome.getText());
-        paciente.setSexo(txtFieldSexo.getText());
-        paciente.setDocumento(txtFieldCpf.getText());
-        paciente.setTelefone(txtFieldTelefone.getText());
-        paciente.setEndereco(txtFieldEndereco.getText());
-
         try {
+            PacienteDAO pacienteDAO = new PacienteDAO();
+            Paciente paciente = new Paciente();
+
+            paciente.setNome(txtFieldNome.getText());
+            paciente.setSexo(txtFieldSexo.getText());
+            paciente.setDocumento(txtFieldCpf.getText());
+            paciente.setTelefone(txtFieldTelefone.getText());
+            paciente.setEndereco(txtFieldEndereco.getText());
+
             DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             paciente.setNascimento(new Date(fmt.parse(txtFieldNascimento.getText()).getTime()));
+
+            pacienteDAO.save(paciente);
+            JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso!", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            dispose();
         } catch (ParseException pe) {
             JOptionPane.showMessageDialog(null, "Data inválida.", "Erro", JOptionPane.PLAIN_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar paciente.", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
-
-        pacienteDAO.save(paciente);
-
-        JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso!", "Sucesso", JOptionPane.PLAIN_MESSAGE);
-        dispose();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

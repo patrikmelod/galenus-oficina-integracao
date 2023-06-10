@@ -26,4 +26,5 @@ public class Agenda implements Serializable {
     private String telefone;
     private Timestamp dataHora;
     private String medicoCrm;
+    private String pagamento;
 }

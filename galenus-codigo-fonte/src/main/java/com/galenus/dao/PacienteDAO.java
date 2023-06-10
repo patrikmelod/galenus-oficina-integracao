@@ -25,7 +25,7 @@ public class PacienteDAO {
             pstm.setString(1, paciente.getDocumento());
             pstm.setString(2, paciente.getNome());
             pstm.setDate(3, paciente.getNascimento());
-            pstm.setString(3, paciente.getSexo());
+            pstm.setString(4, paciente.getSexo());
             pstm.setString(5, paciente.getTelefone());
             pstm.setString(6, paciente.getEndereco());
 
@@ -101,6 +101,53 @@ public class PacienteDAO {
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, documento);
+            rset = pstm.executeQuery();
+
+            if (rset.next()) {
+                Paciente paciente = new Paciente();
+                paciente.setDocumento(rset.getString("documento"));
+                paciente.setNome(rset.getString("nome"));
+                paciente.setNascimento(rset.getDate("nascimento"));
+                paciente.setSexo(rset.getString("sexo"));
+                paciente.setTelefone(rset.getString("telefone"));
+                paciente.setEndereco(rset.getString("endereco"));
+                return paciente;
+            }
+        } catch (Exception e) {
+            System.out.println("Não há funcionário com o email informado");
+        } finally {
+            try {
+                if (rset != null) {
+                    rset.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public Paciente getByName(String nome) {
+
+        String sql = "SELECT * FROM paciente WHERE nome = ?";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try {
+            conn = DatabaseConfig.createConnectionToMySQL();
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, nome);
             rset = pstm.executeQuery();
 
             if (rset.next()) {

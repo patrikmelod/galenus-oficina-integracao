@@ -14,12 +14,12 @@ public class DatabaseConfig {
         // empty constructor
     }
 
-    private static final String USERNAME = "galenus4";
+    private static final String USERNAME = "root";
 
-    private static final String PASSWORD = "g@lenus-4";
+    private static final String PASSWORD = "1234";
 
 
-    private static final String DATABASE_URL = "jdbc:mysql://db4free.net:3306/galenus";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/galenus";
 
     public static Connection createConnectionToMySQL() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");

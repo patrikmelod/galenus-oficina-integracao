@@ -135,14 +135,13 @@ public class Login extends javax.swing.JFrame {
         String email = txtFieldEmail.getText();
         String senha = txtFieldSenha.getText();
 
-        AreaMedico areaMedico = new AreaMedico();
         AreaRecepcao areaRecepcao = new AreaRecepcao();
         AreaRh areaRh = new AreaRh();
 
         if (loginProcess.validaLogin(email, senha)) {
             if (email.contains("@medico")) {
                 dispose();
-                areaMedico.setVisible(true);
+                AreaMedico.getInstance().setVisible(true);
                 loginProcess.salvaLog();
             } else if (email.contains("@recepcao")) {
                 dispose();

@@ -170,7 +170,7 @@ public class MedicoDAO {
 
     public Medico getByName(String nome){
 
-        String sql = "SELECT m.* FROM medico m, funcionario f WHERE f.nome = ?";
+        String sql = "SELECT m.* FROM medico m, funcionario f WHERE f.nome = ? AND f.documento = m.documento";
 
         Connection conn = null;
         PreparedStatement pstm = null;

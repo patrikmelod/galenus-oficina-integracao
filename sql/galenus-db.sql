@@ -39,6 +39,8 @@ CREATE TABLE galenus.agenda(
 	data_hora			timestamp,
 	medico_crm			varchar(8),
     paciente_doc		varchar(14),
+    pagamento			varchar(20),
+    status              char,
 	CONSTRAINT PK_Agenda PRIMARY KEY(id),
 	CONSTRAINT FK_Med_Crm FOREIGN KEY(medico_crm)
 		REFERENCES galenus.medico(crm),
@@ -61,13 +63,10 @@ CREATE TABLE galenus.agenda_primeira(
 
 CREATE TABLE galenus.consulta(
 	id					int auto_increment,
-    pagamento			char,
-    hip_diagnostico		text,
     conduta				text,
     tratamento			text,
     hist_clinica		text,
     motivo_cons			text,
-	alergias			text,
 	diagostico			text,
     doencas_cron		text,
     medico_crm			varchar(8),
