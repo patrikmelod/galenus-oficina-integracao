@@ -1,34 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.galenus.telas;
 
 import com.galenus.dao.ConsultaDAO;
 import com.galenus.model.Consulta;
 import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 
-/**
- * @author arthu
- */
-@Component
 @Slf4j
 public class Prontuario extends javax.swing.JFrame {
 
     private final ConsultaDAO consultaDAO = new ConsultaDAO();
 
-    /**
-     * Creates new form Med_Prontuario
-     */
     public Prontuario() {
         initComponents();
-        Paciente paciente = AreaMedico.getInstance().clickTbConta();
+        Paciente paciente = AreaMedico.getInstance().getPacienteFromTbHorario();
         txtFieldCpf.setText(paciente.getDocumento());
         txtFieldNome.setText(paciente.getNome());
         txtFieldSexo.setText(paciente.getSexo());
@@ -99,6 +87,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -113,6 +102,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusLost(evt);
             }
@@ -127,6 +117,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusLost(evt);
             }
@@ -141,6 +132,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusLost(evt);
             }
@@ -175,6 +167,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusLost(evt);
             }
@@ -189,6 +182,7 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusLost(evt);
             }
@@ -326,14 +320,14 @@ public class Prontuario extends javax.swing.JFrame {
         try {
             Consulta consulta = new Consulta();
             consulta.setPacienteDoc(txtFieldCpf.getText());
-            consulta.setMedicoCrm(AreaMedico.getInstance().getAgenda().getMedicoCrm());
+            consulta.setMedicoCrm(AreaMedico.getInstance().getCrmFromAgenda().getMedicoCrm());
             consulta.setDoencasCron(txtAreaDoencas.getText());
             consulta.setHistClinica(txtAreaHistClinica.getText());
             consulta.setTratamento(txtAreaTratamento.getText());
             consulta.setDiagostico(txtFieldDiagnostico.getText());
             consulta.setSintomas(txtFieldQueixa.getText());
             consulta.setConduta(txtAreaConduta.getText());
-            consulta.setDataHora(AreaMedico.getInstance().getAgenda().getDataHora());
+            consulta.setDataHora(AreaMedico.getInstance().getCrmFromAgenda().getDataHora());
 
             consultaDAO.save(consulta);
             JOptionPane.showMessageDialog(null, "Prontuário salvo com sucesso.", "Sucesso", JOptionPane.PLAIN_MESSAGE);

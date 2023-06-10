@@ -150,11 +150,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
                 cBoxTipoFuncItemStateChanged(evt);
             }
         });
-        cBoxTipoFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBoxTipoFuncActionPerformed(evt);
-            }
-        });
         getContentPane().add(cBoxTipoFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 360, 50));
 
         txtFieldCrm.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -168,11 +163,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
 
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusLost(evt);
-            }
-        });
-        txtFieldCrm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldCrmActionPerformed(evt);
             }
         });
         getContentPane().add(txtFieldCrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 360, 50));
@@ -263,33 +253,33 @@ public class CadastraFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFieldEnderecoFocusLost
 
-    private void txtFieldEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
+    private void txtFieldEnderecoFocusGained(java.awt.event.FocusEvent evt) {
         if (txtFieldEndereco.getText().equals("Endereço:")) {
             txtFieldEndereco.setForeground(new Color(0, 0, 0));
             txtFieldEndereco.setText("");
         }
-    }//GEN-LAST:event_txtFieldEnderecoFocusGained
+    }
 
-    private void txtFieldCrmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
+    private void txtFieldCrmFocusGained(java.awt.event.FocusEvent evt) {
         if (txtFieldEndereco.getText().equals("CRM:")) {
             txtFieldEndereco.setForeground(new Color(0, 0, 0));
             txtFieldEndereco.setText("");
         }
-    }//GEN-LAST:event_txtFieldEnderecoFocusGained
+    }
 
-    private void txtFieldCrmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
+    private void txtFieldCrmFocusLost(java.awt.event.FocusEvent evt) {
         if (txtFieldEndereco.getText().equals("")) {
             txtFieldEndereco.setText("CRM:");
             txtFieldEndereco.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_txtFieldEnderecoFocusGained
+    }
 
-    private void txtFieldEspecialidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
+    private void txtFieldEspecialidadeFocusGained(java.awt.event.FocusEvent evt) {
         if (txtFieldEndereco.getText().equals("Especialidade:")) {
             txtFieldEndereco.setForeground(new Color(0, 0, 0));
             txtFieldEndereco.setText("");
         }
-    }//GEN-LAST:event_txtFieldEnderecoFocusGained
+    }
 
     private void txtFieldEspecialidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
         if (txtFieldEndereco.getText().equals("")) {
@@ -299,58 +289,51 @@ public class CadastraFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldEnderecoFocusGained
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        MedicoDAO medicoDAO = new MedicoDAO();
-
-        Funcionario fun = new Funcionario();
-        fun.setNome(txtFieldNome.getText());
-        fun.setDocumento(txtFieldCpf.getText());
-
         try {
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            MedicoDAO medicoDAO = new MedicoDAO();
+
+            Funcionario fun = new Funcionario();
+            fun.setNome(txtFieldNome.getText());
+            fun.setDocumento(txtFieldCpf.getText());
+
             DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             fun.setNascimento(new Date(fmt.parse(txtFieldNascimento.getText()).getTime()));
+
+            fun.setEndereco(txtFieldEndereco.getText());
+            fun.setTelefone(txtFieldTelefone.getText());
+            fun.setSenha("1234");
+
+            if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Recepção")) {
+                fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@recepcao.com");
+
+                funcionarioDAO.save(fun);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
+                dispose();
+            } else if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Recursos Humanos")) {
+                fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@rh.com");
+
+                funcionarioDAO.save(fun);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
+                dispose();
+            } else if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Médico")) {
+                Medico medico = new Medico();
+                fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@medico.com");
+                medico.setCrm(txtFieldCrm.getText());
+                medico.setEspecialidade(txtFieldEspecialidade.getText());
+                medico.setDocumento(txtFieldCpf.getText());
+
+                funcionarioDAO.save(fun);
+                medicoDAO.save(medico);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
+                dispose();
+            }
         } catch (ParseException pe) {
             JOptionPane.showMessageDialog(null, "Data inválida.", "Erro", JOptionPane.PLAIN_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Falha ao cadastrar paciente.", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
-
-        fun.setEndereco(txtFieldEndereco.getText());
-        fun.setTelefone(txtFieldTelefone.getText());
-        fun.setSenha("1234");
-
-        if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Recepção")) {
-            fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@recepcao.com");
-
-            funcionarioDAO.save(fun);
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
-            dispose();
-        } else if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Recursos Humanos")) {
-            fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@rh.com");
-
-            funcionarioDAO.save(fun);
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
-            dispose();
-        } else if (Objects.equals(cBoxTipoFunc.getSelectedItem(), "Médico")) {
-            Medico medico = new Medico();
-            fun.setEmail(txtFieldNome.getText().toLowerCase().trim().replace(" ", "") + "@medico.com");
-            medico.setCrm(txtFieldCrm.getText());
-            medico.setEspecialidade(txtFieldEspecialidade.getText());
-            medico.setDocumento(txtFieldCpf.getText());
-
-            funcionarioDAO.save(fun);
-            medicoDAO.save(medico);
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!\nEmail: " + fun.getEmail() + "\nSenha: " + fun.getSenha(), "Sucesso", JOptionPane.PLAIN_MESSAGE);
-            dispose();
-        }
-
     }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void cBoxTipoFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxTipoFuncActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cBoxTipoFuncActionPerformed
-
-    private void txtFieldCrmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldCrmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldCrmActionPerformed
 
     private void cBoxTipoFuncItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cBoxTipoFuncItemStateChanged
         if (!Objects.equals(cBoxTipoFunc.getSelectedItem(), "Médico")) {

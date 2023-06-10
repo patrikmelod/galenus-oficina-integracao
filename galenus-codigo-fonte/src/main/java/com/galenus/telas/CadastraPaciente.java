@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.galenus.telas;
-
 
 import com.galenus.dao.PacienteDAO;
 import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,10 +11,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * @author arthu
- */
-@Component
 @Slf4j
 public class CadastraPaciente extends javax.swing.JFrame {
 
@@ -35,22 +25,6 @@ public class CadastraPaciente extends javax.swing.JFrame {
             INSTANCE = new CadastraPaciente();
         }
         return INSTANCE;
-    }
-
-    private void setInstanceNull() {
-        INSTANCE = null;
-    }
-
-    public void setTxtFieldCpf(String cpf) {
-        txtFieldCpf.setText(cpf);
-    }
-
-    public void setTxtFieldNome(String nome) {
-        txtFieldNome.setText(nome);
-    }
-
-    public void setTxtFieldTelefone(String tel) {
-        txtFieldTelefone.setText(tel);
     }
 
     /**
@@ -191,6 +165,22 @@ public class CadastraPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
+    public void setTxtFieldCpf(String cpf) {
+        txtFieldCpf.setText(cpf);
+    }
+
+    public void setTxtFieldNome(String nome) {
+        txtFieldNome.setText(nome);
+    }
+
+    public void setTxtFieldTelefone(String tel) {
+        txtFieldTelefone.setText(tel);
+    }
+
     private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
         if (txtFieldNome.getText().equals("Nome:")) {
             txtFieldNome.setForeground(new Color(0, 0, 0));
@@ -316,6 +306,4 @@ public class CadastraPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField txtFieldSexo;
     private javax.swing.JTextField txtFieldTelefone;
     // End of variables declaration//GEN-END:variables
-
-
 }

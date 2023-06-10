@@ -1,16 +1,25 @@
 package com.galenus.telas;
 
 import com.galenus.dao.FuncionarioDAO;
+import com.galenus.dao.LogDAO;
 import com.galenus.dao.MedicoDAO;
 import com.galenus.model.Funcionario;
-import com.galenus.process.LoginProcess;
+import com.galenus.model.Log;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Slf4j
 public class Login extends javax.swing.JFrame {
+
+    private final LogDAO logDAO = new LogDAO();
+    private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     private static String email;
     private static String senha;
@@ -69,11 +78,6 @@ public class Login extends javax.swing.JFrame {
                 txtFieldEmailFocusLost(evt);
             }
         });
-        txtFieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldEmailActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 390, 50));
 
         txtFieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -87,11 +91,6 @@ public class Login extends javax.swing.JFrame {
 
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusLost(evt);
-            }
-        });
-        txtFieldSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldSenhaActionPerformed(evt);
             }
         });
         getContentPane().add(txtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 390, 50));
@@ -118,13 +117,24 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldSenhaActionPerformed
+    public void salvaLog() {
+        Log login = new Log();
+        login.setDataAcesso(new Timestamp(System.currentTimeMillis()));
+        try {
+            login.setIpMaquina(InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        logDAO.save(login);
+    }
 
-    private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldEmailActionPerformed
+    public boolean validaLogin(String email, String senha) {
+        Funcionario funcionario = funcionarioDAO.getByEmail(email);
+        if (funcionario != null) {
+            return funcionario.getSenha().equals(senha);
+        }
+        return false;
+    }
 
     private void txtFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusGained
         if (txtFieldEmail.getText().equals("Email:")) {
@@ -155,34 +165,30 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldSenhaFocusLost
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        LoginProcess loginProcess = new LoginProcess();
-
         email = txtFieldEmail.getText();
         senha = txtFieldSenha.getText();
 
-        if (loginProcess.validaLogin(email, senha)) {
+        if (validaLogin(email, senha)) {
             if (email.contains("@medico")) {
                 AreaMedico.getInstance().setVisible(true);
-                loginProcess.salvaLog();
+                salvaLog();
             } else if (email.contains("@recepcao")) {
                 dispose();
                 AreaRecepcao.getInstance().setVisible(true);
-                loginProcess.salvaLog();
+                salvaLog();
             } else if (email.contains("@rh")) {
                 dispose();
                 AreaRh.getInstance().setVisible(true);
-                loginProcess.salvaLog();
+                salvaLog();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
-
     }//GEN-LAST:event_btEntrarActionPerformed
 
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;

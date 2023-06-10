@@ -5,17 +5,12 @@ import com.galenus.dao.PacienteDAO;
 import com.galenus.model.Agenda;
 import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author arthu
- */
-@Component
 @Slf4j
 public class AreaMedico extends javax.swing.JFrame {
 
@@ -24,7 +19,7 @@ public class AreaMedico extends javax.swing.JFrame {
 
     public static Paciente paciente = new Paciente();
     public static List<Agenda> listAgenda = new ArrayList<>();
-    
+
     private static AreaMedico INSTANCE;
 
     private AreaMedico() {
@@ -38,32 +33,6 @@ public class AreaMedico extends javax.swing.JFrame {
             INSTANCE = new AreaMedico();
         }
         return INSTANCE;
-    }
-
-    public void selectTbHorario() {
-        DefaultTableModel model = (DefaultTableModel) tbHorario.getModel();
-        int posLin = 0;
-        model.setRowCount(posLin);
-
-        SimpleDateFormat horaF = new SimpleDateFormat("HH:mm");
-
-        listAgenda = agendaDAO.getAllByDate(Login.getInstance().getMedicoCrm());
-
-        for (Agenda agenda : listAgenda) {
-            paciente = pacienteDAO.getByDoc(agenda.getDocPaciente());
-            model.insertRow(posLin, new Object[]{paciente.getNome(), agenda.getDocPaciente(), horaF.format(agenda.getDataHora())});
-            posLin++;
-        }
-    }
-
-    public Paciente clickTbConta() {
-        String nome = tbHorario.getModel().getValueAt(tbHorario.getSelectedRow(), 0).toString();
-        paciente = pacienteDAO.getByName(nome.trim());
-        return paciente;
-    }
-
-    public Agenda getAgenda() {
-        return listAgenda.get(0);
     }
 
     /**
@@ -86,31 +55,31 @@ public class AreaMedico extends javax.swing.JFrame {
 
         tbHorario.setFont(new java.awt.Font("Constantia", 0, 20)); // NOI18N
         tbHorario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nome", "CPF", "Horário"
-            }
+                new Object[][]{
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null}
+                },
+                new String[]{
+                        "Nome", "CPF", "Horário"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         tbHorario.setColumnSelectionAllowed(true);
@@ -152,6 +121,32 @@ public class AreaMedico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void selectTbHorario() {
+        DefaultTableModel model = (DefaultTableModel) tbHorario.getModel();
+        int posLin = 0;
+        model.setRowCount(posLin);
+
+        SimpleDateFormat horaF = new SimpleDateFormat("HH:mm");
+
+        listAgenda = agendaDAO.getAllByDate(Login.getInstance().getMedicoCrm());
+
+        for (Agenda agenda : listAgenda) {
+            paciente = pacienteDAO.getByDoc(agenda.getDocPaciente());
+            model.insertRow(posLin, new Object[]{paciente.getNome(), agenda.getDocPaciente(), horaF.format(agenda.getDataHora())});
+            posLin++;
+        }
+    }
+
+    public Paciente getPacienteFromTbHorario() {
+        String nome = tbHorario.getModel().getValueAt(tbHorario.getSelectedRow(), 0).toString();
+        paciente = pacienteDAO.getByName(nome.trim());
+        return paciente;
+    }
+
+    public Agenda getCrmFromAgenda() {
+        return listAgenda.get(0);
+    }
 
     private void btCadConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadConsultaActionPerformed
         AgendaConsulta ac = new AgendaConsulta();

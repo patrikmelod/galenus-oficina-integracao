@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.galenus.telas;
 
 import com.galenus.dao.FuncionarioDAO;
@@ -9,7 +5,6 @@ import com.galenus.dao.MedicoDAO;
 import com.galenus.model.Funcionario;
 import com.galenus.model.Medico;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,21 +13,15 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * @author arthu
- */
-@Component
 @Slf4j
 public class VisualizaFuncionario extends javax.swing.JFrame {
 
     private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
     private final MedicoDAO medicoDAO = new MedicoDAO();
+
     private static Funcionario fun = null;
     private static Medico med = null;
 
-    /**
-     * Creates new form Rh
-     */
     public VisualizaFuncionario() {
         initComponents();
         btSalvar.setVisible(false);
@@ -508,6 +497,4 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField txtFieldSenha;
     private javax.swing.JTextField txtFieldTelefone;
     // End of variables declaration//GEN-END:variables
-
-
 }

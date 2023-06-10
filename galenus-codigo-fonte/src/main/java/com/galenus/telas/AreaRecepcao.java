@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.galenus.telas;
 
 import com.galenus.dao.AgendaDAO;
@@ -13,15 +9,10 @@ import com.galenus.model.Funcionario;
 import com.galenus.model.Medico;
 import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.util.List;
 
-/**
- * @author arthu
- */
-@Component
 @Slf4j
 public class AreaRecepcao extends javax.swing.JFrame {
 
@@ -42,7 +33,6 @@ public class AreaRecepcao extends javax.swing.JFrame {
         }
         return INSTANCE;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,6 +132,7 @@ public class AreaRecepcao extends javax.swing.JFrame {
             String documento = JOptionPane.showInputDialog("Qual o documento do paciente que deseja cancelar a consulta?");
 
             List<Agenda> agendas = agendaDAO.getByPacDoc(documento);
+
             Medico medico;
             Funcionario funcionario;
             Paciente paciente;
@@ -177,7 +168,6 @@ public class AreaRecepcao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btCancelarConsultaActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btAgendarConsulta;
@@ -186,6 +176,4 @@ public class AreaRecepcao extends javax.swing.JFrame {
     private javax.swing.JButton btConfirmarConsulta;
     private javax.swing.JButton btSair;
     // End of variables declaration//GEN-END:variables
-
-
 }
