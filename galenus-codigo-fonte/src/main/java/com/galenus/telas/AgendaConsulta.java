@@ -368,7 +368,7 @@ public class AgendaConsulta extends javax.swing.JFrame {
         agendaPrimeira.setNomePaciente(txtFieldNome.getText());
         agendaPrimeira.setTelefone(txtFieldTelefone.getText());
         agendaPrimeira.setMedicoCrm(medico.getCrm());
-        agendaPrimeira.setDataHora(Timestamp.valueOf(cBoxAno.getSelectedItem() + "-" + new NumUtil().parseMonth((String) cBoxMes.getSelectedItem()) + "-" + cBoxDia.getSelectedItem() + " " + cBoxHora.getSelectedItem() + ":00.000000000"));
+        agendaPrimeira.setDataHora(Timestamp.valueOf(cBoxAno.getSelectedItem() + "-" + new NumUtil().parseMonthToNumber((String) cBoxMes.getSelectedItem()) + "-" + cBoxDia.getSelectedItem() + " " + cBoxHora.getSelectedItem() + ":00.000000000"));
 
         agendaPrimeiraDAO.save(agendaPrimeira);
 

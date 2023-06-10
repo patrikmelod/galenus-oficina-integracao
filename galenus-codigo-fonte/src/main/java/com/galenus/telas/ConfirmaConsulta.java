@@ -92,6 +92,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtField_NomeFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtField_NomeFocusLost(evt);
             }
@@ -111,6 +112,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusLost(evt);
             }
@@ -130,6 +132,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtField_CPFFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtField_CPFFocusLost(evt);
             }
@@ -137,7 +140,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(txtField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
 
         cBoxPagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão", "Plano de Saúde", "Retorno", " " }));
+        cBoxPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Dinheiro", "Cartão", "Plano de Saúde", "Retorno", " "}));
         cBoxPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBoxPagamentoActionPerformed(evt);
@@ -146,7 +149,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(cBoxPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 220, 50));
 
         cBoxDia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
         cBoxDia.setBorder(null);
         cBoxDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +159,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(cBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 70, 50));
 
         cBoxMes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
         cBoxMes.setBorder(null);
         cBoxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +169,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(cBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 510, 130, 50));
 
         cBoxAno.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        cBoxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
         cBoxAno.setBorder(null);
         cBoxAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +179,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(cBoxAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 90, 50));
 
         cBoxHorario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00" }));
+        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"}));
         cBoxHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBoxHorarioActionPerformed(evt);
@@ -259,29 +262,29 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 640, 160, 40));
 
         tbNomes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Paciente"
-            }
+                new Object[][]{
+                        {null},
+                        {null},
+                        {null},
+                        {null}
+                },
+                new String[]{
+                        "Paciente"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false
+            boolean[] canEdit = new boolean[]{
+                    false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         tbNomes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -397,7 +400,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
                 agenda.setDocPaciente(txtField_CPF.getText());
                 agenda.setMedicoCrm(medico.getCrm());
                 agenda.setTelefone(txtFieldTelefone.getText());
-                agenda.setDataHora(Timestamp.valueOf(cBoxAno.getSelectedItem() + "-" + new NumUtil().parseMonth((String) cBoxMes.getSelectedItem()) + "-" + cBoxDia.getSelectedItem() + " " + cBoxHorario.getSelectedItem() + ":00.000000000"));
+                agenda.setDataHora(Timestamp.valueOf(cBoxAno.getSelectedItem() + "-" + new NumUtil().parseMonthToNumber((String) cBoxMes.getSelectedItem()) + "-" + cBoxDia.getSelectedItem() + " " + cBoxHorario.getSelectedItem() + ":00.000000000"));
 
                 agendaDAO.save(agenda);
                 JOptionPane.showMessageDialog(null, "Consulta confirmada.", "Sucesso", JOptionPane.PLAIN_MESSAGE);
@@ -429,7 +432,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
 
         cBoxAno.setSelectedItem(anoF.format(agendaPrimeira.getDataHora()));
         cBoxDia.setSelectedItem(diaF.format(agendaPrimeira.getDataHora()));
-        cBoxMes.setSelectedItem(mesF.format(agendaPrimeira.getDataHora()));
+        cBoxMes.setSelectedItem(new NumUtil().parseNumberToMonth(mesF.format(agendaPrimeira.getDataHora())));
         cBoxHorario.setSelectedItem(horaF.format(agendaPrimeira.getDataHora()));
     }//GEN-LAST:event_tbNomesMouseClicked
 
