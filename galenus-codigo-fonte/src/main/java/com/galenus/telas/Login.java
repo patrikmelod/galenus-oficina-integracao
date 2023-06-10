@@ -12,6 +12,7 @@ import java.awt.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +23,6 @@ public class Login extends javax.swing.JFrame {
     private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     private static String email;
-    private static String senha;
 
     private static Login INSTANCE;
 
@@ -57,8 +57,8 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         txtFieldEmail = new javax.swing.JTextField();
-        txtFieldSenha = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
+        passwordField = new javax.swing.JPasswordField();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,22 +80,6 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 390, 50));
 
-        txtFieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtFieldSenha.setForeground(new java.awt.Color(31, 79, 231));
-        txtFieldSenha.setText("Senha:");
-        txtFieldSenha.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldSenhaFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldSenhaFocusLost(evt);
-            }
-        });
-        getContentPane().add(txtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 390, 50));
-        txtFieldSenha.getAccessibleContext().setAccessibleDescription("");
-
         btEntrar.setFont(new java.awt.Font("Constantia", 1, 33)); // NOI18N
         btEntrar.setForeground(new java.awt.Color(31, 79, 231));
         btEntrar.setText("Entrar");
@@ -109,6 +93,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 160, 50));
+        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 390, 50));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Inicio.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
@@ -150,24 +135,11 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFieldEmailFocusLost
 
-    private void txtFieldSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusGained
-        if (txtFieldSenha.getText().equals("Senha:")) {
-            txtFieldSenha.setForeground(new Color(0, 0, 0));
-            txtFieldSenha.setText("");
-        }
-    }//GEN-LAST:event_txtFieldSenhaFocusGained
-
-    private void txtFieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusLost
-        if (txtFieldSenha.getText().equals("")) {
-            txtFieldSenha.setText("Senha:");
-            txtFieldSenha.setForeground(new Color(31, 79, 231));
-        }
-    }//GEN-LAST:event_txtFieldSenhaFocusLost
-
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         email = txtFieldEmail.getText();
-        senha = txtFieldSenha.getText();
+        String senha = Arrays.toString(passwordField.getPassword()).replace("[", "").replace("]", "").replace(" ", "").replace(",", "");
 
+        log.info(senha);
         if (validaLogin(email, senha)) {
             if (email.contains("@medico")) {
                 AreaMedico.getInstance().setVisible(true);
@@ -193,7 +165,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btEntrar;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField txtFieldEmail;
-    private javax.swing.JTextField txtFieldSenha;
     // End of variables declaration//GEN-END:variables
 }
