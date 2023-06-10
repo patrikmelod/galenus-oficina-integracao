@@ -30,12 +30,19 @@ public class AreaRecepcao extends javax.swing.JFrame {
     private final MedicoDAO medicoDAO = new MedicoDAO();
     private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-    /**
-     * Creates new form RCP_Main
-     */
-    public AreaRecepcao() {
+    private static AreaRecepcao INSTANCE;
+
+    private AreaRecepcao() {
         initComponents();
     }
+
+    public static AreaRecepcao getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AreaRecepcao();
+        }
+        return INSTANCE;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,13 +120,11 @@ public class AreaRecepcao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarPacienteActionPerformed
-        CadastraPaciente cadastraPaciente = new CadastraPaciente();
-        cadastraPaciente.setVisible(true);
+        CadastraPaciente.getInstance().setVisible(true);
     }//GEN-LAST:event_btCadastrarPacienteActionPerformed
 
     private void btConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarConsultaActionPerformed
-        ConfirmaConsulta cc = new ConfirmaConsulta();
-        cc.setVisible(true);
+        ConfirmaConsulta.getInstance().setVisible(true);
     }//GEN-LAST:event_btConfirmarConsultaActionPerformed
 
     private void btAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgendarConsultaActionPerformed
@@ -129,8 +134,7 @@ public class AreaRecepcao extends javax.swing.JFrame {
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
-        Login login = new Login();
-        login.setVisible(true);
+        Login.getInstance().setVisible(true);
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btCancelarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarConsultaActionPerformed

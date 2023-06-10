@@ -137,6 +137,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfBuscaFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfBuscaFocusLost(evt);
             }
@@ -151,6 +152,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusLost(evt);
             }
@@ -165,6 +167,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusLost(evt);
             }
@@ -179,6 +182,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -193,6 +197,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEmailFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEmailFocusLost(evt);
             }
@@ -207,6 +212,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSenhaFocusLost(evt);
             }
@@ -222,6 +228,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusLost(evt);
             }
@@ -237,6 +244,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEspecialidadeFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEspecialidadeFocusLost(evt);
             }
@@ -252,6 +260,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusGained(evt);
             }
+
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusLost(evt);
             }
@@ -360,7 +369,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         if (fun == null) {
             int opt = JOptionPane.showConfirmDialog(null, "Funcionário não cadastrado. Deseja cadastrá-lo?");
 
-            if(opt == 0) {
+            if (opt == 0) {
                 dispose();
                 CadastraFuncionario cf = new CadastraFuncionario();
                 cf.setVisible(true);
@@ -372,7 +381,10 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         txtFieldEndereco.setText(fun.getEndereco());
         txtFieldEmail.setText(fun.getEmail());
         txtFieldSenha.setText(fun.getSenha());
-        txtFieldData.setText(fun.getNascimento().toString());
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        txtFieldData.setText(formatter.format(fun.getNascimento()));
+
         txtFieldCrm.setText("N/A");
         txtFieldEspecialidade.setText("N/A");
 
@@ -395,7 +407,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Data inválida.", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
 
-        if(med != null) {
+        if (med != null) {
             med.setCrm(txtFieldCrm.getText());
             med.setEspecialidade(txtFieldEspecialidade.getText());
             medicoDAO.update(med);
@@ -426,7 +438,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         btEditar.setEnabled(false);
         btSalvar.setVisible(true);
         btSalvar.setEnabled(true);
-        
+
         txtFieldEmail.setEditable(true);
         txtFieldEndereco.setEditable(true);
         txtFieldNome.setEditable(true);
@@ -438,42 +450,42 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void txtFieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusGained
-        if(txtFieldData.getText().equals("Data de Nascimento:")){
+        if (txtFieldData.getText().equals("Data de Nascimento:")) {
             txtFieldData.setForeground(new Color(0, 0, 0));
             txtFieldData.setText("");
         }
     }//GEN-LAST:event_txtFieldDataFocusGained
 
     private void txtFieldDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusLost
-        if(txtFieldData.getText().equals("")){
+        if (txtFieldData.getText().equals("")) {
             txtFieldData.setText("Data de Nascimento:");
             txtFieldData.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldDataFocusLost
 
     private void txtFieldEspecialidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEspecialidadeFocusGained
-        if(txtFieldEspecialidade.getText().equals("Especialidade:")){
+        if (txtFieldEspecialidade.getText().equals("Especialidade:")) {
             txtFieldEspecialidade.setForeground(new Color(0, 0, 0));
             txtFieldEspecialidade.setText("");
         }
     }//GEN-LAST:event_txtFieldEspecialidadeFocusGained
 
     private void txtFieldEspecialidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEspecialidadeFocusLost
-        if(txtFieldEspecialidade.getText().equals("")){
+        if (txtFieldEspecialidade.getText().equals("")) {
             txtFieldEspecialidade.setText("Especialidade:");
             txtFieldEspecialidade.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldEspecialidadeFocusLost
 
     private void txtFieldCrmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCrmFocusGained
-        if(txtFieldCrm.getText().equals("CRM:")){
+        if (txtFieldCrm.getText().equals("CRM:")) {
             txtFieldCrm.setForeground(new Color(0, 0, 0));
             txtFieldCrm.setText("");
         }
     }//GEN-LAST:event_txtFieldCrmFocusGained
 
     private void txtFieldCrmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCrmFocusLost
-        if(txtFieldCrm.getText().equals("")){
+        if (txtFieldCrm.getText().equals("")) {
             txtFieldCrm.setText("CRM:");
             txtFieldCrm.setForeground(new Color(153, 153, 153));
         }

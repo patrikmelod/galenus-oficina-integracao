@@ -7,10 +7,10 @@ import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author arthu
@@ -23,11 +23,14 @@ public class AreaMedico extends javax.swing.JFrame {
     private final PacienteDAO pacienteDAO = new PacienteDAO();
 
     public static Paciente paciente = new Paciente();
-
+    public static List<Agenda> listAgenda = new ArrayList<>();
+    
     private static AreaMedico INSTANCE;
 
     private AreaMedico() {
         initComponents();
+        selectTbHorario();
+        Login.getInstance().dispose();
     }
 
     public static AreaMedico getInstance() {
@@ -44,7 +47,9 @@ public class AreaMedico extends javax.swing.JFrame {
 
         SimpleDateFormat horaF = new SimpleDateFormat("HH:mm");
 
-        for (Agenda agenda : agendaDAO.getAllByDate(txtFieldCrm.getText())) {
+        listAgenda = agendaDAO.getAllByDate(Login.getInstance().getMedicoCrm());
+
+        for (Agenda agenda : listAgenda) {
             paciente = pacienteDAO.getByDoc(agenda.getDocPaciente());
             model.insertRow(posLin, new Object[]{paciente.getNome(), agenda.getDocPaciente(), horaF.format(agenda.getDataHora())});
             posLin++;
@@ -58,7 +63,7 @@ public class AreaMedico extends javax.swing.JFrame {
     }
 
     public Agenda getAgenda() {
-        return agendaDAO.getAllByDate(txtFieldCrm.getText()).get(0);
+        return listAgenda.get(0);
     }
 
     /**
@@ -72,8 +77,6 @@ public class AreaMedico extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHorario = new javax.swing.JTable();
-        txtFieldCrm = new javax.swing.JTextField();
-        btFiltraCons = new javax.swing.JButton();
         btCadConsulta = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         Label_fundo = new javax.swing.JLabel();
@@ -83,31 +86,31 @@ public class AreaMedico extends javax.swing.JFrame {
 
         tbHorario.setFont(new java.awt.Font("Constantia", 0, 20)); // NOI18N
         tbHorario.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null}
-                },
-                new String[]{
-                        "Nome", "CPF", "Horário"
-                }
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "CPF", "Horário"
+            }
         ) {
-            Class[] types = new Class[]{
-                    java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean[]{
-                    false, false, false
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         tbHorario.setColumnSelectionAllowed(true);
@@ -121,41 +124,10 @@ public class AreaMedico extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbHorario);
         tbHorario.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 500, 340));
-
-        txtFieldCrm.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtFieldCrm.setForeground(new java.awt.Color(153, 153, 153));
-        txtFieldCrm.setText("CRM:");
-        txtFieldCrm.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldCrm.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldCrmFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldCrmFocusLost(evt);
-            }
-        });
-        txtFieldCrm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldCrmActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFieldCrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 360, 50));
-
-        btFiltraCons.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        btFiltraCons.setText("Visualizar minhas consultas");
-        btFiltraCons.setFocusPainted(false);
-        btFiltraCons.setMargin(new java.awt.Insets(11, 14, 3, 14));
-        btFiltraCons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFiltraConsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btFiltraCons, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 360, 50));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 760, 370));
 
         btCadConsulta.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
-        btCadConsulta.setText("Cadastrar Consulta");
+        btCadConsulta.setText("Cadastrar Nova Consulta");
         btCadConsulta.setFocusPainted(false);
         btCadConsulta.setMargin(new java.awt.Insets(11, 14, 3, 14));
         btCadConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +135,7 @@ public class AreaMedico extends javax.swing.JFrame {
                 btCadConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(btCadConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, 360, 50));
+        getContentPane().add(btCadConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 360, 50));
 
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSair.setText("Sair");
@@ -181,37 +153,14 @@ public class AreaMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFieldCrmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCrmFocusGained
-        if (txtFieldCrm.getText().equals("CPF:")) {
-            txtFieldCrm.setForeground(new Color(0, 0, 0));
-            txtFieldCrm.setText("");
-        }
-    }//GEN-LAST:event_txtFieldCrmFocusGained
-
-    private void txtFieldCrmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCrmFocusLost
-        if (txtFieldCrm.getText().equals("")) {
-            txtFieldCrm.setText("CPF:");
-            txtFieldCrm.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldCrmFocusLost
-
-    private void txtFieldCrmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldCrmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldCrmActionPerformed
-
     private void btCadConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadConsultaActionPerformed
         AgendaConsulta ac = new AgendaConsulta();
         ac.setVisible(true);
     }//GEN-LAST:event_btCadConsultaActionPerformed
 
-    private void btFiltraConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltraConsActionPerformed
-        selectTbHorario();
-    }//GEN-LAST:event_btFiltraConsActionPerformed
-
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
-        Login login = new Login();
-        login.setVisible(true);
+        Login.getInstance().setVisible(true);
     }//GEN-LAST:event_btSairActionPerformed
 
     private void tbHorarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHorarioMouseClicked
@@ -222,10 +171,8 @@ public class AreaMedico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btCadConsulta;
-    private javax.swing.JButton btFiltraCons;
     private javax.swing.JButton btSair;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbHorario;
-    private javax.swing.JTextField txtFieldCrm;
     // End of variables declaration//GEN-END:variables
 }

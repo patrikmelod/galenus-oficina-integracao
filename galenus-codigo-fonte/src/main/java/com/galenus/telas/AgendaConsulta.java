@@ -29,6 +29,7 @@ public class AgendaConsulta extends javax.swing.JFrame {
     private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
     private final AgendaPrimeiraDAO agendaPrimeiraDAO = new AgendaPrimeiraDAO();
 
+
     /**
      * Creates new form RCP_Cad_Agendar_Con
      */

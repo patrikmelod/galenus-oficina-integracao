@@ -1,5 +1,8 @@
 package com.galenus.telas;
 
+import com.galenus.dao.FuncionarioDAO;
+import com.galenus.dao.MedicoDAO;
+import com.galenus.model.Funcionario;
 import com.galenus.process.LoginProcess;
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,8 +12,30 @@ import java.awt.*;
 @Slf4j
 public class Login extends javax.swing.JFrame {
 
-    public Login() {
+    private static String email;
+    private static String senha;
+
+    private static Login INSTANCE;
+
+    private Login() {
         initComponents();
+    }
+
+    public static Login getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Login();
+        }
+        return INSTANCE;
+    }
+
+    public String getMedicoCrm() {
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        MedicoDAO medicoDAO = new MedicoDAO();
+
+        log.info(email);
+        Funcionario funcionario = funcionarioDAO.getByEmail(email);
+
+        return medicoDAO.getByDoc(funcionario.getDocumento()).getCrm();
     }
 
     /**
@@ -132,24 +157,20 @@ public class Login extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         LoginProcess loginProcess = new LoginProcess();
 
-        String email = txtFieldEmail.getText();
-        String senha = txtFieldSenha.getText();
-
-        AreaRecepcao areaRecepcao = new AreaRecepcao();
-        AreaRh areaRh = new AreaRh();
+        email = txtFieldEmail.getText();
+        senha = txtFieldSenha.getText();
 
         if (loginProcess.validaLogin(email, senha)) {
             if (email.contains("@medico")) {
-                dispose();
                 AreaMedico.getInstance().setVisible(true);
                 loginProcess.salvaLog();
             } else if (email.contains("@recepcao")) {
                 dispose();
-                areaRecepcao.setVisible(true);
+                AreaRecepcao.getInstance().setVisible(true);
                 loginProcess.salvaLog();
             } else if (email.contains("@rh")) {
                 dispose();
-                areaRh.setVisible(true);
+                AreaRh.getInstance().setVisible(true);
                 loginProcess.salvaLog();
             }
         } else {

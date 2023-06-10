@@ -177,6 +177,54 @@ public class AgendaPrimeiraDAO {
         return null;
     }
 
+    public List<AgendaPrimeira> getAllNew() {
+
+        String sql = "SELECT * FROM agenda_primeira WHERE data_hora > CURRENT_DATE";
+
+        List<AgendaPrimeira> agendaPrimeiras = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try {
+            conn = DatabaseConfig.createConnectionToMySQL();
+
+            pstm = conn.prepareStatement(sql);
+
+            rset = pstm.executeQuery();
+
+            while (rset.next()) {
+                AgendaPrimeira agendaPrimeira = new AgendaPrimeira();
+                agendaPrimeira.setId(rset.getInt("id"));
+                agendaPrimeira.setTelefone(rset.getString("telefone"));
+                agendaPrimeira.setDataHora(rset.getTimestamp("data_hora"));
+                agendaPrimeira.setMedicoCrm(rset.getString("medico_crm"));
+                agendaPrimeira.setNomePaciente(rset.getString("paciente_nome"));
+
+                agendaPrimeiras.add(agendaPrimeira);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rset != null) {
+                    rset.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return agendaPrimeiras;
+    }
+
     public List<AgendaPrimeira> getAll() {
 
         String sql = "SELECT * FROM agenda_primeira";

@@ -84,6 +84,11 @@ public class Prontuario extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSair.setText("Sair");
         btSair.setMargin(new java.awt.Insets(11, 14, 3, 14));
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 640, 160, 40));
 
         txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -94,7 +99,6 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -109,7 +113,6 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusLost(evt);
             }
@@ -124,7 +127,6 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusLost(evt);
             }
@@ -139,7 +141,6 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusLost(evt);
             }
@@ -174,7 +175,6 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusLost(evt);
             }
@@ -189,7 +189,6 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusLost(evt);
             }
@@ -343,6 +342,10 @@ public class Prontuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao salvar prontuário.", "Erro", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;

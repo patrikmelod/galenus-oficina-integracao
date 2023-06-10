@@ -7,10 +7,19 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AreaRh extends javax.swing.JFrame {
 
+    private static AreaRh INSTANCE;
 
-    public AreaRh() {
+    private AreaRh() {
         initComponents();
     }
+
+    public static AreaRh getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AreaRh();
+        }
+        return INSTANCE;
+    }
+
 
 
     @SuppressWarnings("unchecked")
@@ -73,8 +82,7 @@ public class AreaRh extends javax.swing.JFrame {
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
-        Login login = new Login();
-        login.setVisible(true);
+        Login.getInstance().setVisible(true);
     }//GEN-LAST:event_btSairActionPerformed
 
 

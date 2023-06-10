@@ -24,9 +24,33 @@ import java.text.SimpleDateFormat;
 @Slf4j
 public class CadastraPaciente extends javax.swing.JFrame {
 
-    public CadastraPaciente() {
-        initComponents();
+    private static CadastraPaciente INSTANCE;
 
+    private CadastraPaciente() {
+        initComponents();
+    }
+
+    public static CadastraPaciente getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new CadastraPaciente();
+        }
+        return INSTANCE;
+    }
+
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
+    public void setTxtFieldCpf(String cpf) {
+        txtFieldCpf.setText(cpf);
+    }
+
+    public void setTxtFieldNome(String nome) {
+        txtFieldNome.setText(nome);
+    }
+
+    public void setTxtFieldTelefone(String tel) {
+        txtFieldTelefone.setText(tel);
     }
 
     /**
@@ -253,6 +277,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         dispose();
+        setInstanceNull();
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
@@ -272,6 +297,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
             pacienteDAO.save(paciente);
             JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso!", "Sucesso", JOptionPane.PLAIN_MESSAGE);
             dispose();
+            setInstanceNull();
         } catch (ParseException pe) {
             JOptionPane.showMessageDialog(null, "Data inválida.", "Erro", JOptionPane.PLAIN_MESSAGE);
         } catch (Exception e) {

@@ -137,7 +137,7 @@ public class AgendaDAO {
 
     public List<Agenda> getAllByDate(String crm) {
 
-        String sql = "SELECT * FROM agenda WHERE data_hora > CURRENT_DATE AND medico_crm = ?";
+        String sql = "SELECT * FROM agenda WHERE DATE(data_hora) = DATE(NOW()) AND medico_crm = ?";
 
         List<Agenda> agendas = new ArrayList<>();
 

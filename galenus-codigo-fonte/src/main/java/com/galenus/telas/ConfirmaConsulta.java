@@ -33,20 +33,27 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
     private static Funcionario funcionario = new Funcionario();
     private static AgendaPrimeira agendaPrimeira = new AgendaPrimeira();
 
-    /**
-     * Creates new form RCP_Confirmar_Con
-     */
-    public ConfirmaConsulta() {
+    private static ConfirmaConsulta INSTANCE;
+
+    private ConfirmaConsulta() {
         initComponents();
         selectTbConta();
     }
+
+    public static ConfirmaConsulta getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ConfirmaConsulta();
+        }
+        return INSTANCE;
+    }
+
 
     public void selectTbConta() {
         DefaultTableModel model = (DefaultTableModel) tbNomes.getModel();
         int posLin = 0;
         model.setRowCount(posLin);
 
-        for (AgendaPrimeira agenda : agendaPrimeiraDAO.getAll()) {
+        for (AgendaPrimeira agenda : agendaPrimeiraDAO.getAllNew()) {
             model.insertRow(posLin, new Object[]{agenda.getNomePaciente()});
             posLin++;
         }
@@ -391,8 +398,10 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             if (paciente == null) {
                 int opt = JOptionPane.showConfirmDialog(null, "Paciente não cadastrado. Deseja cadastrar?");
                 if (opt == 0) {
-                    CadastraPaciente cadastraPaciente = new CadastraPaciente();
-                    cadastraPaciente.setVisible(true);
+                    CadastraPaciente.getInstance().setVisible(true);
+                    CadastraPaciente.getInstance().setTxtFieldCpf(txtField_CPF.getText());
+                    CadastraPaciente.getInstance().setTxtFieldNome(txtField_Nome.getText());
+                    CadastraPaciente.getInstance().setTxtFieldTelefone(txtFieldTelefone.getText());
                 }
             } else {
                 Agenda agenda = new Agenda();
@@ -415,7 +424,6 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
 
     private void tbNomesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNomesMouseClicked
         String valLin = tbNomes.getModel().getValueAt(tbNomes.getSelectedRow(), 0).toString();
-        log.info(valLin.trim());
         agendaPrimeira = agendaPrimeiraDAO.getAllByName(valLin.trim());
         medico = medicoDAO.getByCrm(agendaPrimeira.getMedicoCrm());
         funcionario = funcionarioDAO.getByDoc(medico.getDocumento());
