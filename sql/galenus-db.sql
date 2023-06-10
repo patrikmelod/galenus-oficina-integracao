@@ -40,7 +40,6 @@ CREATE TABLE galenus.agenda(
 	medico_crm			varchar(8),
     paciente_doc		varchar(14),
     pagamento			varchar(20),
-    status              char,
 	CONSTRAINT PK_Agenda PRIMARY KEY(id),
 	CONSTRAINT FK_Med_Crm FOREIGN KEY(medico_crm)
 		REFERENCES galenus.medico(crm),
