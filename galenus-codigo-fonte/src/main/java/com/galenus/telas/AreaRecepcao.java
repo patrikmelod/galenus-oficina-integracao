@@ -109,6 +109,10 @@ public class AreaRecepcao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
     private void btCadastrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarPacienteActionPerformed
         CadastraPaciente.getInstance().setVisible(true);
     }//GEN-LAST:event_btCadastrarPacienteActionPerformed
@@ -125,6 +129,7 @@ public class AreaRecepcao extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
         Login.getInstance().setVisible(true);
+        setInstanceNull();
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btCancelarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarConsultaActionPerformed

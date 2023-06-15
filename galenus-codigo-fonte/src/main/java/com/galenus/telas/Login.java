@@ -114,6 +114,10 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
     public void salvaLog() {
         Log login = new Log();
         login.setDataAcesso(new Timestamp(System.currentTimeMillis()));
@@ -142,14 +146,18 @@ public class Login extends javax.swing.JFrame {
             if (email.contains("@medico")) {
                 AreaMedico.getInstance().setVisible(true);
                 salvaLog();
+                dispose();
+                setInstanceNull();
             } else if (email.contains("@recepcao")) {
                 dispose();
                 AreaRecepcao.getInstance().setVisible(true);
                 salvaLog();
+                setInstanceNull();
             } else if (email.contains("@rh")) {
                 dispose();
                 AreaRh.getInstance().setVisible(true);
                 salvaLog();
+                setInstanceNull();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Erro", JOptionPane.PLAIN_MESSAGE);

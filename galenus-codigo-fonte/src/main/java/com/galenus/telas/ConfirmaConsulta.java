@@ -6,6 +6,7 @@ import com.galenus.util.NumUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.Timestamp;
@@ -219,6 +220,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbNomes.setRowHeight(30);
         tbNomes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbNomesMouseClicked(evt);
@@ -235,6 +237,10 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
     public void selectTbConta() {
         DefaultTableModel model = (DefaultTableModel) tbNomes.getModel();
         int posLin = 0;
@@ -243,6 +249,15 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         for (AgendaPrimeira agenda : agendaPrimeiraDAO.getAllNew()) {
             model.insertRow(posLin, new Object[]{agenda.getNomePaciente()});
             posLin++;
+        }
+
+        DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
+        cellRender.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int numCol = 0; numCol < tbNomes.getColumnCount(); numCol++) {
+            tbNomes.getColumnModel().getColumn(numCol).setCellRenderer(
+                    cellRender);
+
         }
     }
 
@@ -312,6 +327,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Consulta confirmada.", "Sucesso", JOptionPane.PLAIN_MESSAGE);
                 agendaPrimeiraDAO.delete(agendaPrimeira.getId());
                 dispose();
+                setInstanceNull();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao confirmar consulta.", "Erro", JOptionPane.PLAIN_MESSAGE);
@@ -348,11 +364,12 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
+        setInstanceNull();
     }//GEN-LAST:event_btSairActionPerformed
 
-    
-    
-    
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btConfirmar;

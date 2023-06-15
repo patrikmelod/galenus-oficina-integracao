@@ -6,6 +6,8 @@ import com.galenus.model.Agenda;
 import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ public class AreaMedico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbHorario.setFont(new java.awt.Font("Constantia", 0, 20)); // NOI18N
+        tbHorario.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         tbHorario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -83,8 +85,11 @@ public class AreaMedico extends javax.swing.JFrame {
             }
         });
         tbHorario.setColumnSelectionAllowed(true);
-        tbHorario.setGridColor(new java.awt.Color(255, 255, 255));
-        tbHorario.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tbHorario.setGridColor(new java.awt.Color(204, 204, 204));
+        tbHorario.setRowHeight(50);
+        tbHorario.setRowMargin(5);
+        tbHorario.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        tbHorario.setShowHorizontalLines(true);
         tbHorario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbHorarioMouseClicked(evt);
@@ -122,6 +127,10 @@ public class AreaMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
     public void selectTbHorario() {
         DefaultTableModel model = (DefaultTableModel) tbHorario.getModel();
         int posLin = 0;
@@ -135,6 +144,15 @@ public class AreaMedico extends javax.swing.JFrame {
             paciente = pacienteDAO.getByDoc(agenda.getDocPaciente());
             model.insertRow(posLin, new Object[]{paciente.getNome(), agenda.getDocPaciente(), horaF.format(agenda.getDataHora())});
             posLin++;
+        }
+
+        DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
+        cellRender.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int numCol = 0; numCol < tbHorario.getColumnCount(); numCol++) {
+            tbHorario.getColumnModel().getColumn(numCol).setCellRenderer(
+                    cellRender);
+
         }
     }
 
@@ -156,6 +174,7 @@ public class AreaMedico extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
         Login.getInstance().setVisible(true);
+        setInstanceNull();
     }//GEN-LAST:event_btSairActionPerformed
 
     private void tbHorarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHorarioMouseClicked

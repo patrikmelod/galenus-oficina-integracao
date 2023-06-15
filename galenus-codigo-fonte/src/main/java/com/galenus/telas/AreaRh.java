@@ -71,6 +71,10 @@ public class AreaRh extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setInstanceNull() {
+        INSTANCE = null;
+    }
+
     private void btCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarFuncionarioActionPerformed
         CadastraFuncionario cadastraFuncionario = new CadastraFuncionario();
         cadastraFuncionario.setVisible(true);
@@ -84,6 +88,7 @@ public class AreaRh extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
         Login.getInstance().setVisible(true);
+        setInstanceNull();
     }//GEN-LAST:event_btSairActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
