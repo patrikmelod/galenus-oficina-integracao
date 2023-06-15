@@ -16,5 +16,4 @@ public class Funcionario {
     private String email;
     private String senha;
     private String endereco;
-    private Medico medico;
 }
