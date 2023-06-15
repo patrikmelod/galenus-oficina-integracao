@@ -55,31 +55,31 @@ public class AreaMedico extends javax.swing.JFrame {
 
         tbHorario.setFont(new java.awt.Font("Constantia", 0, 20)); // NOI18N
         tbHorario.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null}
-                },
-                new String[]{
-                        "Nome", "CPF", "Horário"
-                }
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "CPF", "Horário"
+            }
         ) {
-            Class[] types = new Class[]{
-                    java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean[]{
-                    false, false, false
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         tbHorario.setColumnSelectionAllowed(true);
@@ -93,7 +93,7 @@ public class AreaMedico extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbHorario);
         tbHorario.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 760, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 760, 340));
 
         btCadConsulta.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btCadConsulta.setText("Cadastrar Nova Consulta");
@@ -104,7 +104,7 @@ public class AreaMedico extends javax.swing.JFrame {
                 btCadConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(btCadConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 360, 50));
+        getContentPane().add(btCadConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, 360, 50));
 
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSair.setText("Sair");

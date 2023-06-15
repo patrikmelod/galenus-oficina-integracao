@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 
-@Slf4j
+//@Slf4j
 public class Prontuario extends javax.swing.JFrame {
 
     private final ConsultaDAO consultaDAO = new ConsultaDAO();
@@ -22,6 +22,7 @@ public class Prontuario extends javax.swing.JFrame {
         txtFieldSexo.setText(paciente.getSexo());
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         txtFieldData.setText(dateFormat.format(paciente.getNascimento()));
+        blackTxt();
     }
 
     /**
@@ -33,31 +34,58 @@ public class Prontuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelHistClinica = new javax.swing.JLabel();
+        labelTratamento = new javax.swing.JLabel();
+        labelConduta = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         txtFieldNome = new javax.swing.JTextField();
         txtFieldCpf = new javax.swing.JTextField();
         txtFieldData = new javax.swing.JTextField();
         txtFieldSexo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txtFieldQueixa = new javax.swing.JTextField();
         txtFieldDiagnostico = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaTratamento = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtAreaHistClinica = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtAreaConduta = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        scrollPaneDoencas = new javax.swing.JScrollPane();
         txtAreaDoencas = new javax.swing.JTextArea();
-        Label_fundo = new javax.swing.JLabel();
+        scrollPaneHistClinica = new javax.swing.JScrollPane();
+        txtAreaHistClinica = new javax.swing.JTextArea();
+        scrollPaneTratamento = new javax.swing.JScrollPane();
+        txtAreaTratamento = new javax.swing.JTextArea();
+        scrollPaneConduta = new javax.swing.JScrollPane();
+        txtAreaConduta = new javax.swing.JTextArea();
+        labekDoencas = new javax.swing.JLabel();
+        labelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelHistClinica.setBackground(new java.awt.Color(255, 255, 255));
+        labelHistClinica.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        labelHistClinica.setForeground(new java.awt.Color(153, 153, 153));
+        labelHistClinica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelHistClinica.setText("História clinica");
+        labelHistClinica.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelHistClinica.setOpaque(true);
+        getContentPane().add(labelHistClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, 233, 30));
+
+        labelTratamento.setBackground(new java.awt.Color(255, 255, 255));
+        labelTratamento.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        labelTratamento.setForeground(new java.awt.Color(153, 153, 153));
+        labelTratamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTratamento.setText("Tratamento");
+        labelTratamento.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelTratamento.setOpaque(true);
+        getContentPane().add(labelTratamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 233, 30));
+
+        labelConduta.setBackground(new java.awt.Color(255, 255, 255));
+        labelConduta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        labelConduta.setForeground(new java.awt.Color(153, 153, 153));
+        labelConduta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelConduta.setText("Conduta");
+        labelConduta.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelConduta.setOpaque(true);
+        getContentPane().add(labelConduta, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 233, 30));
 
         btSalvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSalvar.setText("Salvar");
@@ -82,92 +110,39 @@ public class Prontuario extends javax.swing.JFrame {
         txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldNome.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldNome.setText("Nome:");
+        txtFieldNome.setFocusable(false);
         txtFieldNome.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldNomeFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldNomeFocusLost(evt);
-            }
-        });
         getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 360, 50));
 
         txtFieldCpf.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldCpf.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldCpf.setText("CPF:");
+        txtFieldCpf.setFocusable(false);
         txtFieldCpf.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldCpf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldCpfFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldCpfFocusLost(evt);
-            }
-        });
         getContentPane().add(txtFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 360, 50));
 
         txtFieldData.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldData.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldData.setText("Data de Nascimento:");
+        txtFieldData.setFocusable(false);
         txtFieldData.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldData.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldDataFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldDataFocusLost(evt);
-            }
-        });
         getContentPane().add(txtFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 360, 50));
 
         txtFieldSexo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldSexo.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldSexo.setText("Sexo:");
+        txtFieldSexo.setFocusable(false);
         txtFieldSexo.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldSexo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldSexoFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldSexoFocusLost(evt);
-            }
-        });
         getContentPane().add(txtFieldSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 360, 50));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("Conduta");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 400, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Doenças crônicas");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("História clinica");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 190, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel5.setText("Tratamento");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
 
         txtFieldQueixa.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldQueixa.setForeground(new java.awt.Color(153, 153, 153));
-        txtFieldQueixa.setText("Sintomas:");
+        txtFieldQueixa.setText("Queicha Principal:");
         txtFieldQueixa.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txtFieldQueixa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldQueixaFocusLost(evt);
             }
@@ -182,111 +157,62 @@ public class Prontuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDiagnosticoFocusLost(evt);
             }
         });
         getContentPane().add(txtFieldDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 360, 50));
 
-        jScrollPane1.setToolTipText("");
+        txtAreaDoencas.setColumns(20);
+        txtAreaDoencas.setRows(5);
+        txtAreaDoencas.setMargin(new java.awt.Insets(6, 6, 2, 6));
+        scrollPaneDoencas.setViewportView(txtAreaDoencas);
+
+        getContentPane().add(scrollPaneDoencas, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 210, -1, 160));
+
+        txtAreaHistClinica.setColumns(20);
+        txtAreaHistClinica.setRows(5);
+        txtAreaHistClinica.setMargin(new java.awt.Insets(6, 6, 2, 6));
+        scrollPaneHistClinica.setViewportView(txtAreaHistClinica);
+
+        getContentPane().add(scrollPaneHistClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(849, 210, -1, 160));
+
+        scrollPaneTratamento.setToolTipText("");
 
         txtAreaTratamento.setColumns(20);
         txtAreaTratamento.setRows(5);
         txtAreaTratamento.setToolTipText("");
-        txtAreaTratamento.setWrapStyleWord(true);
-        txtAreaTratamento.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane1.setViewportView(txtAreaTratamento);
+        txtAreaTratamento.setMargin(new java.awt.Insets(6, 6, 2, 6));
+        scrollPaneTratamento.setViewportView(txtAreaTratamento);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, 190));
-
-        txtAreaHistClinica.setColumns(20);
-        txtAreaHistClinica.setRows(5);
-        txtAreaHistClinica.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane2.setViewportView(txtAreaHistClinica);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, -1, 190));
+        getContentPane().add(scrollPaneTratamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 420, -1, 160));
 
         txtAreaConduta.setColumns(20);
         txtAreaConduta.setRows(5);
-        txtAreaConduta.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane3.setViewportView(txtAreaConduta);
+        txtAreaConduta.setMargin(new java.awt.Insets(6, 6, 2, 6));
+        scrollPaneConduta.setViewportView(txtAreaConduta);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, -1, 190));
+        getContentPane().add(scrollPaneConduta, new org.netbeans.lib.awtextra.AbsoluteConstraints(849, 420, -1, 160));
 
-        txtAreaDoencas.setColumns(20);
-        txtAreaDoencas.setRows(5);
-        txtAreaDoencas.setMargin(new java.awt.Insets(40, 6, 2, 6));
-        jScrollPane4.setViewportView(txtAreaDoencas);
+        labekDoencas.setBackground(new java.awt.Color(255, 255, 255));
+        labekDoencas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        labekDoencas.setForeground(new java.awt.Color(153, 153, 153));
+        labekDoencas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labekDoencas.setText("Doenças crônicas");
+        labekDoencas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labekDoencas.setOpaque(true);
+        getContentPane().add(labekDoencas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 233, 30));
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, -1, 190));
-
-        Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Acessar Consulta.png"))); // NOI18N
-        Label_fundo.setAlignmentY(0.0F);
-        Label_fundo.setDoubleBuffered(true);
-        Label_fundo.setFocusable(false);
-        Label_fundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Label_fundo.setRequestFocusEnabled(false);
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
+        labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Acessar Consulta.png"))); // NOI18N
+        labelFundo.setAlignmentY(0.0F);
+        labelFundo.setDoubleBuffered(true);
+        labelFundo.setFocusable(false);
+        labelFundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelFundo.setRequestFocusEnabled(false);
+        getContentPane().add(labelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusGained
-        if (txtFieldNome.getText().equals("Nome:")) {
-            txtFieldNome.setForeground(new Color(0, 0, 0));
-            txtFieldNome.setText("");
-        }
-    }//GEN-LAST:event_txtFieldNomeFocusGained
-
-    private void txtFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNomeFocusLost
-        if (txtFieldNome.getText().equals("")) {
-            txtFieldNome.setText("Nome:");
-            txtFieldNome.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldNomeFocusLost
-
-    private void txtFieldCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusGained
-        if (txtFieldCpf.getText().equals("CPF:")) {
-            txtFieldCpf.setForeground(new Color(0, 0, 0));
-            txtFieldCpf.setText("");
-        }
-    }//GEN-LAST:event_txtFieldCpfFocusGained
-
-    private void txtFieldCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldCpfFocusLost
-        if (txtFieldCpf.getText().equals("")) {
-            txtFieldCpf.setText("CPF:");
-            txtFieldCpf.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldCpfFocusLost
-
-    private void txtFieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusGained
-        if (txtFieldData.getText().equals("Data de Nascimento:")) {
-            txtFieldData.setForeground(new Color(0, 0, 0));
-            txtFieldData.setText("");
-        }
-    }//GEN-LAST:event_txtFieldDataFocusGained
-
-    private void txtFieldDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusLost
-        if (txtFieldData.getText().equals("")) {
-            txtFieldData.setText("Data de Nascimento:");
-            txtFieldData.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldDataFocusLost
-
-    private void txtFieldSexoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusGained
-        if (txtFieldSexo.getText().equals("Sexo:")) {
-            txtFieldSexo.setForeground(new Color(0, 0, 0));
-            txtFieldSexo.setText("");
-        }
-    }//GEN-LAST:event_txtFieldSexoFocusGained
-
-    private void txtFieldSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSexoFocusLost
-        if (txtFieldSexo.getText().equals("")) {
-            txtFieldSexo.setText("Sexo:");
-            txtFieldSexo.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldSexoFocusLost
 
     private void txtFieldQueixaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldQueixaFocusGained
         if (txtFieldQueixa.getText().equals("Queicha Principal:")) {
@@ -341,18 +267,27 @@ public class Prontuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
+    private void blackTxt(){
+        txtFieldNome.setForeground(new Color(0, 0, 0));
+        txtFieldCpf.setForeground(new Color(0, 0, 0));
+        txtFieldData.setForeground(new Color(0, 0, 0));
+        txtFieldSexo.setForeground(new Color(0, 0, 0));        
+    }    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel labekDoencas;
+    private javax.swing.JLabel labelConduta;
+    private javax.swing.JLabel labelFundo;
+    private javax.swing.JLabel labelHistClinica;
+    private javax.swing.JLabel labelTratamento;
+    private javax.swing.JScrollPane scrollPaneConduta;
+    private javax.swing.JScrollPane scrollPaneDoencas;
+    private javax.swing.JScrollPane scrollPaneHistClinica;
+    private javax.swing.JScrollPane scrollPaneTratamento;
     private javax.swing.JTextArea txtAreaConduta;
     private javax.swing.JTextArea txtAreaDoencas;
     private javax.swing.JTextArea txtAreaHistClinica;

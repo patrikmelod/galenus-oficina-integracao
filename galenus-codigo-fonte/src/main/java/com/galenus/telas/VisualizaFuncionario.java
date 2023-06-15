@@ -26,14 +26,14 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         initComponents();
         btSalvar.setVisible(false);
         btSalvar.setEnabled(false);
-        txtFieldEmail.setEditable(false);
-        txtFieldEndereco.setEditable(false);
-        txtFieldNome.setEditable(false);
-        txtFieldSenha.setEditable(false);
-        txtFieldTelefone.setEditable(false);
-        txtFieldData.setEditable(false);
-        txtFieldEspecialidade.setEditable(false);
-        txtFieldCrm.setEditable(false);
+        txtFieldEmail.setFocusable(false);
+        txtFieldEndereco.setFocusable(false);
+        txtFieldNome.setFocusable(false);
+        txtFieldSenha.setFocusable(false);
+        txtFieldTelefone.setFocusable(false);
+        txtFieldData.setFocusable(false);
+        txtFieldEspecialidade.setFocusable(false);
+        txtFieldCrm.setFocusable(false);
     }
 
     /**
@@ -52,14 +52,14 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         txtFieldCpfBusca = new javax.swing.JTextField();
         txtFieldEndereco = new javax.swing.JTextField();
-        txtFieldTelefone = new javax.swing.JTextField();
         txtFieldNome = new javax.swing.JTextField();
-        txtFieldEmail = new javax.swing.JTextField();
-        txtFieldSenha = new javax.swing.JTextField();
         txtFieldData = new javax.swing.JTextField();
         txtFieldEspecialidade = new javax.swing.JTextField();
         txtFieldCrm = new javax.swing.JTextField();
-        Label_fundo = new javax.swing.JLabel();
+        txtFieldEmail = new javax.swing.JTextField();
+        txtFieldSenha = new javax.swing.JTextField();
+        txtFieldTelefone = new javax.swing.JTextField();
+        labelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1240, 720));
@@ -74,7 +74,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
                 btBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 200, 50));
+        getContentPane().add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 200, 50));
 
         btDesativar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btDesativar.setText("Desativar Acesso");
@@ -86,7 +86,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
                 btDesativarActionPerformed(evt);
             }
         });
-        getContentPane().add(btDesativar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 640, 220, 40));
+        getContentPane().add(btDesativar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 640, 220, 40));
 
         btEditar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btEditar.setText("Editar");
@@ -96,7 +96,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
                 btEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 640, 160, 40));
+        getContentPane().add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 640, 160, 40));
 
         btSalvar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSalvar.setText("Salvar");
@@ -106,7 +106,7 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
                 btSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 640, 160, 40));
+        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 640, 160, 40));
 
         btSair.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btSair.setText("Sair");
@@ -126,12 +126,11 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfBuscaFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfBuscaFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldCpfBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 460, 50));
+        getContentPane().add(txtFieldCpfBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 260, 50));
 
         txtFieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldEndereco.setForeground(new java.awt.Color(153, 153, 153));
@@ -141,27 +140,11 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 360, 50));
-
-        txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
-        txtFieldTelefone.setText("Telefone:");
-        txtFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldTelefoneFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldTelefoneFocusLost(evt);
-            }
-        });
-        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 360, 50));
+        getContentPane().add(txtFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 360, 50));
 
         txtFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldNome.setForeground(new java.awt.Color(153, 153, 153));
@@ -171,42 +154,11 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 360, 50));
-
-        txtFieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtFieldEmail.setForeground(new java.awt.Color(153, 153, 153));
-        txtFieldEmail.setText("Email:");
-        txtFieldEmail.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldEmailFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldEmailFocusLost(evt);
-            }
-        });
-        getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 360, 50));
-
-        txtFieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtFieldSenha.setForeground(new java.awt.Color(153, 153, 153));
-        txtFieldSenha.setText("Senha:");
-        txtFieldSenha.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldSenhaFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldSenhaFocusLost(evt);
-            }
-        });
-        getContentPane().add(txtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 360, 50));
+        getContentPane().add(txtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 360, 50));
 
         txtFieldData.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldData.setForeground(new java.awt.Color(153, 153, 153));
@@ -217,12 +169,11 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldDataFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 360, 50));
+        getContentPane().add(txtFieldData, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 360, 50));
 
         txtFieldEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldEspecialidade.setForeground(new java.awt.Color(153, 153, 153));
@@ -233,12 +184,11 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEspecialidadeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEspecialidadeFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 360, 50));
+        getContentPane().add(txtFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 360, 50));
 
         txtFieldCrm.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldCrm.setForeground(new java.awt.Color(153, 153, 153));
@@ -249,19 +199,61 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldCrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 360, 50));
+        getContentPane().add(txtFieldCrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 360, 50));
 
-        Label_fundo.setAlignmentY(0.0F);
-        Label_fundo.setDoubleBuffered(true);
-        Label_fundo.setFocusable(false);
-        Label_fundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Label_fundo.setRequestFocusEnabled(false);
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 1240, 720));
+        txtFieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldEmail.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldEmail.setText("Email:");
+        txtFieldEmail.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFieldEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFieldEmailFocusLost(evt);
+            }
+        });
+        getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 360, 50));
+
+        txtFieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldSenha.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldSenha.setText("Senha:");
+        txtFieldSenha.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFieldSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFieldSenhaFocusLost(evt);
+            }
+        });
+        getContentPane().add(txtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 360, 50));
+
+        txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        txtFieldTelefone.setText("Telefone:");
+        txtFieldTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtFieldTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFieldTelefoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFieldTelefoneFocusLost(evt);
+            }
+        });
+        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 360, 50));
+
+        labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visualizar Cadastro.png"))); // NOI18N
+        labelFundo.setAlignmentY(0.0F);
+        labelFundo.setDoubleBuffered(true);
+        labelFundo.setFocusable(false);
+        labelFundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelFundo.setRequestFocusEnabled(false);
+        getContentPane().add(labelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
 
         pack();
         setLocationRelativeTo(null);
@@ -322,34 +314,6 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
             txtFieldTelefone.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldTelefoneFocusLost
-
-    private void txtFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusGained
-        if (txtFieldCpfBusca.getText().equals("Email:")) {
-            txtFieldCpfBusca.setForeground(new Color(0, 0, 0));
-            txtFieldCpfBusca.setText("");
-        }
-    }//GEN-LAST:event_txtFieldEmailFocusGained
-
-    private void txtFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusLost
-        if (txtFieldTelefone.getText().equals("")) {
-            txtFieldTelefone.setText("Email:");
-            txtFieldTelefone.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldEmailFocusLost
-
-    private void txtFieldSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusGained
-        if (txtFieldCpfBusca.getText().equals("Senha:")) {
-            txtFieldCpfBusca.setForeground(new Color(0, 0, 0));
-            txtFieldCpfBusca.setText("");
-        }
-    }//GEN-LAST:event_txtFieldSenhaFocusGained
-
-    private void txtFieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusLost
-        if (txtFieldTelefone.getText().equals("")) {
-            txtFieldTelefone.setText("Senha:");
-            txtFieldTelefone.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_txtFieldSenhaFocusLost
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         fun = funcionarioDAO.getByDoc(txtFieldCpfBusca.getText());
@@ -428,14 +392,14 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         btSalvar.setVisible(true);
         btSalvar.setEnabled(true);
 
-        txtFieldEmail.setEditable(true);
-        txtFieldEndereco.setEditable(true);
-        txtFieldNome.setEditable(true);
-        txtFieldSenha.setEditable(true);
-        txtFieldTelefone.setEditable(true);
-        txtFieldData.setEditable(true);
-        txtFieldEspecialidade.setEditable(true);
-        txtFieldCrm.setEditable(true);
+        txtFieldEmail.setFocusable(true);
+        txtFieldEndereco.setFocusable(true);
+        txtFieldNome.setFocusable(true);
+        txtFieldSenha.setFocusable(true);
+        txtFieldTelefone.setFocusable(true);
+        txtFieldData.setFocusable(true);
+        txtFieldEspecialidade.setFocusable(true);
+        txtFieldCrm.setFocusable(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void txtFieldDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldDataFocusGained
@@ -480,13 +444,42 @@ public class VisualizaFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFieldCrmFocusLost
 
+    private void txtFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusGained
+        if (txtFieldEmail.getText().equals("Email:")) {
+            txtFieldEmail.setForeground(new Color(0, 0, 0));
+            txtFieldEmail.setText("");
+        }
+    }//GEN-LAST:event_txtFieldEmailFocusGained
+
+    private void txtFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusLost
+        if (txtFieldEmail.getText().equals("")) {
+            txtFieldEmail.setText("Email:");
+            txtFieldEmail.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_txtFieldEmailFocusLost
+
+    private void txtFieldSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusGained
+        if (txtFieldSenha.getText().equals("Senha:")) {
+            txtFieldSenha.setForeground(new Color(0, 0, 0));
+            txtFieldSenha.setText("");
+        }
+    }//GEN-LAST:event_txtFieldSenhaFocusGained
+
+    private void txtFieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldSenhaFocusLost
+        if (txtFieldSenha.getText().equals("")) {
+            txtFieldSenha.setText("Senha:");
+            txtFieldSenha.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_txtFieldSenhaFocusLost
+
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btDesativar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
+    private javax.swing.JLabel labelFundo;
     private javax.swing.JTextField txtFieldCpfBusca;
     private javax.swing.JTextField txtFieldCrm;
     private javax.swing.JTextField txtFieldData;

@@ -57,7 +57,6 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -72,7 +71,6 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusLost(evt);
             }
@@ -82,12 +80,12 @@ public class CadastraPaciente extends javax.swing.JFrame {
         txtFieldNascimento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldNascimento.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldNascimento.setText("Data de Nascimento:");
+        txtFieldNascimento.setToolTipText("Data dd/mm/aaaa");
         txtFieldNascimento.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txtFieldNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNascimentoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNascimentoFocusLost(evt);
             }
@@ -102,7 +100,6 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldSexoFocusLost(evt);
             }
@@ -117,7 +114,6 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusLost(evt);
             }
@@ -132,7 +128,6 @@ public class CadastraPaciente extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusLost(evt);
             }
@@ -147,7 +142,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
                 btCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 260, 50));
+        getContentPane().add(btCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 260, 50));
 
         btVoltar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btVoltar.setText("Voltar");
@@ -163,6 +158,7 @@ public class CadastraPaciente extends javax.swing.JFrame {
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void setInstanceNull() {
@@ -295,6 +291,9 @@ public class CadastraPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btCadastrar;

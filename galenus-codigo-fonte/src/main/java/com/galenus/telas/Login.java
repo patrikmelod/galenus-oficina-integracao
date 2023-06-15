@@ -59,6 +59,8 @@ public class Login extends javax.swing.JFrame {
         txtFieldEmail = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
         passwordField = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         Label_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,19 +68,9 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtFieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtFieldEmail.setForeground(new java.awt.Color(31, 79, 231));
-        txtFieldEmail.setText("Email:");
+        txtFieldEmail.setBorder(null);
         txtFieldEmail.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        txtFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFieldEmailFocusGained(evt);
-            }
-
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFieldEmailFocusLost(evt);
-            }
-        });
-        getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 390, 50));
+        getContentPane().add(txtFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 330, 316, 50));
 
         btEntrar.setFont(new java.awt.Font("Constantia", 1, 33)); // NOI18N
         btEntrar.setForeground(new java.awt.Color(31, 79, 231));
@@ -93,7 +85,27 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 160, 50));
-        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 390, 50));
+
+        passwordField.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        passwordField.setBorder(null);
+        passwordField.setMargin(new java.awt.Insets(4, 6, 2, 6));
+        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 310, 50));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(31, 79, 231));
+        jLabel1.setText(" Email:");
+        jLabel1.setToolTipText("");
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 380, 50));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(31, 79, 231));
+        jLabel2.setText(" Senha:");
+        jLabel2.setToolTipText("");
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 380, 50));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Inicio.png"))); // NOI18N
         getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 720));
@@ -120,20 +132,6 @@ public class Login extends javax.swing.JFrame {
         }
         return false;
     }
-
-    private void txtFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusGained
-        if (txtFieldEmail.getText().equals("Email:")) {
-            txtFieldEmail.setForeground(new Color(0, 0, 0));
-            txtFieldEmail.setText("");
-        }
-    }//GEN-LAST:event_txtFieldEmailFocusGained
-
-    private void txtFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEmailFocusLost
-        if (txtFieldEmail.getText().equals("")) {
-            txtFieldEmail.setText("Email:");
-            txtFieldEmail.setForeground(new Color(31, 79, 231));
-        }
-    }//GEN-LAST:event_txtFieldEmailFocusLost
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         email = txtFieldEmail.getText();
@@ -165,6 +163,8 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btEntrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField txtFieldEmail;
     // End of variables declaration//GEN-END:variables

@@ -19,9 +19,9 @@ public class CadastraFuncionario extends javax.swing.JFrame {
 
     public CadastraFuncionario() {
         initComponents();
-        txtFieldCrm.setEnabled(false);
-        txtFieldEspecialidade.setEnabled(false);
-        btCadastrar.setEnabled(false);
+        txtFieldCrm.setFocusable(false);
+        txtFieldEspecialidade.setFocusable(false);
+        btCadastrar.setFocusable(false);
     }
 
     /**
@@ -77,7 +77,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNomeFocusLost(evt);
             }
@@ -92,7 +91,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCpfFocusLost(evt);
             }
@@ -107,7 +105,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEnderecoFocusLost(evt);
             }
@@ -122,7 +119,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusLost(evt);
             }
@@ -137,14 +133,16 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldNascimentoFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldNascimentoFocusLost(evt);
             }
         });
         getContentPane().add(txtFieldNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 360, 50));
 
-        cBoxTipoFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Selecione", "Recepção", "Recursos Humanos", "Médico"}));
+        cBoxTipoFunc.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cBoxTipoFunc.setForeground(new java.awt.Color(153, 153, 153));
+        cBoxTipoFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Recepção", "Recursos Humanos", "Médico" }));
+        cBoxTipoFunc.setFocusable(false);
         cBoxTipoFunc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cBoxTipoFuncItemStateChanged(evt);
@@ -160,7 +158,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldCrmFocusLost(evt);
             }
@@ -175,7 +172,6 @@ public class CadastraFuncionario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldEspecialidadeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldEspecialidadeFocusLost(evt);
             }
@@ -184,9 +180,10 @@ public class CadastraFuncionario extends javax.swing.JFrame {
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cadastrar Funcionário.png"))); // NOI18N
         Label_fundo.setToolTipText("");
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 20, -1, -1));
+        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFieldNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldNascimentoFocusLost
@@ -217,7 +214,7 @@ public class CadastraFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFieldTelefoneFocusGained
 
-    //GEN-FIRST:event_txtFieldCpfFocusLost
+//GEN-FIRST:event_txtFieldCpfFocusLost
     private void txtFieldCpfFocusLost(java.awt.event.FocusEvent evt) {
         if (txtFieldCpf.getText().equals("")) {
             txtFieldCpf.setText("CPF:");
@@ -261,30 +258,30 @@ public class CadastraFuncionario extends javax.swing.JFrame {
     }
 
     private void txtFieldCrmFocusGained(java.awt.event.FocusEvent evt) {
-        if (txtFieldEndereco.getText().equals("CRM:")) {
-            txtFieldEndereco.setForeground(new Color(0, 0, 0));
-            txtFieldEndereco.setText("");
+        if (txtFieldCrm.getText().equals("CRM:")) {
+            txtFieldCrm.setForeground(new Color(0, 0, 0));
+            txtFieldCrm.setText("");
         }
     }
 
     private void txtFieldCrmFocusLost(java.awt.event.FocusEvent evt) {
-        if (txtFieldEndereco.getText().equals("")) {
-            txtFieldEndereco.setText("CRM:");
-            txtFieldEndereco.setForeground(new Color(153, 153, 153));
+        if (txtFieldCrm.getText().equals("")) {
+            txtFieldCrm.setText("CRM:");
+            txtFieldCrm.setForeground(new Color(153, 153, 153));
         }
     }
 
     private void txtFieldEspecialidadeFocusGained(java.awt.event.FocusEvent evt) {
-        if (txtFieldEndereco.getText().equals("Especialidade:")) {
-            txtFieldEndereco.setForeground(new Color(0, 0, 0));
-            txtFieldEndereco.setText("");
+        if (txtFieldEspecialidade.getText().equals("Especialidade:")) {
+            txtFieldEspecialidade.setForeground(new Color(0, 0, 0));
+            txtFieldEspecialidade.setText("");
         }
     }
 
     private void txtFieldEspecialidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldEnderecoFocusGained
-        if (txtFieldEndereco.getText().equals("")) {
-            txtFieldEndereco.setText("Especialidade:");
-            txtFieldEndereco.setForeground(new Color(153, 153, 153));
+        if (txtFieldEspecialidade.getText().equals("")) {
+            txtFieldEspecialidade.setText("Especialidade:");
+            txtFieldEspecialidade.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldEnderecoFocusGained
 
@@ -337,20 +334,22 @@ public class CadastraFuncionario extends javax.swing.JFrame {
 
     private void cBoxTipoFuncItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cBoxTipoFuncItemStateChanged
         if (!Objects.equals(cBoxTipoFunc.getSelectedItem(), "Médico")) {
-            txtFieldCrm.setEnabled(false);
-            txtFieldEspecialidade.setEnabled(false);
+            txtFieldCrm.setFocusable(false);
+            txtFieldEspecialidade.setFocusable(false);
         } else {
-            txtFieldCrm.setEnabled(true);
-            txtFieldEspecialidade.setEnabled(true);
+            txtFieldCrm.setFocusable(true);
+            txtFieldEspecialidade.setFocusable(true);
         }
 
-        btCadastrar.setEnabled(!Objects.equals(cBoxTipoFunc.getSelectedItem(), "Selecione"));
+        btCadastrar.setFocusable(!Objects.equals(cBoxTipoFunc.getSelectedItem(), "Selecione"));
     }//GEN-LAST:event_cBoxTipoFuncItemStateChanged
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btCadastrar;

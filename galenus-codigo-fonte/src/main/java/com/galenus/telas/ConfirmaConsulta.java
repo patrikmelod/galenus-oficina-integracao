@@ -77,12 +77,11 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtField_NomeFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtField_NomeFocusLost(evt);
             }
         });
-        getContentPane().add(txtField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 360, 50));
+        getContentPane().add(txtField_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 360, 50));
 
         txtFieldTelefone.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldTelefone.setForeground(new java.awt.Color(153, 153, 153));
@@ -92,12 +91,11 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFieldTelefoneFocusLost(evt);
             }
         });
-        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 360, 50));
+        getContentPane().add(txtFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, 360, 50));
 
         txtField_CPF.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtField_CPF.setForeground(new java.awt.Color(153, 153, 153));
@@ -107,42 +105,41 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtField_CPFFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtField_CPFFocusLost(evt);
             }
         });
-        getContentPane().add(txtField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
+        getContentPane().add(txtField_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 360, 50));
 
         cBoxPagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Dinheiro", "Cartão", "Plano de Saúde", "Retorno", " "}));
-        getContentPane().add(cBoxPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 220, 50));
+        cBoxPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão", "Plano de Saúde", "Retorno" }));
+        getContentPane().add(cBoxPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 330, 220, 50));
 
         cBoxDia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+        cBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         cBoxDia.setBorder(null);
-        getContentPane().add(cBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 70, 50));
+        getContentPane().add(cBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 70, 50));
 
         cBoxMes.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
+        cBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
         cBoxMes.setBorder(null);
-        getContentPane().add(cBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 510, 130, 50));
+        getContentPane().add(cBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 550, 130, 50));
 
         cBoxAno.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
+        cBoxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
         cBoxAno.setBorder(null);
-        getContentPane().add(cBoxAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 90, 50));
+        getContentPane().add(cBoxAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 90, 50));
 
         cBoxHorario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"}));
-        getContentPane().add(cBoxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 220, 50));
+        cBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00" }));
+        getContentPane().add(cBoxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 550, 220, 50));
 
         txtFieldPagamento.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldPagamento.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldPagamento.setText("Pagamento:");
         txtFieldPagamento.setFocusable(false);
         txtFieldPagamento.setMargin(new java.awt.Insets(2, 10, 2, 6));
-        getContentPane().add(txtFieldPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 360, 50));
+        getContentPane().add(txtFieldPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 360, 50));
 
         txtField_Medico.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtField_Medico.setForeground(new java.awt.Color(153, 153, 153));
@@ -150,7 +147,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txtField_Medico.setFocusable(false);
         txtField_Medico.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txtField_Medico.setRequestFocusEnabled(false);
-        getContentPane().add(txtField_Medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 360, 50));
+        getContentPane().add(txtField_Medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 360, 50));
 
         txFieldEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txFieldEspecialidade.setForeground(new java.awt.Color(153, 153, 153));
@@ -158,7 +155,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txFieldEspecialidade.setFocusable(false);
         txFieldEspecialidade.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txFieldEspecialidade.setRequestFocusEnabled(false);
-        getContentPane().add(txFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 360, 50));
+        getContentPane().add(txFieldEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 360, 50));
 
         txtField_Data.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtField_Data.setForeground(new java.awt.Color(153, 153, 153));
@@ -166,7 +163,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txtField_Data.setFocusable(false);
         txtField_Data.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txtField_Data.setRequestFocusEnabled(false);
-        getContentPane().add(txtField_Data, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 360, 50));
+        getContentPane().add(txtField_Data, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 360, 50));
 
         txtFieldHorario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldHorario.setForeground(new java.awt.Color(153, 153, 153));
@@ -174,7 +171,7 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         txtFieldHorario.setFocusable(false);
         txtFieldHorario.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txtFieldHorario.setRequestFocusEnabled(false);
-        getContentPane().add(txtFieldHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 360, 50));
+        getContentPane().add(txtFieldHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, 360, 50));
 
         btConfirmar.setFont(new java.awt.Font("Constantia", 1, 20)); // NOI18N
         btConfirmar.setText("Confirmar");
@@ -197,29 +194,29 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 640, 160, 40));
 
         tbNomes.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null},
-                        {null},
-                        {null},
-                        {null}
-                },
-                new String[]{
-                        "Paciente"
-                }
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Pacientes"
+            }
         ) {
-            Class[] types = new Class[]{
-                    java.lang.String.class
+            Class[] types = new Class [] {
+                java.lang.String.class
             };
-            boolean[] canEdit = new boolean[]{
-                    false
+            boolean[] canEdit = new boolean [] {
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         tbNomes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -229,12 +226,13 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbNomes);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 420));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 170, 390));
 
         Label_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Confirmar Consulta.png"))); // NOI18N
-        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(Label_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void selectTbConta() {
@@ -352,6 +350,9 @@ public class ConfirmaConsulta extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_fundo;
     private javax.swing.JButton btConfirmar;
