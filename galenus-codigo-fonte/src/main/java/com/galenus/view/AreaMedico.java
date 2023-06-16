@@ -1,7 +1,7 @@
-package com.galenus.telas;
+package com.galenus.view;
 
-import com.galenus.dao.AgendaDAO;
-import com.galenus.dao.PacienteDAO;
+import com.galenus.controller.AgendaDAO;
+import com.galenus.controller.PacienteDAO;
 import com.galenus.model.Agenda;
 import com.galenus.model.Paciente;
 import lombok.extern.slf4j.Slf4j;

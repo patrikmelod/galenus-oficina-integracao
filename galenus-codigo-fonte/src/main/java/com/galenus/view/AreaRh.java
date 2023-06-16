@@ -1,4 +1,4 @@
-package com.galenus.telas;
+package com.galenus.view;
 
 import lombok.extern.slf4j.Slf4j;
 

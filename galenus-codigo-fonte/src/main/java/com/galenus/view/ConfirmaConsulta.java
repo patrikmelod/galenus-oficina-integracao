@@ -1,6 +1,6 @@
-package com.galenus.telas;
+package com.galenus.view;
 
-import com.galenus.dao.*;
+import com.galenus.controller.*;
 import com.galenus.model.*;
 import com.galenus.util.NumUtil;
 import lombok.extern.slf4j.Slf4j;

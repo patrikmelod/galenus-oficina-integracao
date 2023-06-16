@@ -1,9 +1,8 @@
-package com.galenus.telas;
+package com.galenus.view;
 
-import com.galenus.dao.ConsultaDAO;
+import com.galenus.controller.ConsultaDAO;
 import com.galenus.model.Consulta;
 import com.galenus.model.Paciente;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;

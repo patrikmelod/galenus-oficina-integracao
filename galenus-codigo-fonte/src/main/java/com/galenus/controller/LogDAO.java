@@ -1,4 +1,4 @@
-package com.galenus.dao;
+package com.galenus.controller;
 
 import com.galenus.config.DatabaseConfig;
 import com.galenus.model.Log;
