@@ -8,14 +8,14 @@ CREATE TABLE galenus.paciente(
 	nascimento			date,
 	sexo				char,
 	telefone			varchar(11),
-    endereco			varchar(50),
+    	endereco			varchar(50),
 	CONSTRAINT PK_Paciente PRIMARY KEY(documento)
 );
 
 CREATE TABLE galenus.funcionario(
 	documento			varchar(14),
 	nome				varchar(50),
-    nascimento			date,
+    	nascimento			date,
 	telefone			varchar(11),
     endereco			varchar(50),
 	email				varchar(50),
@@ -85,6 +85,7 @@ CREATE TABLE galenus.log_data(
     data_hora			timestamp,
     ip_maquina			varchar(20),
     func_doc			varchar(14),
+    CONSTRAINT PK_Log PRIMARY KEY(id),
     CONSTRAINT FK_Func_Doc_Log FOREIGN KEY(func_doc)
 		REFERENCES galenus.funcionario(documento)
 );

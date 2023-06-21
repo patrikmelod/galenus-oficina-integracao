@@ -136,7 +136,7 @@ public class Prontuario extends javax.swing.JFrame {
 
         txtFieldQueixa.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtFieldQueixa.setForeground(new java.awt.Color(153, 153, 153));
-        txtFieldQueixa.setText("Queicha Principal:");
+        txtFieldQueixa.setText("Queixa Principal:");
         txtFieldQueixa.setMargin(new java.awt.Insets(2, 10, 2, 6));
         txtFieldQueixa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -222,7 +222,7 @@ public class Prontuario extends javax.swing.JFrame {
 
     private void txtFieldQueixaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldQueixaFocusLost
         if (txtFieldQueixa.getText().equals("")) {
-            txtFieldQueixa.setText("Queicha Principal:");
+            txtFieldQueixa.setText("Queixa Principal:");
             txtFieldQueixa.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtFieldQueixaFocusLost
