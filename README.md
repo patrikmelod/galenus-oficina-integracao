@@ -18,3 +18,9 @@
 * Augusto Baroni Simionato
 * Patrik Melo Dias
 * Renato Sardinha Lopes
+
+## Link vídeo funcional da aplicação Galenus
+* https://www.youtube.com/watch?v=1jmOeQ6mO6k
+
+## Link vídeo apresentação diagramas
+* https://www.youtube.com/watch?v=E2nlMY_e6EQ
